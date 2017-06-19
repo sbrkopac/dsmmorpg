@@ -1,0 +1,477 @@
+/*
+ *  This file is part of dsmmorpg.
+ *  
+ *  dsmmorpg is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  dsmmorpg is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU General Public License
+ *  along with dsmmorpg.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ 
+ #include "k_inc_dsmmorpg_combat"
+
+Goid CreateAddItem$ (Goid actor$, int id$, bool db$, eEquipSlot slot$, string model$)
+{
+	GoCloneReq req$ = MakeGoCloneReq (model$);
+	Goid item$ = GoDb.SCloneGo (req$); 
+	
+	if (item$.IsValid())
+	{
+		if (db$)
+		{
+			string tmp$; StringTool.AssignF (tmp$, "godb:%d", id$);
+			GameAuditor.GetDb.SetInt (tmp$, MakeInt (item$));
+		}
+		
+		actor$.Go.Inventory.RSAdd (item$.Go, il_main, ao_human, true);
+		
+		if (slot$ != es_none)
+		{
+			actor$.Go.Inventory.RSAutoEquip (slot$, item$, ao_human, false);
+		}
+		if (item$.Go.HasComponent ("object"))
+		{
+			item$.Go.SetComponentInt ("object", "id", id$);
+		}
+	}
+	
+	return item$;
+}
+
+void RCCreateActor$ (Packet packet$)
+{
+	int id$ = packet$.ReadUInt32();
+	string name$ = packet$.ReadString();
+	string model$ = packet$.ReadString();
+	int alignment$ = packet$.ReadUInt8();
+	float scale$ = packet$.ReadFloat();
+	string flesh$ = packet$.ReadString();
+	string cloth$ = packet$.ReadString();
+	int node$ = packet$.ReadUInt32();
+	float x$ = packet$.ReadFloat();
+	float y$ = packet$.ReadFloat();
+	float z$ = packet$.ReadFloat();
+	
+	// report.screenf ("creating %d with name %s and model %s with textures %s and %s", id$, name$, model$, flesh$, cloth$);
+	//report.screenf ("create go at %f, %f, %f", x$, y$, z$);
+	
+	GoCloneReq req$ = MakeGoCloneReq (model$);
+	req$.SnapToTerrain = true;
+	req$.FadeIn = true;
+	req$.StartingPos = SiegePos.Make (x$, y$, z$, node$);
+	
+	Goid actor$ = GoDb.SCloneGo (req$);
+	
+	if (actor$.IsValid())
+	{
+		string tmp$; StringTool.AssignF (tmp$, "godb:%d", id$);
+		GameAuditor.GetDb.SetInt (tmp$, MakeInt (actor$));
+		
+		actor$.Go.Actor.SSetAlignment (MakeActorAlignment (alignment$));
+		
+		if (actor$.Go.HasComponent ("object"))
+		{
+			actor$.Go.SetComponentInt ("object", "id", id$);
+		}
+		
+		if (scale$ != 1.0)
+		{
+			actor$.Go.Aspect.SetRenderScale (scale$);
+		}
+		
+		if (name$ != "")
+		{
+			actor$.Go.Common.SSetScreenName (name$);
+		}
+		
+		if (flesh$ != "")
+		{
+			actor$.Go.Aspect.SSetDynamicTexture (MakePlayerSkin (0), flesh$);
+		}
+		
+		if (cloth$ != "")
+		{
+			actor$.Go.Aspect.SSetDynamicTexture (MakePlayerSkin (1), cloth$);
+		}
+		
+		/*
+		 * es_shield_hand = 0,
+		 * es_weapon_hand = 1,
+		 * es_feet = 2,
+		 * es_chest = 3,
+		 * es_head = 4,
+		 * es_forearms = 5,
+		 * es_amulet = 6,
+		 * es_spellbook = 7,
+		 * es_ring_0 = 8,
+		 * es_ring_1 = 9,
+		 * es_ring_2 = 10,
+		 * es_ring_3 = 11,
+		 */
+		int i$ = 0;
+		while (i$ < 12)
+		{
+			int item$ = packet$.ReadUInt32();
+			string template$ = packet$.ReadString();
+			
+			if (item$ != 0)
+			{
+				CreateAddItem$ (actor$, item$, false, MakeEquipSlot (i$), template$);
+			}
+			
+			i$ += 1;
+		}
+	}
+}
+
+void RCCreateItem$ (Packet packet$)
+{
+	int id$ = packet$.ReadUInt32();
+	string name$ = packet$.ReadString();
+	string model$ = packet$.ReadString();
+	int node$ = packet$.ReadUInt32();
+	float x$ = packet$.ReadFloat();
+	float y$ = packet$.ReadFloat();
+	float z$ = packet$.ReadFloat();
+	
+	GoCloneReq req$ = MakeGoCloneReq (model$);
+	req$.SnapToTerrain = true;
+	req$.FadeIn = true;
+	req$.StartingPos = SiegePos.Make (x$, y$, z$, node$);
+	
+	Goid item$ = GoDb.SCloneGo (req$);
+	
+	if (item$.IsValid())
+	{
+		string tmp$; StringTool.AssignF (tmp$, "godb:%d", id$);
+		GameAuditor.GetDb.SetInt (tmp$, MakeInt (item$));
+		
+		if (item$.Go.HasComponent ("object"))
+		{
+			item$.Go.SetComponentInt ("object", "id", id$);
+		}
+		
+		if (name$ != "")
+		{
+			item$.Go.Common.SSetScreenName (name$);
+		}
+	}
+}
+
+void RCDestroyGo$ (Packet packet$)
+{
+	int id$ = packet$.ReadUInt32();
+	
+	string tmp$; StringTool.AssignF (tmp$, "godb:%d", id$);
+	Goid goid$ = MakeGoid (GameAuditor.GetDb.GetInt (tmp$));
+	
+	if (goid$.IsValid())
+	{
+		GoDb.RSMarkGoAndChildrenForDeletion (goid$.Go, true, true, false);
+	}
+	
+	GameAuditor.GetDb.SetInt (tmp$, 0);
+}
+
+void RCSetScreenHero$ (Packet packet$)
+{
+	int id$ = packet$.ReadUInt32();
+	
+	float strength$ = packet$.ReadFloat();
+	float intelligence$ = packet$.ReadFloat();
+	float dexterity$ = packet$.ReadFloat();
+	float melee$ = packet$.ReadFloat();
+	float ranged$ = packet$.ReadFloat();
+	float nmagic$ = packet$.ReadFloat();
+	float cmagic$ = packet$.ReadFloat();
+	
+	string tmp$; StringTool.AssignF (tmp$, "godb:%d", id$);
+	Goid actor$ = MakeGoid (GameAuditor.GetDb.GetInt (tmp$));
+	
+	if (actor$.IsValid())
+	{
+		Go hero$ = Server.ScreenHero;
+		
+		MCPManager.MakeRequest (hero$.Goid, pl_follow, actor$);
+		
+		hero$.SetComponentInt ("portal", "id", MakeInt(actor$));
+		GoDb.StartWatching (hero$.Goid, actor$);
+		
+		hero$.Actor.SSetAlignment (actor$.Go.Actor.Alignment);
+		// hero$.Actor.SSetAlignment (aa_evil);
+		
+		hero$.Actor.SetBaseSkillLevel ("strength", strength$);
+		hero$.Actor.SetBaseSkillLevel ("intelligence", intelligence$);
+		hero$.Actor.SetBaseSkillLevel ("dexterity", dexterity$);
+		hero$.Actor.SetBaseSkillLevel ("melee", melee$);
+		hero$.Actor.SetBaseSkillLevel ("ranged", ranged$);
+		hero$.Actor.SetBaseSkillLevel ("nature magic", nmagic$);
+		hero$.Actor.SetBaseSkillLevel ("combat magic", cmagic$);
+		
+		int count$ = packet$.ReadUInt8();
+		while (count$ > 0)
+		{
+			int id$ = packet$.ReadUInt32();
+			string name$ = packet$.ReadString();
+			int slot$ = packet$.ReadUInt8();
+			string model$ = packet$.ReadString();
+			
+			Goid item$ = CreateAddItem$ (hero$.Goid, id$, false, MakeEquipSlot (slot$), model$);
+			
+			if (item$.IsValid())
+			{
+				item$.Go.Common.SSetScreenName (name$);
+			}
+			
+			count$ -= 1;
+		}
+	}
+}
+
+void RCMove$ (Packet packet$)
+{
+	int id$ = packet$.ReadUInt32();
+	int node$ = packet$.ReadUInt32();
+	float x$ = packet$.ReadFloat();
+	float y$ = packet$.ReadFloat();
+	float z$ = packet$.ReadFloat();
+	
+	string tmp$; StringTool.AssignF (tmp$, "godb:%d", id$);
+	Goid actor$ = MakeGoid (GameAuditor.GetDb.GetInt (tmp$));
+	
+	if (actor$.IsValid())
+	{
+		SiegePos position$ = SiegePos.Make (x$, y$, z$, node$);
+		
+		JobReq req$ = MakeJobReq (jat_move, jq_action, qp_clear, ao_command, position$);
+		
+		actor$.Go.Mind.SDoJob (req$);
+	}
+}
+
+void RCApproach$ (Packet packet$)
+{
+	int id$ = packet$.ReadUInt32();
+	int node$ = packet$.ReadUInt32();
+	float x$ = packet$.ReadFloat();
+	float y$ = packet$.ReadFloat();
+	float z$ = packet$.ReadFloat();
+	float distance$ = packet$.ReadFloat();
+	
+	report.screenf ("approaching with distance %g", distance$);
+	
+	string tmp$; StringTool.AssignF (tmp$, "godb:%d", id$);
+	Goid actor$ = MakeGoid (GameAuditor.GetDb.GetInt (tmp$));
+	
+	if (actor$.IsValid())
+	{
+		SiegePos position$ = SiegePos.Make (x$, y$, z$, node$);
+		
+		if (AIQuery.FindSpotRelativeToSource (position$, 1.0, 0.0, distance$, 1.0, false, actor$.Go.Mind.TempPos1))
+		{
+			position$ = actor$.Go.Mind.TempPos1;
+		}
+		
+		JobReq req$ = MakeJobReq (jat_move, jq_action, qp_clear, ao_command, position$);
+		req$.Float1 = distance$;
+		
+		actor$.Go.Mind.SDoJob (req$);
+	}
+}
+
+void RCChat$ (Packet p_Packet$)
+{
+	int id$ = p_Packet$.ReadUInt32();	
+	string message$ = p_Packet$.ReadString();
+	
+	string tmp$; StringTool.AssignF (tmp$, "godb:%d", id$);
+	Goid actor$ = MakeGoid (GameAuditor.GetDb.GetInt (tmp$));
+	
+	if (actor$.IsValid())
+	{
+		string name$ = actor$.Go.GetComponentString ("object", "name");
+		
+		GoCloneReq req$ = MakeGoCloneReq ("bubble_speech");
+		req$.StartingPos = actor$.Go.Placement.Position;
+		
+		Goid bubble$ = GoDb.SCloneGo (req$);
+		bubble$.Go.Common.SSetScreenName (message$);
+		
+		MCPManager.MakeRequest (bubble$, PL_FOLLOW, actor$);
+		PostWorldMessage (we_req_delete, bubble$, bubble$, 10.0);
+		
+		report.screenf ("<%s> %s", name$, message$);
+	}
+}
+
+void RCGet$ (Packet packet$)
+{
+	int id$ = packet$.ReadUInt32();
+	string name$ = packet$.ReadString();
+	string model$ = packet$.ReadString();
+	
+	Goid item$ = CreateAddItem$ (Server.ScreenHero.Goid, id$, false, es_none, model$);
+	
+	if (item$.IsValid())
+	{
+		item$.Go.Common.SSetScreenName (name$);
+	}
+}
+
+void RCDrop$ (Packet packet$)
+{
+	int id$ = packet$.ReadUInt32();
+	
+	string tmp$; StringTool.AssignF (tmp$, "inv:%d", id$);
+	Goid item$ = MakeGoid (GameAuditor.GetDb.GetInt (tmp$));
+	
+	if (item$.IsValid())
+	{
+		PostWorldMessage (we_req_delete, item$, item$, 0.0);
+	}
+	
+	GameAuditor.GetDb.SetInt (tmp$, 0);
+}
+
+void RCEquip$ (Packet packet$)
+{
+	int id$ = packet$.ReadUInt32();
+	int slot$ = packet$.ReadUInt8();
+	int item$ = packet$.ReadUInt32();
+	string model$ = packet$.ReadString();
+	
+	//report.screenf ("rcequip %d with %s in slot %d for %d", id$, model$, slot$, item$);
+	
+	string tmp$; StringTool.AssignF (tmp$, "godb:%d", id$);
+	Goid actor$ = MakeGoid (GameAuditor.GetDb.GetInt (tmp$));
+	
+	if (actor$.IsValid())
+	{
+		CreateAddItem$ (actor$, item$, true, MakeEquipSlot (slot$), model$);
+	}
+}
+
+void RCUnequip$ (Packet packet$)
+{
+	int id$ = packet$.ReadUInt32();
+	int slot$ = packet$.ReadUInt8();
+	
+	//report.screenf ("unequip slot %d for %d", slot$, id$);
+	
+	string tmp$; StringTool.AssignF (tmp$, "godb:%d", id$);
+	Goid actor$ = MakeGoid (GameAuditor.GetDb.GetInt (tmp$));
+	
+	if (actor$.IsValid())
+	{
+		Go item$ = actor$.Go.Inventory.GetEquipped (MakeEquipSlot (slot$));
+		actor$.Go.Inventory.RSUnequip (MakeEquipSlot (slot$), ao_human);
+		
+		if (item$ != NULL)
+		{
+			if (item$.HasComponent ("object"))
+			{
+				id$ = item$.GetComponentInt ("object", "id");
+				
+				StringTool.AssignF (tmp$, "godb:%d", id$);
+				GameAuditor.GetDb.SetInt (tmp$, 0);
+				
+				PostWorldMessage (we_req_delete, item$.Goid, item$.Goid, 0.0);
+			}
+		}
+	}
+}
+
+void RCAttackMelee$ (Packet packet$)
+{
+	report.screen ("rc attack melee");
+	int id$ = packet$.ReadUInt32();
+	int to$ = packet$.ReadUInt32();
+	int type$ = packet$.ReadUInt8();
+	
+	string tmp$;
+	
+	StringTool.AssignF (tmp$, "godb:%d", id$);
+	Goid actor$ = MakeGoid (GameAuditor.GetDb.GetInt (tmp$));
+	
+	StringTool.AssignF (tmp$, "godb:%d", to$);
+	Goid target$ = MakeGoid (GameAuditor.GetDb.GetInt (tmp$));
+	
+	//report.screenf ("%d will be attack %d with type %d", id$, to$, type$);
+	
+	if (actor$.IsValid() && target$.IsValid())
+	{
+		JobReq req$ = MakeJobReq (jat_attack_object_melee, jq_action, qp_clear, ao_command, target$, actor$);
+		req$.Int1 = type$;
+		
+		actor$.Go.Mind.SDoJob (req$);
+	}
+}
+
+void RCAttackRanged$ (Packet packet$)
+{
+	report.screen ("rc attack ranged");
+	int id$ = packet$.ReadUInt32();
+	int to$ = packet$.ReadUInt32();
+	int type$ = packet$.ReadUInt8();
+	
+	string tmp$;
+	
+	StringTool.AssignF (tmp$, "godb:%d", id$);
+	Goid actor$ = MakeGoid (GameAuditor.GetDb.GetInt (tmp$));
+	
+	StringTool.AssignF (tmp$, "godb:%d", to$);
+	Goid target$ = MakeGoid (GameAuditor.GetDb.GetInt (tmp$));
+	
+	//report.screenf ("%d will be attack %d with type %d", id$, to$, type$);
+	
+	if (actor$.IsValid() && target$.IsValid())
+	{
+		JobReq req$ = MakeJobReq (jat_attack_object_ranged, jq_action, qp_clear, ao_command, target$, actor$.Go.Inventory.GetEquipped (es_shield_hand).Goid);
+		req$.Int1 = type$;
+		
+		actor$.Go.Mind.SDoJob (req$);
+	}
+}
+
+void RCKill$ (Packet packet$)
+{
+	report.screen ("rc kill");
+	int id$ = packet$.ReadUInt32();
+	
+	string tmp$;
+	
+	StringTool.AssignF (tmp$, "godb:%d", id$);
+	Goid actor$ = MakeGoid (GameAuditor.GetDb.GetInt (tmp$));
+	
+	if (actor$.IsValid())
+	{
+		KillCharacter$ (actor$);
+	}
+}
+
+void RCDamage$ (Packet packet$)
+{
+}
+
+void RCRevive$ (Packet packet$)
+{
+	report.screen ("rc revive");
+	int id$ = packet$.ReadUInt32();
+	
+	string tmp$;
+	
+	StringTool.AssignF (tmp$, "godb:%d", id$);
+	Goid actor$ = MakeGoid (GameAuditor.GetDb.GetInt (tmp$));
+	
+	if (actor$.IsValid())
+	{
+		ReviveCharacter$ (actor$);
+	}
+}

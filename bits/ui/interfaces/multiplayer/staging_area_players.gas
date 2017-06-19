@@ -1,0 +1,184 @@
+/*
+ *  This file is part of dsmmorpg.
+ *  
+ *  dsmmorpg is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  dsmmorpg is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU General Public License
+ *  along with dsmmorpg.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+[staging_area_players]
+{
+	centered = interface_background;
+	interface = true;
+	
+	skrit =
+	[[
+		owner = UIWindow;
+		
+		#include "k_inc_ui"
+		
+		populate$()
+		{
+			UIListBox list$ = QueryDerivedListBox (UIShell.FindUIWindow ("servers_listbox", "staging_area_players"));
+			
+			int i$ = 0;
+			
+			string location$; StringTool.AssignF (location$, "server/ip:%d", i$); 
+			
+			string ip$ = Config.GetString (location$);
+			while (!StringTool.IsEmpty (ip$))
+			{
+				StringTool.AssignF (location$, "server/name:%d", i$);
+				string name$ = Config.GetString (location$);
+				
+				if (StringTool.IsEmpty (name$))
+				{
+					name$ = ip$;
+				}
+				
+				list$.AddElement (name$, i$);
+				GameAuditor.GetDb.SetString (name$, ip$);
+				
+				i$ += 1;
+				string location$; StringTool.AssignF (location$, "server/ip:%d", i$);
+				ip$ = Config.GetString (location$);
+			}
+			
+			if (i$ == 0)
+			{
+				// error here
+				report.screen ("ERROR");
+			}
+			
+			list$.SelectElement(0);
+		}
+		
+		connect$()
+		{
+			string box$;
+			UIListBox list$ = QueryDerivedListBox (UIShell.FindUIWindow ("servers_listbox", "staging_area_players"));
+			
+			list$.GetSelectedText (box$);
+			
+			string server$ = GameAuditor.GetDb.GetString (box$);
+			
+			int connect$ = NetworkManager.Connect (server$, 4000);
+			
+			if (connect$ == 0)
+			{
+				Messenger.Notify ("staging_select_character", owner);
+			}
+			else if (connect$ != 0)
+			{
+				DisplayMessage$ ("Connection failed");
+			}
+		}
+		
+		onescape$()
+		{
+			// maybe put a "are you sure you want to exit" question here?
+			if (NetworkManager.IsConnected())
+			{
+							NetworkManager.Disconnect();
+			}
+			
+			AppModule.RequestQuit (true);
+		}
+	]];
+	
+	[t:dialog_box,n:interface_background]
+	{
+	  f alpha = 1;
+	  b common_control = true;
+		common_template = cpbox;
+	  i draw_order = 0;
+		rect = 0,0,300,250;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	
+	[t:text,n:server_list_text]
+	{
+	  f alpha = 1;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 152;
+	  x font_color = 0xffffffff;
+	  x font_size = 0;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 0,5,300,17;
+		text = "Server List";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	
+	[t:dialog_box,n:servers_background]
+	{
+	  f alpha = 1;
+	  b common_control = true;
+		common_template = cpbox;
+	  i draw_order = 2;
+		rect = 15,22,285,224;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	
+	[t:listbox,n:servers_listbox]
+	{
+		alpha = 1;
+		common_control = true;
+		common_template = ;
+		draw_order = 4;
+		font_type = b_gui_fnt_12p_copperplate-light;						
+		rect = 30,37,270,224;
+		text_color = 0xffffffff;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		[messages]
+		{
+			oncreated = setelementheight(14);
+			onshow = call (populate$);
+		}
+	}
+	
+	[t:button,n:button_connect]
+	{
+	  f alpha = 1;
+	  b common_control = true;
+		common_template = button_4;
+	  i draw_order = 1;
+		rect = 100,229,200,245;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;		
+		[t:text,n:text_message_connect]
+		{
+		  f alpha = 1;
+		  b common_control = false;
+			common_template = ;
+		  i draw_order = 3;
+		  i font_color = -1;
+		  i font_size = 0;
+			font_type = b_gui_fnt_12p_copperplate-light;
+			justify = center;
+			text = "Connect";
+			uvcoords = 0.000000,0.000000,1.000000,1.000000;
+			wrap_mode = clamp;
+		}
+		[messages]
+		{
+			onbuttonpress = call (connect$);
+			onenter = call(connect$);
+			onescape = call (onescape$);
+		}
+	}
+}

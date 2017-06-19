@@ -1,0 +1,88 @@
+[message_box_large]
+{
+	centered = background;
+  b interface = True;
+  b modal = True;
+
+	
+[t:dialog_box,n:dialog_large_main]
+	{
+	  f alpha = 1;
+	  b common_control = True;
+		common_template = cpbox;
+	  i draw_order = 4;
+		rect = 146,182,642,328;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = Clamp;
+		topmost = True;
+	}
+	
+[t:button,n:button_message_ok]
+	{
+	  f alpha = 1;
+	  b common_control = True;
+		common_template = button_4;
+	  i draw_order = 7;
+		rect = 341,298,441,314;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = Clamp;
+		topmost = True;
+		
+
+		[messages]
+		{
+			onbuttonpress = playsound(s_e_frontend_tiny_button) & notify(mp_dialog_ok);
+			onenter = notify(mp_dialog_ok);
+			onescape = notify(mp_dialog_ok);
+		}
+	
+		
+	[t:text,n:text_message_okay]
+		{
+		  f alpha = 1;
+		  b common_control = False;
+			common_template = ;
+		  i draw_order = 13;
+		  i font_color = -1;
+		  i font_size = 0;
+			font_type = b_gui_fnt_12p_copperplate-light;
+			justify = Center;
+			rect = 385,300,441,314;
+			text = "OK";
+			uvcoords = 0.000000,0.000000,1.000000,1.000000;
+			wrap_mode = Clamp;
+			topmost = True;
+		}}
+	
+[t:dialog_box,n:dialog_message_2]
+	{
+	  f alpha = 1;
+	  b common_control = True;
+		common_template = cpbox;
+	  i draw_order = 9;
+		rect = 157,194,630,291;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = Clamp;
+		topmost = True;
+	}
+	
+[t:text_box,n:text_box_message]
+	{
+	  f alpha = 1;
+	  b center_height = False;
+	  b common_control = False;
+		common_template = ;
+	  i draw_order = 12;	  
+	  b fixed_location = True;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		font_size = 16;
+	  b has_slider = True;
+		justify = Center;
+	  i max_height = -421075225;
+	  i max_width = -421075225;
+		rect = 160,199,626,276;
+	  f scroll_rate = 0;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = Clamp;
+		topmost = True;
+	}}

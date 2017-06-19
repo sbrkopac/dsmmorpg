@@ -1,0 +1,128 @@
+[t:interface,n:console]
+{
+	interface = true;
+	
+	skrit = [[
+		
+		owner = UIWindow;
+		
+		init$()
+		{
+		}
+		
+		drag$()
+		{
+		}
+		
+		console_submit_text$()
+		{
+			UIEditBox console_edit$ = QueryDerivedEditBox (UIShell.FindUIWindow ("console_edit", "console"));
+			UIListBox history$ = QueryDerivedListBox (UIShell.FindUIWindow ("history", "console"));
+			
+			//history$.ClearSelection();
+			
+			string input$;
+			console_edit$.GetText (input$);
+			
+			if (StringTool.IsEmpty (input$)) { return; }
+			
+			if (StringTool.Left (input$, 0) == "/")
+			{
+				report.genericf ("command given\n");
+				return;
+			}
+			
+			Packet p_Packet$ = NetworkManager.NewPacket();
+			
+			p_Packet$.SetUInt8 (12) // rschat
+			p_Packet$.SetString (input$);
+			
+			NetworkManager.SendPacket (p_Packet$);
+			
+			//int last$ = history$.SelectedTag;
+			
+			history$.AddElement (input$, -1);
+			history$.SelectLastElement();
+			console_edit$.SetText ("");
+			//history$.ClearSelection();
+		}
+	]];
+		
+		[t:edit_box,n:console_edit]
+		{
+		  f alpha = 0.300000;
+			bottom_anchor = 38;
+		  b clear_select = true;
+		  b common_control = false;
+			common_template = ;
+		  i draw_order = 73;
+		  i font_color = -1;
+		  i font_size = 15;
+			font_type = b_gui_fnt_12p_copperplate-light;
+			is_bottom_anchor = true;
+		  i max_string_size = 256;
+		  b permanent_focus = true;
+			rect = 20,0,390,18;
+			text = "";
+		  b topmost = true;
+			uvcoords = 0.000000,0.000000,1.000000,1.000000;
+			wrap_mode = clamp;
+			topmost = true;
+			[messages]
+			{
+				/*
+				oncreated = setvisible(false) &
+								showgroup(false);
+				oneditselect = notify(console_submit_text) &
+								setvisible(false) &
+								notify(hide_console);
+				*/
+				oneditselect = call (console_submit_text$);
+			}
+			[prompt]
+			{
+				texture = b_gui_fe_m_single_prompt;
+				width = 1;
+			}	
+		}
+		[t:listbox,n:history]
+		{
+			alpha = 1.0000000;
+			common_control = true;
+			common_template = ;
+			draw_order = 600;
+			font_type = b_gui_fnt_12p_copperplate-light;						
+			rect = 20,0,410,150;
+			is_bottom_anchor = true;
+			// bottom_anchor = 188;
+			bottom_anchor = 183;
+			text_color = 0xffffffff;
+			uvcoords = 0.000000,0.000000,1.000000,1.000000;
+			wrap_mode = clamp;									
+			topmost = true;
+			[t:selection_box,n:selection_box]
+			{
+				alpha = 1.0;
+				texture = b_t_alpha;
+			}
+			[messages]
+			{
+				oncreated = setelementheight(16);
+			}
+		}
+		[t:dialog_box,n:dialog_box_console_bg]
+		{
+		  f alpha = 1.000000;
+		  i bottom_anchor = 188;
+		  b common_control = true;
+			common_template = cpbox;
+		  i draw_order = 16;
+		  b is_bottom_anchor = true;
+			//rect = 20,0,410,168;
+			rect = 15,0,415,173;
+			uvcoords = 0.000000,0.000000,1.000000,1.000000;
+			wrap_mode = clamp;
+			topmost = true;
+			consumable = true;
+		}
+}

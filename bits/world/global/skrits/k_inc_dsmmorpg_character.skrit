@@ -1,0 +1,52 @@
+
+void SetStats$()
+{
+		Goid network$ = MakeGoid (GameAuditor.GetDb().GetInt ("client:network:manager"));
+		Goid g$ = MakeGoid (GameAuditor.GetDb().GetInt ("client:local"));
+		
+		
+		if (network$.IsValid() && g$.IsValid())
+		{
+			//report.screen ("setting up stat window");
+			int stat$; 
+			string display$;
+					
+			StringTool.AppendF (display$, "Name: %s", g$.Go.GetComponentString ("object", "name"));
+			QueryDerivedText (UIShell.FindUIWindow ("text_name", "dsmmorpg_character")).SetText (display$, false);
+			display$ = "";				
+					
+			stat$ = network$.Go.GetComponentInt ("network", "strength");
+			StringTool.AppendF (display$, "Strength: %i", stat$);
+			QueryDerivedText (UIShell.FindUIWindow ("text_strength", "dsmmorpg_character")).SetText (display$, false);
+			display$ = "";
+					
+			stat$ = network$.Go.GetComponentInt ("network", "intelligence");
+			StringTool.AppendF (display$, "Intelligence: %i", stat$);
+			QueryDerivedText (UIShell.FindUIWindow ("text_intelligence", "dsmmorpg_character")).SetText (display$, false);
+			display$ = "";
+					
+			stat$ = network$.Go.GetComponentInt ("network", "dexterity");
+			StringTool.AppendF (display$, "Dexterity: %i", stat$);
+			QueryDerivedText (UIShell.FindUIWindow ("text_dexterity", "dsmmorpg_character")).SetText (display$, false);
+			display$ = "";
+					
+			stat$ = network$.Go.GetComponentInt ("network", "charisma");
+			StringTool.AppendF (display$, "Charisma: %i", stat$);
+			QueryDerivedText (UIShell.FindUIWindow ("text_charisma", "dsmmorpg_character")).SetText (display$, false);
+			display$ = "";
+					
+			stat$ = network$.Go.GetComponentInt ("network", "wisdom");
+			StringTool.AppendF (display$, "Wisdom: %i", stat$);
+			QueryDerivedText (UIShell.FindUIWindow ("text_wisdom", "dsmmorpg_character")).SetText (display$, false);
+			display$ = "";
+					
+			stat$ = network$.Go.GetComponentInt ("network", "constitution");
+			StringTool.AppendF (display$, "Constitution: %i", stat$);
+			QueryDerivedText (UIShell.FindUIWindow ("text_constitution", "dsmmorpg_character")).SetText (display$, false);
+			display$ = "";
+				
+			QueryDerivedText (UIShell.FindUIWindow ("text_level", "dsmmorpg_character")).SetText ("Level: 1 - CS", true);
+			QueryDerivedText (UIShell.FindUIWindow ("text_health", "dsmmorpg_character")).SetText ("Health: 100 / 100 - CS", false);
+			QueryDerivedText (UIShell.FindUIWindow ("text_mana", "dsmmorpg_character")).SetText ("Mana: 10 / 10 - CS", false);
+		}
+}

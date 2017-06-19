@@ -1,0 +1,5409 @@
+[character_awp]
+{
+	interface = true;
+	
+	[t:window,n:timer01]
+	{
+		[messages]
+		{
+			//oncreated = command (UIShell.ShiftInterface ("character_awp", 10000, 10000));
+		}
+	}
+
+	//////////////////////////////////////////////////////
+	// Character 1
+	
+	[t:status_bar,n:awp_status_health_1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 149;
+		rect = 2,6,11,52;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.007813,0.226563,0.042969,0.585938;
+		wrap_mode = clamp;
+		dynamic_edge = top;
+		group = character_1;
+		index = 0;
+
+		dock_group = dockbar_character_1;		
+	}
+	[t:status_bar,n:awp_status_mana_1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 182;
+		rect = 54,6,63,52;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.210938,0.226563,0.246095,0.585938;
+		wrap_mode = clamp;
+		dynamic_edge = top;
+		group = character_1;
+		index = 0;
+
+		dock_group = dockbar_character_1;		
+	}
+	[t:status_bar,n:bar_slot_active_skill_1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 6586;
+		rect = 68,6,84,38;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dynamic_edge = top;
+		group = character_1_min;
+		index = 0;
+
+		dock_group = dockbar_character_1;	
+		
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:fuel_min_1]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	    draw_order = 6629;
+		rect = 81,6,84,38;		
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.910156,0.734375,0.921875,0.984375;
+		wrap_mode = clamp;
+		dynamic_edge = top;
+		group = character_1_min;
+		index = 0;
+		dock_group = dockbar_character_1;
+	}
+	[t:status_bar,n:bar_slot_1_skill_1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 156;
+		rect = 68,6,84,38;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dynamic_edge = top;
+		group = character_1_max;
+		index = 0;
+
+		dock_group = dockbar_character_1;		
+
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:bar_slot_2_skill_1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 157;
+		rect = 88,6,104,38;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dynamic_edge = top;
+		group = character_1_max;
+		index = 0;
+
+		dock_group = dockbar_character_1;		
+
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:fuel_1]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 6587;
+		rect = 101,6,104,38;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.910156,0.734375,0.921875,0.984375;
+		wrap_mode = clamp;
+		dynamic_edge = top;
+		group = character_1_max;
+		index = 0;
+		dock_group = dockbar_character_1;
+	}
+	[t:status_bar,n:bar_slot_3_skill_1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 158;
+		rect = 108,6,124,38;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dynamic_edge = top;
+		group = character_1_max;
+		index = 0;		
+		dock_group = dockbar_character_1;		
+
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:bar_slot_4_skill_1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 117;
+		rect = 128,6,144,38;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dynamic_edge = top;
+		group = character_1_max;
+		index = 0;
+
+		dock_group = dockbar_character_1;
+		
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;		
+	}
+	[t:button,n:awp_button_inventory_1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 36;
+		rect = 64,40,148,55;
+		texture = b_gui_ig_mnu_awp_buttons;
+		uvcoords = 0.000000,0.062500,0.656250,1.000000;
+		wrap_mode = clamp;
+
+		[messages]
+		{
+			onlbuttondown	= loadtexture(b_gui_ig_mnu_awp_buttons-dwn);
+			onlbuttonup		= loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrollover		= loadtexture(b_gui_ig_mnu_awp_buttons-hov);
+			onrolloff		= loadtexture(b_gui_ig_mnu_awp_buttons);
+			ondisable		= loadtexture(b_gui_ig_mnu_awp_buttons-dis);
+			onenable		= loadtexture(b_gui_ig_mnu_awp_buttons);
+			onbuttonpress	= notify(inventory);
+		}		
+		group = character_1_max;
+		index = 0;	
+
+		rollover_help = toggle_inventory;
+
+		dock_group = dockbar_character_1;		
+	}
+	[t:button,n:awp_button_inventory_small_1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 1134;
+		rect = 64,40,87,56;
+		texture = b_gui_ig_mnu_awp_buttons;
+		uvcoords = 0.820313,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+
+		[messages]
+		{
+			onlbuttondown	= loadtexture(b_gui_ig_mnu_awp_buttons-dwn);
+			onlbuttonup		= loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrollover		= loadtexture(b_gui_ig_mnu_awp_buttons-hov);
+			onrolloff		= loadtexture(b_gui_ig_mnu_awp_buttons);
+			ondisable		= loadtexture(b_gui_ig_mnu_awp_buttons-dis);
+			onenable		= loadtexture(b_gui_ig_mnu_awp_buttons);
+			onbuttonpress	= notify(inventory);
+		}		
+		group = character_1_min;
+		index = 0;
+
+		rollover_help = toggle_inventory;
+		dock_group = dockbar_character_1;		
+	}
+	[t:text,n:ghost_timer_1]
+	{
+		f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000049;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 13,6,52,52;
+		text = "0:00";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		group = character_1;
+		dock_group = dockbar_character_1;
+		index = 0;		
+		pass_through = true; 		
+		visible = false;		
+	}
+	[t:itemslot,n:awp_itemslot_portrait_1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 38;
+		rect = 13,6,52,52;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;		
+		group = character_1;
+		index = 0;
+		slot_type = picture;
+
+		[messages] 
+		{
+			onbuttonpress = notify(character);
+			onrbuttonpress = notify(character_cast);
+			onldoubleclick = notify(track_character);
+			onrollover = notify(portrait_rollover);
+			onrolloff = notify(portrait_rolloff);
+		}
+
+		[t:window,n:awp_portrait_selection_1]
+		{
+			alpha = 1.000000;
+			common_control = false;
+			common_template = ;			
+			rect = 13,6,52,52;
+			draw_order = 742;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.050781,0.226563,0.203125,0.585938;
+			wrap_mode = clamp;
+			group = character_1;
+			index = 0;
+
+			dock_group = dockbar_character_1;			
+		}
+
+
+		[t:window,n:awp_portrait_rollover_1]
+		{
+			alpha = 1.000000;
+			common_control = false;
+			common_template = ;			
+			draw_order = 490;
+			rect = 13,6,52,52;
+			texture = b_gui_ig_mnu_awp;						
+			uvcoords = 0.253906,0.226563,0.406250,0.585938;
+			wrap_mode = clamp;
+			group = character_1;
+			index = 0;
+			visible = false;
+
+			dock_group = dockbar_character_1;					
+		}		
+
+		rollover_help = awp_portrait_rollover;
+		dock_group = dockbar_character_1;		
+	}
+
+	[t:window,n:awp_death_portrait_1]
+	{
+		alpha = 1.000000;
+		draw_order = 39;
+		rect = 13,6,52,52;
+		uvcoords = 0.000000,0.281250,0.609375,1.000000;
+		wrap_mode = clamp;		
+		group = character_1;
+		dock_group = dockbar_character_1;
+		index = 0;		
+		pass_through = true; 
+		texture = b_gui_ig_i_ic_c_death;
+		visible = false;		
+	}
+
+	[t:window,n:awp_portrait_health_warning_1]
+	{
+		alpha = 0.5000000;
+		common_control = false;
+		common_template = ;			
+		rect = 13,6,52,52;
+		draw_order = 39;
+		texture = b_gui_ig_mnu_awp_yellow;
+		uvcoords = 0.050781,0.226563,0.203125,0.585938;
+		wrap_mode = clamp;		
+		index = 0;
+		dock_group = dockbar_character_1;
+		group = character_1;	
+		visible = false;
+		
+		[messages]
+		{
+			onstartanim = flashanimation(0.5,true,0.5);			
+		}		
+	}
+
+	[t:status_bar,n:awp_portrait_unconscious_1]
+	{
+		alpha = 0.5000000;
+		common_control = false;
+		common_template = ;			
+		rect = 13,6,52,52;
+		draw_order = 40;
+		texture = b_gui_ig_mnu_awp_red;
+		uvcoords = 0.050781,0.226563,0.203125,0.585938;
+		wrap_mode = clamp;		
+		index = 0;
+		group = character_1;
+		dock_group = dockbar_character_1;			
+		visible = false;
+		dynamic_edge = top;		
+	}
+
+	[t:window,n:window_expert_panel_1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 6585;
+		rect = 65,3,88,40;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.582032,0.710938,0.671875,1.000000;
+		wrap_mode = clamp;
+		index = 0;
+		visible = false;
+		group = character_1_min;
+
+		dock_group = dockbar_character_1;		
+	}
+	[t:radio_button,n:awp_radio_button_character_1_slot_active]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 6628;
+		rect = 68,6,84,38;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;					
+		index = 0;	
+		radio_group = radio_character_1;
+		group = character_1_min;
+
+		dock_group = dockbar_character_1;	
+		
+		click_delay = 0.2;		
+
+		[messages] 
+		{
+			onclickdelay =	notify(list_spells);
+			onresetclickdelay = notify(hide_spell_list);
+			onrollover	=	notify(awp_slot_rollover);			
+			onrolloff	=	notify(awp_slot_rolloff);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);			
+		}	
+
+		rollover_help = active_item;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+	}	
+	[t:radio_button,n:awp_radio_button_character_1_slot_1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 829;
+		rect = 68,6,84,38;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;	
+		radio_group = radio_character_1;		
+		group = character_1_max;
+		index = 0;	
+
+		rollover_help = awp_character_slot_1;
+
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[messages] 
+		{
+			onrollover	=	notify(awp_slot_rollover);			
+			onrolloff	=	notify(awp_slot_rolloff);
+			oncheck		=	drawselectiontexture(true) &
+							notify(character_slot_1);
+			oncreated	=	setstate(1);
+			onuncheck	=	drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+
+		dock_group = dockbar_character_1;		
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;
+	}
+	[t:radio_button,n:awp_radio_button_character_1_slot_2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 917;
+		rect = 88,6,104,38;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		radio_group = radio_character_1;		
+		group = character_1_max;
+		index = 0;
+
+		rollover_help = awp_character_slot_2;
+
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[messages] 
+		{
+			onrollover	=	notify(awp_slot_rollover);
+			onrolloff	=	notify(awp_slot_rolloff);
+			oncheck		=	drawselectiontexture(true) &
+							notify(character_slot_2);			
+			onuncheck	=	drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+
+		dock_group = dockbar_character_1;	
+		
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;	
+		leftright_button = true;
+	}
+	[t:radio_button,n:awp_radio_button_character_1_slot_3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 1006;
+		rect = 108,6,124,38;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		radio_group = radio_character_1;		
+		group = character_1_max;
+		index = 0;
+
+		rollover_help = awp_character_slot_3;
+
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		click_delay = 0.2;
+
+		[messages] 
+		{
+			onclickdelay =	notify(list_spells);
+			onresetclickdelay = notify(hide_spell_list);
+			onrollover	=	notify(awp_slot_rollover);
+			onrolloff	=	notify(awp_slot_rolloff);
+			oncheck		=	drawselectiontexture(true) &
+							notify(character_slot_3);			
+			onuncheck	=	drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+
+		dock_group = dockbar_character_1;	
+		
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;	
+		leftright_button = true;
+	}
+	[t:radio_button,n:awp_radio_button_character_1_slot_4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 1096;
+		rect = 128,6,144,38;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		radio_group = radio_character_1;		
+		group = character_1_max;
+		index = 0;
+
+		rollover_help = awp_character_slot_4;
+
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		click_delay = 0.2;
+
+		[messages] 
+		{
+			onclickdelay =	notify(list_spells);
+			onresetclickdelay = notify(hide_spell_list);
+			onrollover	=	notify(awp_slot_rollover);
+			onrolloff	=	notify(awp_slot_rolloff);
+			oncheck		=	drawselectiontexture(true) &
+							notify(character_slot_4);			
+			onuncheck	=	drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+
+		dock_group = dockbar_character_1;
+		
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;	
+		leftright_button = true;	
+	}		
+	
+	[t:window,n:window_portait_panel_1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 22;
+		rect = 0,3,65,55;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.000000,0.593750,0.253907,1.000000;
+		wrap_mode = clamp;
+		group = character_1;
+
+		dock_group = dockbar_character_1;		
+	}	
+	[t:dockbar,n:window_portrait_panel_overlay_1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 273;
+		rect = 1,3,65,55;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.425781,0.203126,0.675782,0.609375;
+		wrap_mode = clamp;
+		group = character_1;
+		index = 0;
+
+		dock_group = dockbar_character_1;	
+		
+		dockbar_type = dockbar_screen_x_switch_y;
+		drag_delay = 0.2;
+		drag_x = 0;
+		drag_y = 0;
+		draggable = true;	
+	}	
+	[t:window,n:window_slots_panel_1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 27;
+		rect = 64,3,148,40;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.250000,0.710938,0.578125,1.000000;
+		wrap_mode = clamp;
+		group = character_1_max;
+
+		dock_group = dockbar_character_1;	
+	}
+	[t:window,n:window_pack_panel_1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 8000;
+		rect = 64,3,148,40;
+		texture = b_gui_ig_mnu_awp_blank;
+		uvcoords = 0.000000,0.421875,0.656250,1.000000;
+		wrap_mode = clamp;
+		group = character_1_max;
+
+		dock_group = dockbar_character_1;	
+		consumable = true;
+	}
+	[t:window,n:window_pack_panel_min_1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 7000;
+		rect = 65,3,88,40;
+		texture = b_gui_ig_mnu_awp_blank;
+		uvcoords = 0.656250,0.421875,0.835938,1.000000;
+		wrap_mode = clamp;
+		index = 0;
+		visible = false;
+		group = character_1_min;
+
+		dock_group = dockbar_character_1;		
+		consumable = true;
+	}
+
+	//////////////////////////////////////////////////////
+	// Character 2
+	
+	[t:button,n:awp_button_inventory_2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 36;
+		group = character_2_max;
+		index = 1;
+		rect = 64,93,148,108;
+		texture = b_gui_ig_mnu_awp_buttons;
+		uvcoords = 0.000000,0.062500,0.656250,1.000000;
+		wrap_mode = clamp;
+		[messages]
+		{
+			onbuttonpress = notify(inventory);
+			ondisable = loadtexture(b_gui_ig_mnu_awp_buttons-dis);
+			onenable = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onlbuttondown = loadtexture(b_gui_ig_mnu_awp_buttons-dwn);
+			onlbuttonup = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrolloff = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrollover = loadtexture(b_gui_ig_mnu_awp_buttons-hov);
+		}
+
+		rollover_help = toggle_inventory;
+
+		dock_group = dockbar_character_2;		
+	}
+	[t:button,n:awp_button_inventory_small_2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 1134;
+		group = character_2_min;
+		index = 1;
+		rect = 64,93,87,109;
+		texture = b_gui_ig_mnu_awp_buttons;
+		uvcoords = 0.820313,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		[messages]
+		{
+			onbuttonpress = notify(inventory);
+			ondisable = loadtexture(b_gui_ig_mnu_awp_buttons-dis);
+			onenable = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onlbuttondown = loadtexture(b_gui_ig_mnu_awp_buttons-dwn);
+			onlbuttonup = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrolloff = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrollover = loadtexture(b_gui_ig_mnu_awp_buttons-hov);
+		}
+
+		rollover_help = toggle_inventory;
+		dock_group = dockbar_character_2;		
+	}
+	[t:radio_button,n:awp_radio_button_character_2_slot_1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 829;
+		group = character_2_max;
+		index = 1;
+		radio_group = radio_character_2;
+		rect = 68,59,84,91;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+
+		rollover_help = awp_character_slot_1;
+
+		[messages]
+		{
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_1);
+			oncreated = setstate(1);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_2;	
+		
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;		
+	}
+	[t:radio_button,n:awp_radio_button_character_2_slot_2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 917;
+		group = character_2_max;
+		index = 1;
+		radio_group = radio_character_2;
+		rect = 88,59,104,91;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+
+		rollover_help = awp_character_slot_2;
+
+		[messages]
+		{
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_2);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_2;		
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;	
+	}
+	[t:radio_button,n:awp_radio_button_character_2_slot_3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 1006;
+		group = character_2_max;
+		index = 1;
+		radio_group = radio_character_2;
+		rect = 108,59,124,91;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		click_delay = 0.2;
+
+		rollover_help = awp_character_slot_3;
+
+		[messages] 
+		{
+			onclickdelay =	notify(list_spells);
+			onresetclickdelay = notify(hide_spell_list);
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_3);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_2;	
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;	
+	}
+	[t:radio_button,n:awp_radio_button_character_2_slot_4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 1096;
+		group = character_2_max;
+		index = 1;
+		radio_group = radio_character_2;
+		rect = 128,59,144,91;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		click_delay = 0.2;
+
+		rollover_help = awp_character_slot_4;
+
+		[messages] 
+		{
+			onclickdelay =	notify(list_spells);
+			onresetclickdelay = notify(hide_spell_list);
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_4);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_2;	
+		
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;	
+		leftright_button = true;	
+	}
+	[t:radio_button,n:awp_radio_button_character_2_slot_active]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 6628;
+		group = character_2_min;
+		index = 1;
+		radio_group = radio_character_2;
+		rect = 68,59,84,91;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+
+		click_delay = 0.2;
+
+		[messages] 
+		{
+			onclickdelay =	notify(list_spells);
+			onresetclickdelay = notify(hide_spell_list);
+			onrollover	=	notify(awp_slot_rollover);
+			onrolloff	=	notify(awp_slot_rolloff);						
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+
+		dock_group = dockbar_character_2;	
+		
+		rollover_help = active_item;	
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+	}
+	[t:status_bar,n:awp_status_health_2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 149;
+		dynamic_edge = top;
+		group = character_2;
+		index = 1;
+		rect = 2,59,11,105;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.007813,0.226563,0.042969,0.585938;
+		wrap_mode = clamp;
+
+		dock_group = dockbar_character_2;		
+	}
+	[t:status_bar,n:awp_status_mana_2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 182;
+		dynamic_edge = top;
+		group = character_2;
+		index = 1;
+		rect = 54,59,63,105;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.210938,0.226563,0.246095,0.585938;
+		wrap_mode = clamp;
+
+		dock_group = dockbar_character_2;		
+	}
+	
+	[t:status_bar,n:bar_slot_active_skill_2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 6586;
+		dynamic_edge = top;
+		group = character_2_min;
+		index = 1;
+		rect = 68,59,84,91;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_2;		
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;	
+	}
+	[t:status_bar,n:fuel_min_2]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 6629;
+		rect = 81,59,84,91;		
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.910156,0.734375,0.921875,0.984375;
+		wrap_mode = clamp;
+		dynamic_edge = top;
+		group = character_2_min;
+		index = 1;
+		dock_group = dockbar_character_2;
+	}
+	[t:status_bar,n:bar_slot_1_skill_2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 156;
+		dynamic_edge = top;
+		group = character_2_max;
+		index = 1;
+		rect = 68,59,84,91;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_2;		
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:bar_slot_2_skill_2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 157;
+		dynamic_edge = top;
+		group = character_2_max;
+		index = 1;
+		rect = 88,59,104,91;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_2;		
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:fuel_2]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 6587;
+		rect = 101,59,104,91;		
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.910156,0.734375,0.921875,0.984375;
+		wrap_mode = clamp;
+		dynamic_edge = top;
+		group = character_2_max;
+		index = 1;
+		dock_group = dockbar_character_2;
+	}
+	[t:status_bar,n:bar_slot_3_skill_2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 158;
+		dynamic_edge = top;
+		group = character_2_max;
+		index = 1;
+		rect = 108,59,124,91;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_2;		
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:bar_slot_4_skill_2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 117;
+		dynamic_edge = top;
+		group = character_2_max;
+		index = 1;
+		rect = 128,59,144,91;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_2;		
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:text,n:ghost_timer_2]
+	{
+		f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000049;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 13,59,52,105;
+		text = "0:00";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		group = character_2;
+		dock_group = dockbar_character_2;
+		index = 1;		
+		pass_through = true; 		
+		visible = false;		
+	}
+	[t:itemslot,n:awp_itemslot_portrait_2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 38;
+		group = character_2;
+		index = 1;
+		rect = 13,59,52,105;
+		slot_type = picture;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		[t:window,n:awp_portrait_rollover_2]
+		{
+			alpha = 1.000000;
+			common_control = false;
+			common_template = ;
+			draw_order = 490;			
+			group = character_2;
+			index = 1;
+			rect = 13,59,52,105;
+			texture = b_gui_ig_mnu_awp;						
+			uvcoords = 0.253906,0.226563,0.406250,0.585938;			
+			visible = false;
+			wrap_mode = clamp;					
+
+			dock_group = dockbar_character_2;			
+		}
+		[t:window,n:awp_portrait_selection_2]
+		{
+			alpha = 1.000000;
+			common_control = false;
+			common_template = ;			
+			group = character_2;
+			index = 1;
+			draw_order = 742;
+			rect = 13,59,52,105;
+			uvcoords = 0.050781,0.226563,0.203125,0.585938;			
+			texture = b_gui_ig_mnu_awp;			
+			wrap_mode = clamp;
+
+			dock_group = dockbar_character_2;		
+		}
+		[messages]
+		{
+			onbuttonpress = notify(character);
+			onrbuttonpress = notify(character_cast);
+			onldoubleclick = notify(track_character);
+			onrollover = notify(portrait_rollover);
+			onrolloff = notify(portrait_rolloff);
+		}
+
+		rollover_help = awp_portrait_rollover;
+
+		dock_group = dockbar_character_2;		
+	}
+
+	[t:window,n:awp_death_portrait_2]
+	{
+		alpha = 1.000000;
+		draw_order = 39;
+		rect = 13,59,52,105;
+		uvcoords = 0.000000,0.281250,0.609375,1.000000;
+		wrap_mode = clamp;		
+		group = character_2;
+		dock_group = dockbar_character_2;
+		index = 1;		
+		pass_through = true; 
+		texture = b_gui_ig_i_ic_c_death;
+		visible = false;		
+	}
+
+	[t:window,n:awp_portrait_health_warning_2]
+	{
+		alpha = 0.5000000;
+		common_control = false;
+		common_template = ;			
+		rect = 13,59,52,105;
+		draw_order = 39;
+		texture = b_gui_ig_mnu_awp_yellow;
+		uvcoords = 0.050781,0.226563,0.203125,0.585938;
+		wrap_mode = clamp;		
+		index = 0;
+		dock_group = dockbar_character_2;	
+		visible = false;
+		group = character_2;
+		
+		[messages]
+		{
+			onstartanim = flashanimation(0.5,true,0.5);			
+		}		
+	}
+
+	[t:status_bar,n:awp_portrait_unconscious_2]
+	{
+		alpha = 0.5000000;
+		common_control = false;
+		common_template = ;			
+		rect = 13,59,52,105;
+		draw_order = 40;
+		texture = b_gui_ig_mnu_awp_red;
+		uvcoords = 0.050781,0.226563,0.203125,0.585938;
+		wrap_mode = clamp;		
+		index = 0;
+		dock_group = dockbar_character_2;			
+		visible = false;
+		group = character_2;	
+		dynamic_edge = top;	
+	}
+
+	[t:window,n:window_expert_panel_2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 6585;
+		rect = 65,56,88,93;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.582032,0.710938,0.671875,1.000000;
+		wrap_mode = clamp;
+		index = 1;
+		visible = false;
+		group = character_2_min;
+
+		dock_group = dockbar_character_2;		
+	}
+	[t:window,n:window_portait_panel_2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 22;
+		rect = 0,56,65,108;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.000000,0.593750,0.253907,1.000000;
+		wrap_mode = clamp;
+		group = character_2;
+
+		dock_group = dockbar_character_2;		
+	}
+	[t:dockbar,n:window_portrait_panel_overlay_2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 273;
+		rect = 1,56,65,108;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.425781,0.203126,0.675782,0.609375;
+		wrap_mode = clamp;
+		group = character_2;
+		index = 1;
+
+		dockbar_type = dockbar_screen_x_switch_y;
+		drag_delay = 0.2;
+		drag_x = 0;
+		drag_y = 0;
+		draggable = true;	
+
+		dock_group = dockbar_character_2;		
+	}
+	[t:window,n:window_slots_panel_2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 27;
+		rect = 64,56,148,93;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.250000,0.710938,0.578125,1.000000;
+		wrap_mode = clamp;
+		group = character_2_max;
+
+		dock_group = dockbar_character_2;		
+	}
+	[t:window,n:window_pack_panel_2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 8000;
+		rect = 64,56,148,93;
+		texture = b_gui_ig_mnu_awp_blank;
+		uvcoords = 0.000000,0.421875,0.656250,1.000000;
+		wrap_mode = clamp;
+		group = character_2_max;
+
+		dock_group = dockbar_character_2;	
+		consumable = true;
+	}
+	[t:window,n:window_pack_panel_min_2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 7000;
+		rect = 65,56,88,93;
+		texture = b_gui_ig_mnu_awp_blank;
+		uvcoords = 0.656250,0.421875,0.835938,1.000000;
+		wrap_mode = clamp;
+		index = 1;
+		visible = false;
+		group = character_2_min;
+
+		dock_group = dockbar_character_2;		
+		consumable = true;
+	}
+
+
+	//////////////////////////////////////////////////////
+	// Character 3
+
+	[t:button,n:awp_button_inventory_3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 36;
+		group = character_3_max;
+		index = 2;
+		rect = 64,146,148,161;
+		texture = b_gui_ig_mnu_awp_buttons;
+		uvcoords = 0.000000,0.062500,0.656250,1.000000;
+		wrap_mode = clamp;
+		[messages]
+		{
+			onbuttonpress = notify(inventory);
+			ondisable = loadtexture(b_gui_ig_mnu_awp_buttons-dis);
+			onenable = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onlbuttondown = loadtexture(b_gui_ig_mnu_awp_buttons-dwn);
+			onlbuttonup = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrolloff = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrollover = loadtexture(b_gui_ig_mnu_awp_buttons-hov);
+		}
+		
+		rollover_help = toggle_inventory;
+		
+		dock_group = dockbar_character_3;		
+	}
+	[t:button,n:awp_button_inventory_small_3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 1134;
+		group = character_3_min;
+		index = 2;
+		rect = 64,146,87,162;
+		texture = b_gui_ig_mnu_awp_buttons;
+		uvcoords = 0.820313,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		[messages]
+		{
+			onbuttonpress = notify(inventory);
+			ondisable = loadtexture(b_gui_ig_mnu_awp_buttons-dis);
+			onenable = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onlbuttondown = loadtexture(b_gui_ig_mnu_awp_buttons-dwn);
+			onlbuttonup = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrolloff = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrollover = loadtexture(b_gui_ig_mnu_awp_buttons-hov);
+		}
+
+		rollover_help = toggle_inventory;
+		dock_group = dockbar_character_3;		
+	}
+	[t:radio_button,n:awp_radio_button_character_3_slot_1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 829;
+		group = character_3_max;
+		index = 2;
+		radio_group = radio_character_3;
+		rect = 68,112,84,144;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+
+		rollover_help = awp_character_slot_1;
+
+		[messages]
+		{
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_1);
+			oncreated = setstate(1);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_3;		
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;	
+	}
+	[t:radio_button,n:awp_radio_button_character_3_slot_2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 917;
+		group = character_3_max;
+		index = 2;
+		radio_group = radio_character_3;
+		rect = 88,112,104,144;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+
+		rollover_help = awp_character_slot_2;
+
+		[messages]
+		{
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_2);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_3;	
+		
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;	
+		leftright_button = true;	
+	}
+	[t:radio_button,n:awp_radio_button_character_3_slot_3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 1006;
+		group = character_3_max;
+		index = 2;
+		radio_group = radio_character_3;
+		rect = 108,112,124,144;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		click_delay = 0.2;
+
+		rollover_help = awp_character_slot_3;
+
+		[messages] 
+		{
+			onclickdelay =	notify(list_spells);
+			onresetclickdelay = notify(hide_spell_list);
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_3);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_3;
+		
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;	
+		leftright_button = true;		
+	}
+	[t:radio_button,n:awp_radio_button_character_3_slot_4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 1096;
+		group = character_3_max;
+		index = 2;
+		radio_group = radio_character_3;
+		rect = 128,112,144,144;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		click_delay = 0.2;
+
+		rollover_help = awp_character_slot_4;
+
+		[messages] 
+		{
+			onclickdelay =	notify(list_spells);
+			onresetclickdelay = notify(hide_spell_list);
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_4);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_3;
+		
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;	
+		leftright_button = true;		
+	}
+	[t:radio_button,n:awp_radio_button_character_3_slot_active]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 6628;
+		group = character_3_min;
+		index = 2;
+		radio_group = radio_character_3;
+		rect = 68,112,84,144;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+
+		click_delay = 0.2;
+
+		[messages] 
+		{
+			onclickdelay =	notify(list_spells);
+			onresetclickdelay = notify(hide_spell_list);	
+			onrollover	=	notify(awp_slot_rollover);
+			onrolloff	=	notify(awp_slot_rolloff);					
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+
+		dock_group = dockbar_character_3;		
+
+		rollover_help = active_item;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+	}
+	[t:status_bar,n:awp_status_health_3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 149;
+		dynamic_edge = top;
+		group = character_3;
+		index = 2;
+		rect = 2,112,11,158;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.007813,0.226563,0.042969,0.585938;
+		wrap_mode = clamp;
+
+		dock_group = dockbar_character_3;		
+	}
+	[t:status_bar,n:awp_status_mana_3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 182;
+		dynamic_edge = top;
+		group = character_3;
+		index = 2;
+		rect = 54,112,63,158;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.210938,0.226563,0.246095,0.585938;
+		wrap_mode = clamp;
+
+		dock_group = dockbar_character_3;		
+	}	
+	[t:status_bar,n:bar_slot_active_skill_3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 6586;
+		dynamic_edge = top;
+		group = character_3_min;
+		index = 2;
+		rect = 68,112,84,144;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_3;			
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;	
+	}
+	[t:status_bar,n:fuel_min_3]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 6629;
+		rect = 81,112,84,144;		
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.910156,0.734375,0.921875,0.984375;
+		wrap_mode = clamp;
+		dynamic_edge = top;
+		group = character_3_min;
+		index = 2;
+		dock_group = dockbar_character_3;
+	}
+	[t:status_bar,n:bar_slot_1_skill_3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 156;
+		dynamic_edge = top;
+		group = character_3_max;
+		index = 2;
+		rect = 68,112,84,144;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_3;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;		
+	}
+	[t:status_bar,n:bar_slot_2_skill_3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 157;
+		dynamic_edge = top;
+		group = character_3_max;
+		index = 2;
+		rect = 88,112,104,144;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_3;	
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:fuel_3]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 6587;
+		rect = 101,112,104,144;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.910156,0.734375,0.921875,0.984375;
+		wrap_mode = clamp;
+		dynamic_edge = top;
+		group = character_3_max;
+		index = 2;
+		dock_group = dockbar_character_3;
+	}
+	[t:status_bar,n:bar_slot_3_skill_3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 158;
+		dynamic_edge = top;
+		group = character_3_max;
+		index = 2;
+		rect = 108,112,124,144;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_3;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;		
+	}
+	[t:status_bar,n:bar_slot_4_skill_3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 117;
+		dynamic_edge = top;
+		group = character_3_max;
+		index = 2;
+		rect = 128,112,144,144;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_3;	
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;	
+	}
+	[t:text,n:ghost_timer_3]
+	{
+		f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000049;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 13,112,52,158;
+		text = "0:00";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		group = character_3;
+		dock_group = dockbar_character_3;
+		index = 2;		
+		pass_through = true; 		
+		visible = false;		
+	}
+	[t:itemslot,n:awp_itemslot_portrait_3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 38;
+		group = character_3;
+		index = 2;
+		rect = 13,112,52,158;
+		slot_type = picture;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		[t:window,n:awp_portrait_rollover_3]
+		{
+			alpha = 1.000000;
+			common_control = false;
+			common_template = ;			
+			draw_order = 490;
+			group = character_3;
+			index = 2;
+			rect = 13,112,52,158;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.253906,0.226563,0.406250,0.585938;									
+			visible = false;
+			wrap_mode = clamp;
+			dock_group = dockbar_character_3;								
+		}
+		[t:window,n:awp_portrait_selection_3]
+		{
+			alpha = 1.000000;
+			common_control = false;
+			common_template = ;			
+			group = character_3;
+			draw_order = 742;
+			index = 2;
+			rect = 13,112,52,158;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.050781,0.226563,0.203125,0.585938;			
+			wrap_mode = clamp;
+			dock_group = dockbar_character_3;			
+		}
+		[messages]
+		{
+			onbuttonpress = notify(character);
+			onrbuttonpress = notify(character_cast);
+			onldoubleclick = notify(track_character);
+			onrollover = notify(portrait_rollover);
+			onrolloff = notify(portrait_rolloff);
+		}
+
+		rollover_help = awp_portrait_rollover;
+		dock_group = dockbar_character_3;		
+	}
+	[t:window,n:awp_death_portrait_3]
+	{
+		alpha = 1.000000;
+		draw_order = 39;
+		rect = 13,112,52,158;
+		uvcoords = 0.000000,0.281250,0.609375,1.000000;
+		wrap_mode = clamp;		
+		group = character_3;
+		dock_group = dockbar_character_3;
+		index = 2;		
+		pass_through = true; 
+		texture = b_gui_ig_i_ic_c_death;
+		visible = false;		
+	}
+	[t:window,n:awp_portrait_health_warning_3]
+	{
+		alpha = 0.5000000;
+		common_control = false;
+		common_template = ;			
+		rect = 13,112,52,158;
+		draw_order = 39;
+		texture = b_gui_ig_mnu_awp_yellow;
+		uvcoords = 0.050781,0.226563,0.203125,0.585938;
+		wrap_mode = clamp;		
+		index = 0;
+		dock_group = dockbar_character_3;	
+		visible = false;
+		group = character_3;
+		
+		[messages]
+		{
+			onstartanim = flashanimation(0.5,true,0.5);			
+		}		
+	}
+
+	[t:status_bar,n:awp_portrait_unconscious_3]
+	{
+		alpha = 0.5000000;
+		common_control = false;
+		common_template = ;			
+		rect = 13,112,52,158;
+		draw_order = 40;
+		texture = b_gui_ig_mnu_awp_red;
+		uvcoords = 0.050781,0.226563,0.203125,0.585938;
+		wrap_mode = clamp;		
+		index = 0;
+		dock_group = dockbar_character_3;			
+		visible = false;
+		group = character_3;
+		dynamic_edge = top;		
+	}
+	[t:window,n:window_expert_panel_3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 6585;
+		rect = 65,109,88,146;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.582032,0.710938,0.671875,1.000000;
+		wrap_mode = clamp;
+		index = 2;
+		visible = false;
+		group = character_3_min;
+		dock_group = dockbar_character_3;		
+	}
+	[t:window,n:window_portait_panel_3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 22;
+		rect = 0,109,65,161;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.000000,0.593750,0.253907,1.000000;
+		wrap_mode = clamp;
+		group = character_3;
+		dock_group = dockbar_character_3;		
+	}
+	[t:dockbar,n:window_portrait_panel_overlay_3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 273;
+		rect = 1,109,65,161;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.425781,0.203126,0.675782,0.609375;	
+		wrap_mode = clamp;
+		group = character_3;
+		index = 2;
+
+		dockbar_type = dockbar_screen_x_switch_y;
+		drag_delay = 0.2;
+		drag_x = 0;
+		drag_y = 0;
+		draggable = true;	
+
+		dock_group = dockbar_character_3;		
+	}
+	[t:window,n:window_slots_panel_3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 27;
+		rect = 64,109,148,146;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.250000,0.710938,0.578125,1.000000;
+		wrap_mode = clamp;
+		group = character_3_max;
+		dock_group = dockbar_character_3;
+	}
+	[t:window,n:window_pack_panel_3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 8000;
+		rect = 64,109,148,146;
+		texture = b_gui_ig_mnu_awp_blank;
+		uvcoords = 0.000000,0.421875,0.656250,1.000000;
+		wrap_mode = clamp;
+		group = character_3_max;
+
+		dock_group = dockbar_character_3;	
+		consumable = true;
+	}
+	[t:window,n:window_pack_panel_min_3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 7000;
+		rect = 65,109,88,146;
+		texture = b_gui_ig_mnu_awp_blank;
+		uvcoords = 0.656250,0.421875,0.835938,1.000000;
+		wrap_mode = clamp;
+		index = 2;
+		visible = false;
+		group = character_3_min;
+
+		dock_group = dockbar_character_3;		
+		consumable = true;
+	}
+
+
+	//////////////////////////////////////////////////////
+	// Character 4
+
+	[t:button,n:awp_button_inventory_4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 36;
+		group = character_4_max;
+		index = 3;
+		rect = 64,199,148,214;
+		texture = b_gui_ig_mnu_awp_buttons;
+		uvcoords = 0.000000,0.062500,0.656250,1.000000;
+		wrap_mode = clamp;
+		[messages]
+		{
+			onbuttonpress = notify(inventory);
+			ondisable = loadtexture(b_gui_ig_mnu_awp_buttons-dis);
+			onenable = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onlbuttondown = loadtexture(b_gui_ig_mnu_awp_buttons-dwn);
+			onlbuttonup = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrolloff = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrollover = loadtexture(b_gui_ig_mnu_awp_buttons-hov);
+		}
+
+		rollover_help = toggle_inventory;
+
+		dock_group = dockbar_character_4;
+	}
+	[t:button,n:awp_button_inventory_small_4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 1134;
+		group = character_4_min;
+		index = 3;
+		rect = 64,199,87,215;
+		texture = b_gui_ig_mnu_awp_buttons;
+		uvcoords = 0.820313,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		[messages]
+		{
+			onbuttonpress = notify(inventory);
+			ondisable = loadtexture(b_gui_ig_mnu_awp_buttons-dis);
+			onenable = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onlbuttondown = loadtexture(b_gui_ig_mnu_awp_buttons-dwn);
+			onlbuttonup = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrolloff = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrollover = loadtexture(b_gui_ig_mnu_awp_buttons-hov);
+		}
+
+		rollover_help = toggle_inventory;
+		dock_group = dockbar_character_4;
+	}
+	[t:radio_button,n:awp_radio_button_character_4_slot_1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 829;
+		group = character_4_max;
+		index = 3;
+		radio_group = radio_character_4;
+		rect = 68,165,84,197;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		rollover_help = awp_character_slot_1;
+
+		[messages]
+		{
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_1);
+			oncreated = setstate(1);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_4;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;	
+	}
+	[t:radio_button,n:awp_radio_button_character_4_slot_2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 917;
+		group = character_4_max;
+		index = 3;
+		radio_group = radio_character_4;
+		rect = 88,165,104,197;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+
+		rollover_help = awp_character_slot_2;
+
+		[messages]
+		{
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_2);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_4;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;	
+	}
+	[t:radio_button,n:awp_radio_button_character_4_slot_3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 1006;
+		group = character_4_max;
+		index = 3;
+		radio_group = radio_character_4;
+		rect = 108,165,124,197;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		click_delay = 0.2;
+
+		rollover_help = awp_character_slot_3;
+
+		[messages] 
+		{
+			onclickdelay =	notify(list_spells);
+			onresetclickdelay = notify(hide_spell_list);
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_3);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_4;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;	
+	}
+	[t:radio_button,n:awp_radio_button_character_4_slot_4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 1096;
+		group = character_4_max;
+		index = 3;
+		radio_group = radio_character_4;
+		rect = 128,165,144,197;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		click_delay = 0.2;
+
+		rollover_help = awp_character_slot_4;
+
+		[messages] 
+		{
+			onclickdelay =	notify(list_spells);
+			onresetclickdelay = notify(hide_spell_list);
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_4);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_4;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;	
+	}
+	[t:radio_button,n:awp_radio_button_character_4_slot_active]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 6628;
+		group = character_4_min;
+		index = 3;
+		radio_group = radio_character_4;
+		rect = 68,165,84,197;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+
+		click_delay = 0.2;
+
+		[messages] 
+		{
+			onclickdelay =	notify(list_spells);
+			onresetclickdelay = notify(hide_spell_list);			
+			onrollover	=	notify(awp_slot_rollover);
+			onrolloff	=	notify(awp_slot_rolloff);			
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+
+		dock_group = dockbar_character_4;
+
+		rollover_help = active_item;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+	}
+	[t:status_bar,n:awp_status_health_4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 149;
+		dynamic_edge = top;
+		group = character_4;
+		index = 3;
+		rect = 2,165,11,211;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.007813,0.226563,0.042969,0.585938;
+		wrap_mode = clamp;
+
+		dock_group = dockbar_character_4;
+	}
+	[t:status_bar,n:awp_status_mana_4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 182;
+		dynamic_edge = top;
+		group = character_4;
+		index = 3;
+		rect = 54,165,63,211;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.210938,0.226563,0.246095,0.585938;
+		wrap_mode = clamp;
+
+		dock_group = dockbar_character_4;
+	}	
+	[t:status_bar,n:bar_slot_active_skill_4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 6586;
+		dynamic_edge = top;
+		group = character_4_min;
+		index = 3;
+		rect = 68,165,84,197;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_4;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:fuel_min_4]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 6629;
+		rect = 81,165,84,197;		
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.910156,0.734375,0.921875,0.984375;
+		wrap_mode = clamp;
+		dynamic_edge = top;
+		group = character_4_min;
+		index = 3;
+		dock_group = dockbar_character_4;
+	}
+	[t:status_bar,n:bar_slot_1_skill_4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 156;
+		dynamic_edge = top;
+		group = character_4_max;
+		index = 3;
+		rect = 68,165,84,197;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_4;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:bar_slot_2_skill_4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 157;
+		dynamic_edge = top;
+		group = character_4_max;
+		index = 3;
+		rect = 88,165,104,197;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_4;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:fuel_4]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 6587;
+		rect = 101,165,104,197;				
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.910156,0.734375,0.921875,0.984375;
+		wrap_mode = clamp;
+		dynamic_edge = top;
+		group = character_4_max;
+		index = 3;
+		dock_group = dockbar_character_4;
+	}
+	[t:status_bar,n:bar_slot_3_skill_4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 158;
+		dynamic_edge = top;
+		group = character_4_max;
+		index = 3;
+		rect = 108,165,124,197;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_4;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:bar_slot_4_skill_4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 117;
+		dynamic_edge = top;
+		group = character_4_max;
+		index = 3;
+		rect = 128,165,144,197;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_4;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:text,n:ghost_timer_4]
+	{
+		f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000049;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 13,165,52,211;
+		text = "0:00";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		group = character_4;
+		dock_group = dockbar_character_4;
+		index = 3;		
+		pass_through = true; 		
+		visible = false;		
+	}
+	[t:itemslot,n:awp_itemslot_portrait_4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 38;
+		group = character_4;
+		index = 3;
+		rect = 13,165,52,211;
+		slot_type = picture;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		[t:window,n:awp_portrait_rollover_4]
+		{
+			alpha = 1.000000;
+			common_control = false;
+			common_template = ;
+			draw_order = 490;			
+			group = character_4;
+			index = 3;
+			rect = 13,165,52,211;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.253906,0.226563,0.406250,0.585938;									
+			visible = false;
+			wrap_mode = clamp;
+			dock_group = dockbar_character_4;					
+		}
+		[t:window,n:awp_portrait_selection_4]
+		{
+			alpha = 1.000000;
+			common_control = false;
+			common_template = ;			
+			group = character_4;
+			draw_order = 742;
+			index = 3;
+			rect = 13,165,52,211;
+			uvcoords = 0.050781,0.226563,0.203125,0.585938;			
+			texture = b_gui_ig_mnu_awp;			
+			wrap_mode = clamp;
+			dock_group = dockbar_character_4;
+		}
+		[messages]
+		{
+			onbuttonpress = notify(character);
+			onrbuttonpress = notify(character_cast);
+			onldoubleclick = notify(track_character);
+			onrollover = notify(portrait_rollover);
+			onrolloff = notify(portrait_rolloff);
+		}
+
+		rollover_help = awp_portrait_rollover;
+
+		dock_group = dockbar_character_4;
+	}
+	[t:window,n:awp_death_portrait_4]
+	{
+		alpha = 1.000000;
+		draw_order = 39;
+		rect = 13,165,52,211;
+		uvcoords = 0.000000,0.281250,0.609375,1.000000;
+		wrap_mode = clamp;		
+		group = character_4;
+		dock_group = dockbar_character_4;
+		index = 3;		
+		pass_through = true; 
+		texture = b_gui_ig_i_ic_c_death;
+		visible = false;		
+	}
+	[t:window,n:awp_portrait_health_warning_4]
+	{
+		alpha = 0.5000000;
+		common_control = false;
+		common_template = ;			
+		rect = 13,165,52,211;
+		draw_order = 39;
+		texture = b_gui_ig_mnu_awp_yellow;
+		uvcoords = 0.050781,0.226563,0.203125,0.585938;
+		wrap_mode = clamp;		
+		index = 0;
+		dock_group = dockbar_character_4;	
+		visible = false;
+		group = character_4;
+		
+		[messages]
+		{
+			onstartanim = flashanimation(0.5,true,0.5);			
+		}		
+	}
+
+	[t:status_bar,n:awp_portrait_unconscious_4]
+	{
+		alpha = 0.5000000;
+		common_control = false;
+		common_template = ;			
+		rect = 13,165,52,211;
+		draw_order = 40;
+		texture = b_gui_ig_mnu_awp_red;
+		uvcoords = 0.050781,0.226563,0.203125,0.585938;
+		wrap_mode = clamp;		
+		index = 0;
+		dock_group = dockbar_character_4;			
+		visible = false;
+		group = character_4;
+		dynamic_edge = top;		
+	}
+	[t:window,n:window_expert_panel_4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 6585;
+		rect = 65,162,88,199;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.582032,0.710938,0.671875,1.000000;
+		wrap_mode = clamp;
+		index = 3;
+		visible = false;
+		group = character_4_min;
+
+		dock_group = dockbar_character_4;
+	}
+	[t:window,n:window_portait_panel_4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 22;
+		rect = 0,162,65,214;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.000000,0.593750,0.253907,1.000000;
+		wrap_mode = clamp;
+		group = character_4;
+
+		dock_group = dockbar_character_4;
+	}
+	[t:dockbar,n:window_portrait_panel_overlay_4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 273;
+		rect = 1,162,65,214;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.425781,0.203126,0.675782,0.609375;
+		wrap_mode = clamp;
+		group = character_4;
+		index = 3;
+
+		dockbar_type = dockbar_screen_x_switch_y;
+		drag_delay = 0.2;
+		drag_x = 0;
+		drag_y = 0;
+		draggable = true;	
+
+		dock_group = dockbar_character_4;
+	}
+	[t:window,n:window_slots_panel_4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 27;
+		rect = 64,162,148,199;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.250000,0.710938,0.578125,1.000000;
+		wrap_mode = clamp;
+		group = character_4_max;
+
+		dock_group = dockbar_character_4;
+	}
+	[t:window,n:window_pack_panel_4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 8000;
+		rect = 64,162,148,199;
+		texture = b_gui_ig_mnu_awp_blank;
+		uvcoords = 0.000000,0.421875,0.656250,1.000000;
+		wrap_mode = clamp;
+		group = character_4_max;
+
+		dock_group = dockbar_character_4;	
+		consumable = true;
+	}
+	[t:window,n:window_pack_panel_min_4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 7000;
+		rect = 65,162,88,199;
+		texture = b_gui_ig_mnu_awp_blank;
+		uvcoords = 0.656250,0.421875,0.835938,1.000000;
+		wrap_mode = clamp;
+		index = 3;
+		visible = false;
+		group = character_4_min;
+
+		dock_group = dockbar_character_4;
+		consumable = true;
+	}
+
+
+	//////////////////////////////////////////////////////
+	// Character 5
+
+	[t:button,n:awp_button_inventory_5]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 36;
+		group = character_5_max;
+		index = 4;
+		rect = 64,252,148,267;
+		texture = b_gui_ig_mnu_awp_buttons;
+		uvcoords = 0.000000,0.062500,0.656250,1.000000;
+		wrap_mode = clamp;
+		[messages]
+		{
+			onbuttonpress = notify(inventory);
+			ondisable = loadtexture(b_gui_ig_mnu_awp_buttons-dis);
+			onenable = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onlbuttondown = loadtexture(b_gui_ig_mnu_awp_buttons-dwn);
+			onlbuttonup = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrolloff = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrollover = loadtexture(b_gui_ig_mnu_awp_buttons-hov);
+		}
+
+		rollover_help = toggle_inventory;
+
+		dock_group = dockbar_character_5;
+	}
+	[t:button,n:awp_button_inventory_small_5]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 1134;
+		group = character_5_min;
+		index = 4;
+		rect = 64,252,87,268;
+		texture = b_gui_ig_mnu_awp_buttons;
+		uvcoords = 0.820313,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		[messages]
+		{
+			onbuttonpress = notify(inventory);
+			ondisable = loadtexture(b_gui_ig_mnu_awp_buttons-dis);
+			onenable = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onlbuttondown = loadtexture(b_gui_ig_mnu_awp_buttons-dwn);
+			onlbuttonup = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrolloff = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrollover = loadtexture(b_gui_ig_mnu_awp_buttons-hov);
+		}
+
+		rollover_help = toggle_inventory;
+		dock_group = dockbar_character_5;
+	}
+	[t:radio_button,n:awp_radio_button_character_5_slot_1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 829;
+		group = character_5_max;
+		index = 4;
+		radio_group = radio_character_5;
+		rect = 68,218,84,250;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+
+		rollover_help = awp_character_slot_1;
+
+		[messages]
+		{
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_1);
+			oncreated = setstate(1);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_5;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;	
+	}
+	[t:radio_button,n:awp_radio_button_character_5_slot_2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 917;
+		group = character_5_max;
+		index = 4;
+		radio_group = radio_character_5;
+		rect = 88,218,104,250;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+
+		rollover_help = awp_character_slot_2;
+
+		[messages]
+		{
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_2);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_5;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;	
+	}
+	[t:radio_button,n:awp_radio_button_character_5_slot_3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 1006;
+		group = character_5_max;
+		index = 4;
+		radio_group = radio_character_5;
+		rect = 108,218,124,250;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		click_delay = 0.2;
+
+		rollover_help = awp_character_slot_3;
+
+		[messages] 
+		{
+			onclickdelay =	notify(list_spells);
+			onresetclickdelay = notify(hide_spell_list);
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_3);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_5;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;	
+	}
+	[t:radio_button,n:awp_radio_button_character_5_slot_4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 1096;
+		group = character_5_max;
+		index = 4;
+		radio_group = radio_character_5;
+		rect = 128,218,144,250;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		click_delay = 0.2;
+
+		rollover_help = awp_character_slot_4;
+
+		[messages] 
+		{
+			onclickdelay =	notify(list_spells);
+			onresetclickdelay = notify(hide_spell_list);
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_4);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_5;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;	
+	}
+	[t:radio_button,n:awp_radio_button_character_5_slot_active]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 6628;
+		group = character_5_min;
+		index = 4;
+		radio_group = radio_character_5;
+		rect = 68,218,84,250;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+
+		click_delay = 0.2;
+
+		[messages] 
+		{
+			onclickdelay =	notify(list_spells);
+			onresetclickdelay = notify(hide_spell_list);	
+			onrollover	=	notify(awp_slot_rollover);
+			onrolloff	=	notify(awp_slot_rolloff);					
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+
+		dock_group = dockbar_character_5;
+
+		rollover_help = active_item;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+	}
+	[t:status_bar,n:awp_status_health_5]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 149;
+		dynamic_edge = top;
+		group = character_5;
+		index = 4;
+		rect = 2,218,11,264;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.007813,0.226563,0.042969,0.585938;
+		wrap_mode = clamp;
+
+		dock_group = dockbar_character_5;
+	}
+	[t:status_bar,n:awp_status_mana_5]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 182;
+		dynamic_edge = top;
+		group = character_5;
+		index = 4;
+		rect = 54,218,63,264;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.210938,0.226563,0.246095,0.585938;
+		wrap_mode = clamp;
+
+		dock_group = dockbar_character_5;
+	}	
+	[t:status_bar,n:bar_slot_active_skill_5]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 6586;
+		dynamic_edge = top;
+		group = character_5_min;
+		index = 4;
+		rect = 68,218,84,250;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_5;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:fuel_min_5]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 6629;
+		rect = 81,218,84,250;		
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.910156,0.734375,0.921875,0.984375;
+		wrap_mode = clamp;
+		dynamic_edge = top;
+		group = character_5_min;
+		index = 4;
+		dock_group = dockbar_character_5;
+	}
+	[t:status_bar,n:bar_slot_1_skill_5]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 156;
+		dynamic_edge = top;
+		group = character_5_max;
+		index = 4;
+		rect = 68,218,84,250;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_5;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:bar_slot_2_skill_5]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 157;
+		dynamic_edge = top;
+		group = character_5_max;
+		index = 4;
+		rect = 88,218,104,250;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_5;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:fuel_5]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 6587;
+		rect = 101,218,104,250;				
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.910156,0.734375,0.921875,0.984375;
+		wrap_mode = clamp;
+		dynamic_edge = top;
+		group = character_5_max;
+		index = 4;
+		dock_group = dockbar_character_5;
+	}
+	[t:status_bar,n:bar_slot_3_skill_5]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 158;
+		dynamic_edge = top;
+		group = character_5_max;
+		index = 4;
+		rect = 108,218,124,250;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_5;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:bar_slot_4_skill_5]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 117;
+		dynamic_edge = top;
+		group = character_5_max;
+		index = 4;
+		rect = 128,218,144,250;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_5;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:text,n:ghost_timer_5]
+	{
+		f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000049;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 13,218,52,264;
+		text = "0:00";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		group = character_5;
+		dock_group = dockbar_character_5;
+		index = 4;		
+		pass_through = true; 		
+		visible = false;		
+	}
+	[t:itemslot,n:awp_itemslot_portrait_5]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 38;
+		group = character_5;
+		index = 4;
+		rect = 13,218,52,264;
+		slot_type = picture;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		[t:window,n:awp_portrait_rollover_5]
+		{
+			alpha = 1.000000;
+			common_control = false;
+			common_template = ;
+			draw_order = 490;
+			group = character_5;
+			index = 4;
+			rect = 13,218,52,264;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.253906,0.226563,0.406250,0.585938;			
+			visible = false;
+			wrap_mode = clamp;					
+			dock_group = dockbar_character_5;
+		}
+		[t:window,n:awp_portrait_selection_5]
+		{
+			alpha = 1.000000;
+			common_control = false;
+			common_template = ;
+			draw_order = 742;
+			group = character_5;
+			index = 4;
+			rect = 13,218,52,264;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.050781,0.226563,0.203125,0.585938;			
+			wrap_mode = clamp;
+
+			dock_group = dockbar_character_5;
+		}
+		[messages]
+		{
+			onbuttonpress = notify(character);
+			onrbuttonpress = notify(character_cast);
+			onldoubleclick = notify(track_character);
+			onrollover = notify(portrait_rollover);
+			onrolloff = notify(portrait_rolloff);
+		}
+
+		rollover_help = awp_portrait_rollover;
+
+		dock_group = dockbar_character_5;
+	}
+	[t:window,n:awp_death_portrait_5]
+	{
+		alpha = 1.000000;
+		draw_order = 39;
+		rect = 13,218,52,264;
+		uvcoords = 0.000000,0.281250,0.609375,1.000000;
+		wrap_mode = clamp;		
+		group = character_5;
+		dock_group = dockbar_character_5;
+		index = 4;		
+		pass_through = true; 
+		texture = b_gui_ig_i_ic_c_death;
+		visible = false;		
+	}
+	[t:window,n:awp_portrait_health_warning_5]
+	{
+		alpha = 0.5000000;
+		common_control = false;
+		common_template = ;			
+		rect = 13,218,52,264;
+		draw_order = 39;
+		texture = b_gui_ig_mnu_awp_yellow;
+		uvcoords = 0.050781,0.226563,0.203125,0.585938;
+		wrap_mode = clamp;		
+		index = 0;
+		dock_group = dockbar_character_5;	
+		visible = false;
+		group = character_5;
+		
+		[messages]
+		{
+			onstartanim = flashanimation(0.5,true,0.5);			
+		}		
+	}
+
+	[t:status_bar,n:awp_portrait_unconscious_5]
+	{
+		alpha = 0.5000000;
+		common_control = false;
+		common_template = ;			
+		rect = 13,218,52,264;
+		draw_order = 40;
+		texture = b_gui_ig_mnu_awp_red;
+		uvcoords = 0.050781,0.226563,0.203125,0.585938;
+		wrap_mode = clamp;		
+		index = 0;
+		dock_group = dockbar_character_5;			
+		visible = false;
+		group = character_5;		
+		dynamic_edge = top;
+	}
+	[t:window,n:window_expert_panel_5]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 6585;
+		rect = 65,215,88,252;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.582032,0.710938,0.671875,1.000000;
+		wrap_mode = clamp;
+		index = 4;
+		visible = false;
+		group = character_5_min;
+
+		dock_group = dockbar_character_5;
+	}
+	[t:window,n:window_portait_panel_5]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 22;
+		rect = 0,215,65,267;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.000000,0.593750,0.253907,1.000000;
+		wrap_mode = clamp;
+		group = character_5;
+
+		dock_group = dockbar_character_5;
+	}
+	[t:dockbar,n:window_portrait_panel_overlay_5]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 273;
+		rect = 1,215,65,267;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.425781,0.203126,0.675782,0.609375;
+		wrap_mode = clamp;
+		group = character_5;
+		index = 4;
+
+		dockbar_type = dockbar_screen_x_switch_y;
+		drag_delay = 0.2;
+		drag_x = 0;
+		drag_y = 0;
+		draggable = true;	
+
+		dock_group = dockbar_character_5;
+	}
+	[t:window,n:window_slots_panel_5]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 27;
+		rect = 64,215,148,252;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.250000,0.710938,0.578125,1.000000;
+		wrap_mode = clamp;
+		group = character_5_max;
+
+		dock_group = dockbar_character_5;
+	}
+	[t:window,n:window_pack_panel_5]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 8000;
+		rect = 64,215,148,252;
+		texture = b_gui_ig_mnu_awp_blank;
+		uvcoords = 0.000000,0.421875,0.656250,1.000000;
+		wrap_mode = clamp;
+		group = character_5_max;
+
+		dock_group = dockbar_character_5;	
+		consumable = true;
+	}
+	[t:window,n:window_pack_panel_min_5]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 7000;
+		rect = 65,215,88,252;
+		texture = b_gui_ig_mnu_awp_blank;
+		uvcoords = 0.656250,0.421875,0.835938,1.000000;
+		wrap_mode = clamp;
+		index = 4;
+		visible = false;
+		group = character_5_min;
+
+		dock_group = dockbar_character_5;
+		consumable = true;
+	}
+
+
+	//////////////////////////////////////////////////////
+	// Character 6
+
+	[t:button,n:awp_button_inventory_6]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 36;
+		group = character_6_max;
+		index = 5;
+		rect = 64,305,148,320;
+		texture = b_gui_ig_mnu_awp_buttons;
+		uvcoords = 0.000000,0.062500,0.656250,1.000000;
+		wrap_mode = clamp;
+		[messages]
+		{
+			onbuttonpress = notify(inventory);
+			ondisable = loadtexture(b_gui_ig_mnu_awp_buttons-dis);
+			onenable = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onlbuttondown = loadtexture(b_gui_ig_mnu_awp_buttons-dwn);
+			onlbuttonup = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrolloff = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrollover = loadtexture(b_gui_ig_mnu_awp_buttons-hov);
+		}
+
+		rollover_help = toggle_inventory;
+
+		dock_group = dockbar_character_6;
+	}
+	[t:button,n:awp_button_inventory_small_6]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 1134;
+		group = character_6_min;
+		index = 5;
+		rect = 64,305,87,321;
+		texture = b_gui_ig_mnu_awp_buttons;
+		uvcoords = 0.820313,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		[messages]
+		{
+			onbuttonpress = notify(inventory);
+			ondisable = loadtexture(b_gui_ig_mnu_awp_buttons-dis);
+			onenable = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onlbuttondown = loadtexture(b_gui_ig_mnu_awp_buttons-dwn);
+			onlbuttonup = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrolloff = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrollover = loadtexture(b_gui_ig_mnu_awp_buttons-hov);
+		}
+
+		rollover_help = toggle_inventory;
+		dock_group = dockbar_character_6;
+	}
+	[t:radio_button,n:awp_radio_button_character_6_slot_1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 829;
+		group = character_6_max;
+		index = 5;
+		radio_group = radio_character_6;
+		rect = 68,271,84,303;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+
+		rollover_help = awp_character_slot_1;
+
+		[messages]
+		{
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_1);
+			oncreated = setstate(1);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_6;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;	
+	}
+	[t:radio_button,n:awp_radio_button_character_6_slot_2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 917;
+		group = character_6_max;
+		index = 5;
+		radio_group = radio_character_6;
+		rect = 88,271,104,303;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+
+		rollover_help = awp_character_slot_2;
+
+		[messages]
+		{
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_2);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_6;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;	
+	}
+	[t:radio_button,n:awp_radio_button_character_6_slot_3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 1006;
+		group = character_6_max;
+		index = 5;
+		radio_group = radio_character_6;
+		rect = 108,271,124,303;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		click_delay = 0.2;
+
+		rollover_help = awp_character_slot_3;
+
+		[messages] 
+		{
+			onclickdelay =	notify(list_spells);
+			onresetclickdelay = notify(hide_spell_list);
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_3);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_6;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;	
+	}
+	[t:radio_button,n:awp_radio_button_character_6_slot_4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 1096;
+		group = character_6_max;
+		index = 5;
+		radio_group = radio_character_6;
+		rect = 128,271,144,303;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		click_delay = 0.2;
+
+		rollover_help = awp_character_slot_4;
+
+		[messages] 
+		{
+			onclickdelay =	notify(list_spells);
+			onresetclickdelay = notify(hide_spell_list);
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_4);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_6;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;	
+	}
+	[t:radio_button,n:awp_radio_button_character_6_slot_active]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 6628;
+		group = character_6_min;
+		index = 5;
+		radio_group = radio_character_6;
+		rect = 68,271,84,303;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+
+		click_delay = 0.2;
+
+		[messages] 
+		{
+			onclickdelay =	notify(list_spells);
+			onresetclickdelay = notify(hide_spell_list);	
+			onrollover	=	notify(awp_slot_rollover);
+			onrolloff	=	notify(awp_slot_rolloff);					
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+
+		dock_group = dockbar_character_6;
+
+		rollover_help = active_item;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+	}
+	[t:status_bar,n:awp_status_health_6]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 149;
+		dynamic_edge = top;
+		group = character_6;
+		index = 5;
+		rect = 2,271,11,317;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.007813,0.226563,0.042969,0.585938;
+		wrap_mode = clamp;
+
+		dock_group = dockbar_character_6;
+	}
+	[t:status_bar,n:awp_status_mana_6]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 182;
+		dynamic_edge = top;
+		group = character_6;
+		index = 5;
+		rect = 54,271,63,317;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.210938,0.226563,0.246095,0.585938;
+		wrap_mode = clamp;
+
+		dock_group = dockbar_character_6;
+	}	
+	[t:status_bar,n:bar_slot_active_skill_6]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 6586;
+		dynamic_edge = top;
+		group = character_6_min;
+		index = 5;
+		rect = 68,271,84,303;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_6;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:fuel_min_6]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 6629;
+		rect = 81,271,84,303;		
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.910156,0.734375,0.921875,0.984375;
+		wrap_mode = clamp;
+		dynamic_edge = top;
+		group = character_6_min;
+		index = 5;
+		dock_group = dockbar_character_6;
+	}
+	[t:status_bar,n:bar_slot_1_skill_6]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 156;
+		dynamic_edge = top;
+		group = character_6_max;
+		index = 5;
+		rect = 68,271,84,303;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_6;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:bar_slot_2_skill_6]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 157;
+		dynamic_edge = top;
+		group = character_6_max;
+		index = 5;
+		rect = 88,271,104,303;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_6;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:fuel_6]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 6587;
+		rect = 101,271,104,303;				
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.910156,0.734375,0.921875,0.984375;
+		wrap_mode = clamp;
+		dynamic_edge = top;
+		group = character_6_max;
+		index = 5;
+		dock_group = dockbar_character_6;
+	}
+	[t:status_bar,n:bar_slot_3_skill_6]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 158;
+		dynamic_edge = top;
+		group = character_6_max;
+		index = 5;
+		rect = 108,271,124,303;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_6;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:bar_slot_4_skill_6]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 117;
+		dynamic_edge = top;
+		group = character_6_max;
+		index = 5;
+		rect = 128,271,144,303;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_6;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:text,n:ghost_timer_6]
+	{
+		f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000049;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 13,271,52,317;
+		text = "0:00";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		group = character_6;
+		dock_group = dockbar_character_6;
+		index = 5;		
+		pass_through = true; 		
+		visible = false;		
+	}
+	[t:itemslot,n:awp_itemslot_portrait_6]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 38;
+		group = character_6;
+		index = 5;
+		rect = 13,271,52,317;
+		slot_type = picture;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		[t:window,n:awp_portrait_rollover_6]
+		{
+			alpha = 1.000000;
+			common_control = false;
+			common_template = ;
+			draw_order = 490;
+			group = character_6;
+			index = 5;
+			rect = 13,271,52,317;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.253906,0.226563,0.406250,0.585938;
+			visible = false;
+			wrap_mode = clamp;					
+			dock_group = dockbar_character_6;
+		}
+		[t:window,n:awp_portrait_selection_6]
+		{
+			alpha = 1.000000;
+			common_control = false;
+			common_template = ;
+			draw_order = 742;
+			group = character_6;
+			index = 5;
+			rect = 13,271,52,317;			
+			uvcoords = 0.050781,0.226563,0.203125,0.585938;			
+			texture = b_gui_ig_mnu_awp;			
+			wrap_mode = clamp;
+			dock_group = dockbar_character_6;
+		}
+		[messages]
+		{
+			onbuttonpress = notify(character);
+			onrbuttonpress = notify(character_cast);
+			onldoubleclick = notify(track_character);
+			onrollover = notify(portrait_rollover);
+			onrolloff = notify(portrait_rolloff);
+		}
+
+		rollover_help = awp_portrait_rollover;
+
+		dock_group = dockbar_character_6;
+	}
+	[t:window,n:awp_death_portrait_6]
+	{
+		alpha = 1.000000;
+		draw_order = 39;
+		rect = 13,271,52,317;
+		uvcoords = 0.000000,0.281250,0.609375,1.000000;
+		wrap_mode = clamp;		
+		group = character_6;
+		dock_group = dockbar_character_6;
+		index = 5;		
+		pass_through = true; 
+		texture = b_gui_ig_i_ic_c_death;
+		visible = false;		
+	}
+	[t:window,n:awp_portrait_health_warning_6]
+	{
+		alpha = 0.5000000;
+		common_control = false;
+		common_template = ;			
+		rect = 13,271,52,317;
+		draw_order = 39;
+		texture = b_gui_ig_mnu_awp_yellow;
+		uvcoords = 0.050781,0.226563,0.203125,0.585938;
+		wrap_mode = clamp;		
+		index = 0;
+		dock_group = dockbar_character_6;	
+		visible = false;
+		group = character_6;
+		
+		[messages]
+		{
+			onstartanim = flashanimation(0.5,true,0.5);			
+		}		
+	}
+
+	[t:status_bar,n:awp_portrait_unconscious_6]
+	{
+		alpha = 0.5000000;
+		common_control = false;
+		common_template = ;			
+		rect = 13,271,52,317;
+		draw_order = 40;
+		texture = b_gui_ig_mnu_awp_red;
+		uvcoords = 0.050781,0.226563,0.203125,0.585938;
+		wrap_mode = clamp;		
+		index = 0;
+		dock_group = dockbar_character_6;			
+		visible = false;
+		group = character_6;		
+		dynamic_edge = top;
+	}
+	[t:window,n:window_expert_panel_6]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 6585;
+		rect = 65,268,88,305;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.582032,0.710938,0.671875,1.000000;
+		wrap_mode = clamp;
+		index = 5;
+		visible = false;
+		group = character_6_min;
+
+		dock_group = dockbar_character_6;
+	}
+	[t:window,n:window_portait_panel_6]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 22;
+		rect = 0,268,65,320;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.000000,0.593750,0.253907,1.000000;
+		wrap_mode = clamp;
+		group = character_6;
+
+		dock_group = dockbar_character_6;
+	}
+	[t:dockbar,n:window_portrait_panel_overlay_6]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 273;
+		rect = 1,268,65,320;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.425781,0.203126,0.675782,0.609375;
+		wrap_mode = clamp;
+		group = character_6;
+		index = 5;
+
+		dockbar_type = dockbar_screen_x_switch_y;
+		drag_delay = 0.2;
+		drag_x = 0;
+		drag_y = 0;
+		draggable = true;	
+
+		dock_group = dockbar_character_6;
+	}
+	[t:window,n:window_slots_panel_6]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 27;
+		rect = 64,268,148,305;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.250000,0.710938,0.578125,1.000000;
+		wrap_mode = clamp;
+		group = character_6_max;
+
+		dock_group = dockbar_character_6;
+	}
+	[t:window,n:window_pack_panel_6]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 8000;
+		rect = 64,268,148,305;
+		texture = b_gui_ig_mnu_awp_blank;
+		uvcoords = 0.000000,0.421875,0.656250,1.000000;
+		wrap_mode = clamp;
+		group = character_6_max;
+
+		dock_group = dockbar_character_6;	
+		consumable = true;
+	}
+	[t:window,n:window_pack_panel_min_6]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 7000;
+		rect = 65,268,88,305;
+		texture = b_gui_ig_mnu_awp_blank;
+		uvcoords = 0.656250,0.421875,0.835938,1.000000;
+		wrap_mode = clamp;
+		index = 5;
+		visible = false;
+		group = character_6_min;
+
+		dock_group = dockbar_character_6;		
+		consumable = true;
+	}
+
+
+	//////////////////////////////////////////////////////
+	// Character 7
+
+	[t:button,n:awp_button_inventory_7]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 36;
+		group = character_7_max;
+		index = 6;
+		rect = 64,358,148,373;
+		texture = b_gui_ig_mnu_awp_buttons;
+		uvcoords = 0.000000,0.062500,0.656250,1.000000;
+		wrap_mode = clamp;
+		[messages]
+		{
+			onbuttonpress = notify(inventory);
+			ondisable = loadtexture(b_gui_ig_mnu_awp_buttons-dis);
+			onenable = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onlbuttondown = loadtexture(b_gui_ig_mnu_awp_buttons-dwn);
+			onlbuttonup = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrolloff = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrollover = loadtexture(b_gui_ig_mnu_awp_buttons-hov);
+		}
+
+		rollover_help = toggle_inventory;
+
+		dock_group = dockbar_character_7;
+	}
+	[t:button,n:awp_button_inventory_small_7]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 1134;
+		group = character_7_min;
+		index = 6;
+		rect = 64,358,87,374;
+		texture = b_gui_ig_mnu_awp_buttons;
+		uvcoords = 0.820313,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		[messages]
+		{
+			onbuttonpress = notify(inventory);
+			ondisable = loadtexture(b_gui_ig_mnu_awp_buttons-dis);
+			onenable = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onlbuttondown = loadtexture(b_gui_ig_mnu_awp_buttons-dwn);
+			onlbuttonup = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrolloff = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrollover = loadtexture(b_gui_ig_mnu_awp_buttons-hov);
+		}
+
+		rollover_help = toggle_inventory;
+		dock_group = dockbar_character_7;
+	}
+	[t:radio_button,n:awp_radio_button_character_7_slot_1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 829;
+		group = character_7_max;
+		index = 6;
+		radio_group = radio_character_7;
+		rect = 68,324,84,356;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+
+		rollover_help = awp_character_slot_1;
+
+		[messages]
+		{
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_1);
+			oncreated = setstate(1);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_7;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;	
+	}
+	[t:radio_button,n:awp_radio_button_character_7_slot_2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 917;
+		group = character_7_max;
+		index = 6;
+		radio_group = radio_character_7;
+		rect = 88,324,104,356;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+
+		rollover_help = awp_character_slot_2;
+
+		[messages]
+		{
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_2);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_7;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;	
+	}
+	[t:radio_button,n:awp_radio_button_character_7_slot_3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 1006;
+		group = character_7_max;
+		index = 6;
+		radio_group = radio_character_7;
+		rect = 108,324,124,356;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		click_delay = 0.2;
+
+		rollover_help = awp_character_slot_3;
+
+		[messages] 
+		{
+			onclickdelay =	notify(list_spells);
+			onresetclickdelay = notify(hide_spell_list);
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_3);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_7;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;	
+	}
+	[t:radio_button,n:awp_radio_button_character_7_slot_4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 1096;
+		group = character_7_max;
+		index = 6;
+		radio_group = radio_character_7;
+		rect = 128,324,144,356;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		click_delay = 0.2;
+
+		rollover_help = awp_character_slot_4;
+
+		[messages] 
+		{
+			onclickdelay =	notify(list_spells);
+			onresetclickdelay = notify(hide_spell_list);
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_4);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_7;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;	
+	}
+	[t:radio_button,n:awp_radio_button_character_7_slot_active]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 6628;
+		group = character_7_min;
+		index = 6;
+		radio_group = radio_character_7;
+		rect = 68,324,84,356;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+
+		click_delay = 0.2;
+
+		[messages] 
+		{
+			onclickdelay =	notify(list_spells);
+			onresetclickdelay = notify(hide_spell_list);	
+			onrollover	=	notify(awp_slot_rollover);
+			onrolloff	=	notify(awp_slot_rolloff);					
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+
+		dock_group = dockbar_character_7;
+
+		rollover_help = active_item;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+	}
+	[t:status_bar,n:awp_status_health_7]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 149;
+		dynamic_edge = top;
+		group = character_7;
+		index = 6;
+		rect = 2,324,11,370;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.007813,0.226563,0.042969,0.585938;
+		wrap_mode = clamp;
+
+		dock_group = dockbar_character_7;
+	}
+	[t:status_bar,n:awp_status_mana_7]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 182;
+		dynamic_edge = top;
+		group = character_7;
+		index = 6;
+		rect = 54,324,63,370;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.210938,0.226563,0.246095,0.585938;
+		wrap_mode = clamp;
+
+		dock_group = dockbar_character_7;
+	}	
+	[t:status_bar,n:bar_slot_active_skill_7]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 6586;
+		dynamic_edge = top;
+		group = character_7_min;
+		index = 6;
+		rect = 68,324,84,356;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_7;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:fuel_min_7]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 6629;
+		rect = 81,324,84,356;		
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.910156,0.734375,0.921875,0.984375;
+		wrap_mode = clamp;
+		dynamic_edge = top;
+		group = character_7_min;
+		index = 6;
+		dock_group = dockbar_character_7;
+	}
+	[t:status_bar,n:bar_slot_1_skill_7]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 156;
+		dynamic_edge = top;
+		group = character_7_max;
+		index = 6;
+		rect = 68,324,84,356;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_7;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:bar_slot_2_skill_7]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 157;
+		dynamic_edge = top;
+		group = character_7_max;
+		index = 6;
+		rect = 88,324,104,356;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_7;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:fuel_7]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 6587;
+		rect = 101,324,104,356;				
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.910156,0.734375,0.921875,0.984375;
+		wrap_mode = clamp;
+		dynamic_edge = top;
+		group = character_7_max;
+		index = 6;
+		dock_group = dockbar_character_7;
+	}
+	[t:status_bar,n:bar_slot_3_skill_7]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 158;
+		dynamic_edge = top;
+		group = character_7_max;
+		index = 6;
+		rect = 108,324,124,356;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_7;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:bar_slot_4_skill_7]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 117;
+		dynamic_edge = top;
+		group = character_7_max;
+		index = 6;
+		rect = 128,324,144,356;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_7;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:text,n:ghost_timer_7]
+	{
+		f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000049;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 13,324,52,370;
+		text = "0:00";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		group = character_7;
+		dock_group = dockbar_character_7;
+		index = 6;		
+		pass_through = true; 		
+		visible = false;		
+	}
+	[t:itemslot,n:awp_itemslot_portrait_7]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 38;
+		group = character_7;
+		index = 6;
+		rect = 13,324,52,370;
+		slot_type = picture;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		[t:window,n:awp_portrait_rollover_7]
+		{
+			alpha = 1.000000;
+			common_control = false;
+			common_template = ;
+			draw_order = 490;
+			group = character_7;
+			index = 6;
+			rect = 13,324,52,370;
+			texture = b_gui_ig_mnu_awp;						
+			uvcoords = 0.253906,0.226563,0.406250,0.585938;
+			visible = false;
+			wrap_mode = clamp;					
+			dock_group = dockbar_character_7;
+		}
+		[t:window,n:awp_portrait_selection_7]
+		{
+			alpha = 1.000000;
+			common_control = false;
+			common_template = ;
+			draw_order = 742;
+			group = character_7;
+			index = 6;
+			rect = 13,324,52,370;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.050781,0.226563,0.203125,0.585938;
+			wrap_mode = clamp;
+			dock_group = dockbar_character_7;
+		}
+		[messages]
+		{
+			onbuttonpress = notify(character);
+			onrbuttonpress = notify(character_cast);
+			onldoubleclick = notify(track_character);
+			onrollover = notify(portrait_rollover);
+			onrolloff = notify(portrait_rolloff);
+		}
+
+		rollover_help = awp_portrait_rollover;
+		dock_group = dockbar_character_7;
+	}
+	[t:window,n:awp_death_portrait_7]
+	{
+		alpha = 1.000000;
+		draw_order = 39;
+		rect = 13,324,52,370;
+		uvcoords = 0.000000,0.281250,0.609375,1.000000;
+		wrap_mode = clamp;		
+		group = character_7;
+		dock_group = dockbar_character_7;
+		index = 6;		
+		pass_through = true; 
+		texture = b_gui_ig_i_ic_c_death;
+		visible = false;		
+	}
+	[t:window,n:awp_portrait_health_warning_7]
+	{
+		alpha = 0.5000000;
+		common_control = false;
+		common_template = ;			
+		rect = 13,324,52,370;
+		draw_order = 39;
+		texture = b_gui_ig_mnu_awp_yellow;
+		uvcoords = 0.050781,0.226563,0.203125,0.585938;
+		wrap_mode = clamp;		
+		index = 0;
+		dock_group = dockbar_character_7;	
+		visible = false;
+		group = character_7;
+		
+		[messages]
+		{
+			onstartanim = flashanimation(0.5,true,0.5);			
+		}		
+	}
+
+	[t:status_bar,n:awp_portrait_unconscious_7]
+	{
+		alpha = 0.5000000;
+		common_control = false;
+		common_template = ;			
+		rect = 13,324,52,370;
+		draw_order = 40;
+		texture = b_gui_ig_mnu_awp_red;
+		uvcoords = 0.050781,0.226563,0.203125,0.585938;
+		wrap_mode = clamp;		
+		index = 0;
+		dock_group = dockbar_character_7;			
+		visible = false;
+		group = character_7;	
+		dynamic_edge = top;	
+	}
+	[t:window,n:window_expert_panel_7]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 6585;
+		rect = 65,321,88,358;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.582032,0.710938,0.671875,1.000000;
+		wrap_mode = clamp;
+		index = 6;
+		visible = false;
+		group = character_7_min;
+
+		dock_group = dockbar_character_7;
+	}
+	[t:window,n:window_portait_panel_7]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 22;
+		rect = 0,321,65,373;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.000000,0.593750,0.253907,1.000000;
+		wrap_mode = clamp;
+		group = character_7;
+
+		dock_group = dockbar_character_7;
+	}
+	[t:dockbar,n:window_portrait_panel_overlay_7]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 273;
+		rect = 1,321,65,373;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.425781,0.203126,0.675782,0.609375;
+		wrap_mode = clamp;
+		group = character_7;
+		index = 6;
+
+		dockbar_type = dockbar_screen_x_switch_y;
+		drag_delay = 0.2;
+		drag_x = 0;
+		drag_y = 0;
+		draggable = true;	
+
+		dock_group = dockbar_character_7;
+	}
+	[t:window,n:window_slots_panel_7]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 27;
+		rect = 64,321,148,358;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.250000,0.710938,0.578125,1.000000;
+		wrap_mode = clamp;
+		group = character_7_max;
+
+		dock_group = dockbar_character_7;
+	}
+	[t:window,n:window_pack_panel_7]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 8000;
+		rect = 64,321,148,358;
+		texture = b_gui_ig_mnu_awp_blank;
+		uvcoords = 0.000000,0.421875,0.656250,1.000000;
+		wrap_mode = clamp;
+		group = character_7_max;
+
+		dock_group = dockbar_character_7;	
+		consumable = true;
+	}
+	[t:window,n:window_pack_panel_min_7]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 7000;
+		rect = 65,321,88,358;
+		texture = b_gui_ig_mnu_awp_blank;
+		uvcoords = 0.656250,0.421875,0.835938,1.000000;
+		wrap_mode = clamp;
+		index = 6;
+		visible = false;
+		group = character_7_min;
+
+		dock_group = dockbar_character_7;
+		consumable = true;
+	}
+
+
+	//////////////////////////////////////////////////////
+	// Character 8
+
+	[t:button,n:awp_button_inventory_8]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 36;
+		group = character_8_max;
+		index = 7;
+		rect = 64,411,148,426;
+		texture = b_gui_ig_mnu_awp_buttons;
+		uvcoords = 0.000000,0.062500,0.656250,1.000000;
+		wrap_mode = clamp;
+		[messages]
+		{
+			onbuttonpress = notify(inventory);
+			ondisable = loadtexture(b_gui_ig_mnu_awp_buttons-dis);
+			onenable = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onlbuttondown = loadtexture(b_gui_ig_mnu_awp_buttons-dwn);
+			onlbuttonup = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrolloff = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrollover = loadtexture(b_gui_ig_mnu_awp_buttons-hov);
+		}
+
+		rollover_help = toggle_inventory;
+
+		dock_group = dockbar_character_8;
+	}
+	[t:button,n:awp_button_inventory_small_8]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 1134;
+		group = character_8_min;
+		index = 7;
+		rect = 64,411,87,427;
+		texture = b_gui_ig_mnu_awp_buttons;
+		uvcoords = 0.820313,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		[messages]
+		{
+			onbuttonpress = notify(inventory);
+			ondisable = loadtexture(b_gui_ig_mnu_awp_buttons-dis);
+			onenable = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onlbuttondown = loadtexture(b_gui_ig_mnu_awp_buttons-dwn);
+			onlbuttonup = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrolloff = loadtexture(b_gui_ig_mnu_awp_buttons);
+			onrollover = loadtexture(b_gui_ig_mnu_awp_buttons-hov);
+		}
+
+		rollover_help = toggle_inventory;
+		dock_group = dockbar_character_8;
+	}
+	[t:radio_button,n:awp_radio_button_character_8_slot_1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 829;
+		group = character_8_max;
+		index = 7;
+		radio_group = radio_character_8;
+		rect = 68,377,84,409;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		rollover_help = awp_character_slot_1;
+		[messages]
+		{
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_1);
+			oncreated = setstate(1);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_8;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;	
+	}
+	[t:radio_button,n:awp_radio_button_character_8_slot_2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 917;
+		group = character_8_max;
+		index = 7;
+		radio_group = radio_character_8;
+		rect = 88,377,104,409;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		rollover_help = awp_character_slot_2;
+		[messages]
+		{
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_2);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_8;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;	
+	}
+	[t:radio_button,n:awp_radio_button_character_8_slot_3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 1006;
+		group = character_8_max;
+		index = 7;
+		radio_group = radio_character_8;
+		rect = 108,377,124,409;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		click_delay = 0.2;
+		rollover_help = awp_character_slot_3;
+
+		[messages] 
+		{
+			onclickdelay =	notify(list_spells);
+			onresetclickdelay = notify(hide_spell_list);
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_3);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_8;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;	
+	}
+
+	[t:radio_button,n:awp_radio_button_character_8_slot_4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 1096;
+		group = character_8_max;
+		index = 7;
+		radio_group = radio_character_8;
+		rect = 128,377,144,409;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		click_delay = 0.2;
+		rollover_help = awp_character_slot_4;
+
+		[messages] 
+		{
+			onclickdelay =	notify(list_spells);
+			onresetclickdelay = notify(hide_spell_list);
+			oncheck = drawselectiontexture(true) &
+							notify(character_slot_4);
+			onrolloff = notify(awp_slot_rolloff);
+			onrollover = notify(awp_slot_rollover);
+			onuncheck = drawselectiontexture(false);
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+		[t:rollover_texture,n:rollover_texture]
+		{		
+			draw_order = 6629;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.757813,0.710938,0.835938,0.992188;
+			wrap_mode = clamp;
+		}
+
+		[t:selection_texture,n:selection_texture]		
+		{
+			draw_order = 6630;
+			rect = 199,9,219,46;
+			texture = b_gui_ig_mnu_awp;			
+			uvcoords = 0.675781,0.710938,0.753907,0.992188;
+			wrap_mode = clamp;
+		}
+
+		dock_group = dockbar_character_8;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+		leftright_button = true;	
+	}
+	[t:radio_button,n:awp_radio_button_character_8_slot_active]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 6628;
+		group = character_8_min;
+		index = 7;
+		radio_group = radio_character_8;
+		rect = 68,377,84,409;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+
+		click_delay = 0.2;
+
+		[messages] 
+		{
+			onclickdelay =	notify(list_spells);
+			onresetclickdelay = notify(hide_spell_list);	
+			onrollover	=	notify(awp_slot_rollover);
+			onrolloff	=	notify(awp_slot_rolloff);					
+			onrolloffchecked = notify(awp_slot_rolloff);			
+			onrolloverchecked = notify(awp_slot_rollover);
+		}
+
+		dock_group = dockbar_character_8;
+
+		rollover_help = active_item;
+
+		help_text = "Skill Level: ";
+		help_tool_tip = true;
+		help_text_box = gui_rollover_textbox;
+	}
+	[t:status_bar,n:awp_status_health_8]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 149;
+		dynamic_edge = top;
+		group = character_8;
+		index = 7;
+		rect = 2,377,11,423;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.007813,0.226563,0.042969,0.585938;
+		wrap_mode = clamp;
+
+		dock_group = dockbar_character_8;
+	}
+	[t:status_bar,n:awp_status_mana_8]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 182;
+		dynamic_edge = top;
+		group = character_8;
+		index = 7;
+		rect = 54,377,63,423;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.210938,0.226563,0.246095,0.585938;
+		wrap_mode = clamp;
+
+		dock_group = dockbar_character_8;
+	}	
+	[t:status_bar,n:bar_slot_active_skill_8]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 6586;
+		dynamic_edge = top;
+		group = character_8_min;
+		index = 7;
+		rect = 68,377,84,409;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_8;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:fuel_min_8]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 6629;
+		rect = 81,377,84,409;		
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.910156,0.734375,0.921875,0.984375;
+		wrap_mode = clamp;
+		dynamic_edge = top;
+		group = character_8_min;
+		index = 7;
+		dock_group = dockbar_character_8;
+	}
+	[t:status_bar,n:bar_slot_1_skill_8]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 156;
+		dynamic_edge = top;
+		group = character_8_max;
+		index = 7;
+		rect = 68,377,84,409;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_8;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:bar_slot_2_skill_8]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 157;
+		dynamic_edge = top;
+		group = character_8_max;
+		index = 7;
+		rect = 88,377,104,409;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_8;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:fuel_8]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 6587;
+		rect = 101,377,104,409;				
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.910156,0.734375,0.921875,0.984375;
+		wrap_mode = clamp;
+		dynamic_edge = top;
+		group = character_8_max;
+		index = 7;
+		dock_group = dockbar_character_8;
+	}
+	[t:status_bar,n:bar_slot_3_skill_8]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 158;
+		dynamic_edge = top;
+		group = character_8_max;
+		index = 7;
+		rect = 108,377,124,409;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_8;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:bar_slot_4_skill_8]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 117;
+		dynamic_edge = top;
+		group = character_8_max;
+		index = 7;
+		rect = 128,377,144,409;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.839844,0.734375,0.902344,0.984375;
+		wrap_mode = clamp;
+		dock_group = dockbar_character_8;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:text,n:ghost_timer_8]
+	{
+		f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000049;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 13,377,52,423;
+		text = "0:00";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		group = character_8;
+		dock_group = dockbar_character_8;
+		index = 7;		
+		pass_through = true; 		
+		visible = false;		
+	}
+	[t:itemslot,n:awp_itemslot_portrait_8]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 38;
+		group = character_8;
+		index = 7;
+		rect = 13,377,52,423;
+		slot_type = picture;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		[t:window,n:awp_portrait_rollover_8]
+		{
+			alpha = 1.000000;
+			common_control = false;
+			common_template = ;			
+			draw_order = 490;
+			group = character_8;
+			index = 7;
+			rect = 13,377,52,423;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.253906,0.226563,0.406250,0.585938;
+			visible = false;
+			wrap_mode = clamp;					
+			dock_group = dockbar_character_8;
+		}
+		[t:window,n:awp_portrait_selection_8]
+		{
+			alpha = 1.000000;
+			common_control = false;
+			common_template = ;			
+			group = character_8;
+			index = 7;
+			draw_order = 742;
+			rect = 13,377,52,423;
+			texture = b_gui_ig_mnu_awp;
+			uvcoords = 0.050781,0.226563,0.203125,0.585938;			
+			wrap_mode = clamp;
+			dock_group = dockbar_character_8;
+		}
+		[messages]
+		{
+			onbuttonpress = notify(character);
+			onrbuttonpress = notify(character_cast);
+			onldoubleclick = notify(track_character);
+			onrollover = notify(portrait_rollover);
+			onrolloff = notify(portrait_rolloff);
+		}
+
+		rollover_help = awp_portrait_rollover;
+
+		dock_group = dockbar_character_8;
+	}
+	[t:window,n:awp_death_portrait_8]
+	{
+		alpha = 1.000000;
+		draw_order = 39;
+		rect = 13,377,52,423;		
+		uvcoords = 0.000000,0.281250,0.609375,1.000000;
+		wrap_mode = clamp;		
+		group = character_8;
+		dock_group = dockbar_character_8;
+		index = 7;		
+		pass_through = true; 
+		texture = b_gui_ig_i_ic_c_death;
+		visible = false;	
+		rect = 13,377,52,423;	
+	}
+	[t:window,n:awp_portrait_health_warning_8]
+	{
+		alpha = 0.5000000;
+		common_control = false;
+		common_template = ;			
+		rect = 13,377,52,423;
+		draw_order = 39;
+		texture = b_gui_ig_mnu_awp_yellow;
+		uvcoords = 0.050781,0.226563,0.203125,0.585938;
+		wrap_mode = clamp;		
+		index = 0;
+		dock_group = dockbar_character_8;	
+		visible = false;
+		group = character_8;
+		
+		[messages]
+		{
+			onstartanim = flashanimation(0.5,true,0.5);			
+		}		
+	}
+
+	[t:status_bar,n:awp_portrait_unconscious_8]
+	{
+		alpha = 0.5000000;
+		common_control = false;
+		common_template = ;			
+		rect = 13,377,52,423;
+		draw_order = 40;
+		texture = b_gui_ig_mnu_awp_red;
+		uvcoords = 0.050781,0.226563,0.203125,0.585938;
+		wrap_mode = clamp;		
+		index = 0;
+		dock_group = dockbar_character_8;			
+		visible = false;
+		group = character_8;
+		dynamic_edge = top;
+	}
+	[t:window,n:window_expert_panel_8]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 6585;
+		rect = 65,374,88,411;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.582032,0.710938,0.671875,1.000000;
+		wrap_mode = clamp;
+		index = 7;
+		visible = false;
+		group = character_8_min;
+
+		dock_group = dockbar_character_8;
+	}
+	[t:window,n:window_portait_panel_8]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 22;
+		rect = 0,374,65,426;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.000000,0.593750,0.253907,1.000000;
+		wrap_mode = clamp;
+		group = character_8;
+
+		dock_group = dockbar_character_8;
+	}
+	[t:dockbar,n:window_portrait_panel_overlay_8]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 273;
+		rect = 1,374,65,426;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.425781,0.203126,0.675782,0.609375;
+		wrap_mode = clamp;
+		group = character_8;
+		index = 7;
+
+		dockbar_type = dockbar_screen_x_switch_y;
+		drag_delay = 0.2;
+		drag_x = 0;
+		drag_y = 0;
+		draggable = true;	
+
+		dock_group = dockbar_character_8;
+	}
+	[t:window,n:window_slots_panel_8]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 27;
+		rect = 64,374,148,411;
+		texture = b_gui_ig_mnu_awp;
+		uvcoords = 0.250000,0.710938,0.578125,1.000000;
+		wrap_mode = clamp;
+		group = character_8_max;
+
+		dock_group = dockbar_character_8;
+	}
+	[t:window,n:window_pack_panel_8]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 8000;
+		rect = 64,374,148,411;
+		texture = b_gui_ig_mnu_awp_blank;
+		uvcoords = 0.000000,0.421875,0.656250,1.000000;
+		wrap_mode = clamp;
+		group = character_8_max;
+
+		dock_group = dockbar_character_8;	
+		consumable = true;
+	}
+	[t:window,n:window_pack_panel_min_8]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 7000;
+		rect = 65,374,88,411;
+		texture = b_gui_ig_mnu_awp_blank;
+		uvcoords = 0.656250,0.421875,0.835938,1.000000;
+		wrap_mode = clamp;
+		index = 7;
+		visible = false;
+		group = character_8_min;
+
+		dock_group = dockbar_character_8;		
+		consumable = true;
+	}
+
+	
+	//////////////////////////////////////////////////////
+	// Spell List
+	
+	[t:listbox,n:listbox_spells]
+	{
+		has_border = true;
+		border_color = 0;
+		alpha = 0.500000;
+		common_control = true;
+		common_template = ;
+		draw_order = 68000;
+		font_type = b_gui_fnt_12p_copperplate-light;				
+		rect = 144,184,241,427;
+		text_color = 0xffffffff;
+		texture = b_gui_cmn_textbox_bg;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		consumable = true;
+		rollover_select = true;
+
+		[t:selection_box,n:selection_box]
+		{
+			alpha = 0.5;
+			texture = b_gui_cmn_selection;
+		}
+		
+		[messages] { oncreated=setelementheight(15) & setvisible(false); onlbuttonup=notify(select_spell); }
+	}
+}

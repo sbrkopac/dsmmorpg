@@ -1,0 +1,65 @@
+[t:template,n:bubble_text]
+{
+	specializes = treasure;
+	doc = "Bubble Text";
+	
+	[aspect]
+	{
+		model = m_i_glb_object-party;
+		// is_usable = false;
+		// rollover_highlight = false;
+		// draw_selection_indicator = false;
+		force_no_render = true;
+		// use_range = -5.0;
+		
+		is_usable = true;
+		use_range = 5.0;
+	}
+	
+	[common]
+	{
+		screen_name = "";
+	}
+	
+	[follower]
+	{
+	}
+	
+	[gui]
+	{
+	}
+	
+	[physics]
+	{
+		gravity = 0;
+		sim_duration = 0;
+		elasticity = 0;
+	}
+}
+
+[t:template,n:bubble_name]
+{
+	specializes = bubble_text;
+	doc = "Bubble Text : Blue";
+	
+	[bubble]
+	{
+	}
+ 	[gui]
+ 	{
+ 		inventory_icon = b_t_alpha;
+		tooltip_color = "rare";
+ 	}
+}
+
+[t:template,n:bubble_speech]
+{
+	specializes = bubble_text;
+	doc = "Bubble Text : Speech";
+	
+ 	[gui]
+ 	{
+		inventory_icon = b_t_alpha;
+		tooltip_color = "rollover_ghost";
+ 	}
+}

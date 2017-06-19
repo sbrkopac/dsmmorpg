@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects>
+	<go id="101">
+		<aspect>
+			 <model value="great_sword_of_pwnage" />
+		</aspect>
+		<common>
+			<auto_expiration_class value="never" />
+			<forced_expiration_class value="auto" />
+			<screen_name value="sword of a thousand GPG pwnage" />
+		</common>
+		<placement region="1">
+			<position node="4053099924" x="0.000000" y="0.000000" z="2.000000" />
+		</placement>
+	</go>
+	<go id="102">
+		<aspect>
+			 <model value="great_sword_of_pwnage" />
+		</aspect>
+		<common>
+			<auto_expiration_class value="never" />
+			<forced_expiration_class value="auto" />
+			<screen_name value="sword of a thousand GPG pwnage" />
+		</common>
+		<placement region="1">
+			<position node="4053099924" x="0.000000" y="0.000000" z="-1.000000" />
+		</placement>
+	</go>
+	<go id="103">
+		<aspect>
+			 <model value="great_sword_of_pwnage" />
+		</aspect>
+		<common>
+			<auto_expiration_class value="never" />
+			<forced_expiration_class value="auto" />
+			<screen_name value="sword of a thousand GPG pwnage" />
+		</common>
+		<placement region="1">
+			<position node="4053099924" x="-2.000000" y="0.000000" z="0.000000" />
+		</placement>
+	</go>
+	<go id="104">
+		<aspect>
+			 <model value="special_armor" />
+		</aspect>
+		<common>
+			<auto_expiration_class value="never" />
+			<forced_expiration_class value="auto" />
+			<screen_name value="armor of a thousand GPG pwnage" />
+		</common>
+		<placement region="1">
+			<position node="4053099924" x="-1.000000" y="0.000000" z="-1.000000" />
+		</placement>
+	</go>
+	<go id="105">
+		<aspect>
+			 <model value="long_bow" />
+		</aspect>
+		<common>
+			<auto_expiration_class value="never" />
+			<forced_expiration_class value="auto" />
+			<screen_name value="long bow" />
+		</common>
+		<placement region="1">
+			<position node="4026581136" x="-1.000000" y="0.000000" z="-1.000000" />
+		</placement>
+	</go>
+	<go id="106">
+		<aspect>
+			 <model value="long_bow" />
+		</aspect>
+		<common>
+			<auto_expiration_class value="never" />
+			<forced_expiration_class value="auto" />
+			<screen_name value="long bow of a thousand GPG pwnage" />
+		</common>
+		<placement region="1">
+			<position node="4026581136" x="1.000000" y="0.000000" z="1.000000" />
+		</placement>
+	</go>
+</objects>

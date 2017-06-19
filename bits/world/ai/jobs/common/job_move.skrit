@@ -1,0 +1,170 @@
+/*
+  ============================================================================
+  ----------------------------------------------------------------------------
+
+	File		: 	job_move.skrit
+
+	Author(s)	: 	Bartosz Kijanka
+
+	Purpose		: 	Walk an actor over to a position.
+
+
+	(C)opyright 2000 Gas Powered Games, Inc.
+
+  ----------------------------------------------------------------------------
+  ============================================================================
+*/
+
+
+Go		m_Go$;
+GoMind	m_Mind$;
+GoBody  m_Body$;
+Job		m_Job$;
+
+#include "k_job_c_mcp_fidget_utils"
+
+startup state Startup$
+{
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+//	init
+event OnJobInitPointers$( Job job$ )
+{
+	m_Job$		= job$;
+	m_Go$		= job$.GetGo;
+	m_Mind$		= job$.GetGo.GetMind;
+	m_Body$		= job$.GetGo.GetBody;
+}
+
+
+event OnJobInit$( Job job$ )
+{
+	OnJobInitPointers$( job$ );
+
+	SetState Approaching$;
+}
+
+
+
+state Approaching$
+{
+	event OnEnterState$
+	{
+	   eReqRetCode ret$ = MCPManager.MakeRequest( m_Go$.Goid, PL_APPROACH, m_Job$.GoalPosition, m_Job$.Float1 );
+		
+		if (RequestFailed(ret$) && ( GetSiegeDistance(m_Go$.Placement.Position, m_Job$.GoalPosition ) > m_Job$.Float1+2.5 ))
+		{
+			ret$ = MCPManager.MakeRequest( m_Go$.Goid, PL_APPROACH, m_Job$.GoalPosition, m_Job$.Float1+1.5 );
+		}
+		
+		/*
+		if (RequestFailed(ret$) && ( GetSiegeDistance(m_Go$.Placement.Position, m_Job$.GoalPosition ) > m_Job$.Float1+4.0 ))
+		{
+			ret$ = MCPManager.MakeRequest( m_Go$.Goid, PL_APPROACH, m_Job$.GoalPosition, m_Job$.Float1+3.0 );
+		}
+		*/
+		
+		
+		report.reportf(	"aiskrit", "'%s' - job_move - PL_APPROACH [%s] returned '%s'\n",
+						m_Go$.TemplateName,
+						MakeSiegePosString(m_Job$.GoalPosition),
+						ToString(ret$) );
+
+  		if( RequestFailed(ret$) )
+		{
+			Report.reportf(	"aiskrit", "'%s' - job_move - FAILED could not get to target [%s]. Aborting job.\n",
+							m_Go$.TemplateName, MakeSiegePosString(m_Job$.GoalPosition) );
+			SetState( Failed$ );
+		} 
+		else if (ret$ == REQUEST_OK_IN_RANGE)
+		{
+			SetState( Arrived$ );
+		}
+		else if (ret$ == REQUEST_OK_BEYOND_RANGE)
+		{
+			SetState( MovingCloser$ );
+		}
+		else 
+		{
+			SetState( Walking$ );
+		}
+	}
+}
+
+state MovingCloser$
+{
+	transition
+	{
+		// For some reason we could not reach the target in one move request, will need to 
+		// approach again when we finish
+		-> Approaching$:	OnWorldMessage( WE_MCP_SECTION_COMPLETED );
+		-> Approaching$:    OnWorldMessage( WE_ANIM_DONE );
+		-> Failed$:			OnWorldMessage( WE_REQ_JOB_END );			// Why would we get this --biddle
+		-> Failed$:			OnWorldMessage( WE_MCP_DEPENDANCY_BROKEN );	// path blockage
+		-> Failed$:			OnWorldMessage( WE_MCP_NODE_BLOCKED );		// path blockage
+		// Don't send a new request on a warning --biddle
+		//-> Approaching$:   	OnWorldMessage( WE_MCP_SECTION_COMPLETE_WARNING );
+		-> Approaching$:   	OnWorldMessage( WE_MCP_SECTION_COMPLETED );
+	}
+}
+
+state Walking$
+{
+	transition
+	{
+		// We are switching to the fidget that is automatic upon arrival
+		-> Arrived$:	OnWorldMessage( WE_MCP_SECTION_COMPLETED );
+		-> Arrived$:    OnWorldMessage( WE_ANIM_DONE );
+		-> Arrived$:	OnWorldMessage( WE_REQ_JOB_END );
+		-> Failed$:		OnWorldMessage( WE_MCP_DEPENDANCY_BROKEN );	// path blockage
+		-> Failed$:		OnWorldMessage( WE_MCP_NODE_BLOCKED );		// path blockage
+	}
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+//	
+state Failed$
+{
+	event OnEnterState$
+	{		
+		Report.reportf(	"aiskrit", "'%s' - job_move - failed.\n", m_Go$.TemplateName );
+
+		if( m_Job$.GoalOrientation.IsValid )
+		{
+			SiegeRot orient$	= SiegeRot.MakeDefault();
+			orient$.rot 		= m_Job$.GoalOrientation;
+			orient$.node 		= m_Job$.GoalPosition.node;
+			eReqRetCode ret$ 	= MCPManager.MakeRequest( m_Go$.Goid, PL_FACE, orient$ );
+		}
+
+		if ( m_Go$.IsScreenPartyMember() && m_Job$.GetOrigin() == AO_HUMAN )
+		{
+			// If this is a player's party member, let them know it is an invalid path.
+			m_Go$.PlayVoiceSound( "order_cant_move", false );
+		}
+		m_Job$.MarkForDeletion( JR_FAILED_NO_PATH );
+	}
+}
+
+
+state Arrived$
+{
+	event OnEnterState$
+	{
+		Report.reportf(	"aiskrit", "'%s' - job_move - arrived.\n", m_Go$.TemplateName );
+
+		if (m_Job$.GoalOrientation.IsValid)
+		{
+			SiegeRot orient$ = SiegeRot.MakeDefault();
+			orient$.rot = m_Job$.GoalOrientation;
+			orient$.node = m_Job$.GoalPosition.node;
+			eReqRetCode ret$ = MCPManager.MakeRequest( m_Go$.Goid, PL_FACE, orient$ );
+		}
+		m_Job$.MarkForDeletion();
+	}
+}
+
+

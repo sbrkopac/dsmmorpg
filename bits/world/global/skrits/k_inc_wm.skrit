@@ -1,0 +1,54 @@
+
+wm_oncreated$ (string interface$)
+{
+	UIWindow bar$ = UIShell.FindUIWindow ("wm_drag", interface$);
+	
+	if (bar$ == NULL)
+	{
+		return;
+	}
+	
+	//UIShell.ShiftInterface (interface$, dsdll.reatinterfacepositionx(), dsdll.readinterfacepositiony());
+	// if (dsdll.isvisible(interface$)) UIShell.ShowInterface (interface$);
+}
+
+wm_ondestroyed$ (string interface$)
+{
+	UIWindow bar$ = UIShell.FindUIWindow ("wm_drag", interface$);
+	
+	if (bar$ == NULL)
+	{
+		return;
+	}
+	
+	// dsdll.storeinterfacepositionandvisibilitytofile (interface$, bar$.Rect.GetLeft(), bar$.Rect.GetTop(), UIShell.IsInterfaceVisible (interface$));
+}
+
+wm_ondrag$ (string interface$)
+{
+	UIWindow bar$ = UIShell.FindUIWindow ("wm_drag", interface$);
+	
+	if (bar$ == NULL)
+	{
+		return;
+	}
+	
+	string tmp$; StringTool.AssignF (tmp$, "ui:interfaces:%s:", interface$);
+	
+	int delta_x$ = bar$.Rect.GetLeft() - GameAuditor.GetDb.GetInt (tmp$ + "x");
+	int delta_y$ = bar$.Rect.GetTop() - GameAuditor.GetDb.GetInt (tmp$ + "y");
+	
+	UIWindowVec children$ = bar$.Children;
+	
+	int i$ = 0;
+	while (i$ < children$.Size())
+	{
+		UIWindow child$ = children$.Get (i$);
+		child$.SetRect (child$.Rect.GetLeft() + delta_x$, child$.Rect.GetRight() + delta_x$, child$.Rect.GetTop() + delta_y$, child$.Rect.GetBottom() + delta_y$, false);
+		
+		i$ += 1;
+	}
+	
+	GameAuditor.GetDb.SetInt (tmp$ + "x", bar$.Rect.GetLeft());
+	GameAuditor.GetDb.SetInt (tmp$ + "y", bar$.Rect.GetTop());
+}

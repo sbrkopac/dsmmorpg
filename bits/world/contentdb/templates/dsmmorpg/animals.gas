@@ -1,0 +1,72 @@
+[t:template,n:firebat]
+{
+	category_name = "3W_ambients";
+	doc = "3W_bat";
+	specializes = actor_good;
+	[actor] { race=other; }
+	[aspect]
+	{
+		draw_shadow = false;
+		model = m_c_na_bt_pos_1;
+		is_selectable = true;
+	}
+	[body]
+	{
+		avg_move_velocity = 3.000000;
+		[bone_translator]
+		{
+			body_anterior = root_bone;
+			body_mid = root_bone;
+			body_posterior = root_bone;
+			kill_bone = root_bone;
+			shield_bone = lt_upper;
+			weapon_bone = rt_upper;
+		}
+		[chore_dictionary]
+		{
+			chore_prefix = a_c_na_bt_fs;
+			[chore_attack]
+			{
+				chore_stances = 0;
+				skrit = select_attack;
+				[anim_files] { 00=fl-02; }
+			}
+			[chore_default]
+			{
+				chore_stances = 0;
+				skrit = infinite_loop;
+				[anim_files] { 00=ds; }
+			}
+			[chore_die]
+			{
+				chore_stances = 0;
+				skrit = select_transition;
+				[anim_files] { 00=fl-02; }
+			}
+			[chore_fidget]
+			{
+				chore_stances = 0;
+				skrit = select_fidget;
+				[anim_files]
+				{
+					00 = dsf;
+					01 = dsf-02;
+				}
+			}
+			[chore_walk]
+			{
+				chore_stances = 0;
+				skrit = select_fidget;
+				[anim_files]
+				{
+					00 = fl;
+					01 = fl-02;
+				}
+			}
+		}
+	}
+	[common] { screen_name="Bat"; }
+	[object]
+	{
+	}
+}

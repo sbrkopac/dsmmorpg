@@ -1,0 +1,29 @@
+
+property float total_power$;
+property float item_power_min$;
+property float item_power_max$;
+property float item_power$;
+property Goid item_goid$;
+property ePContentType item_specific_type$;
+property string item_subtype$;
+property string item_length$;
+property string item_material$;
+property bool item_two_handed$;
+property bool item_is_normal$;
+property bool item_is_rare$;
+property bool item_is_unique$;
+property float modifier_count$;
+property float modifier_power$;
+property float modifier_power_0$;
+property float modifier_power_1$;
+
+float calc_item_power$(ePContentType){return 0;}
+int calc_modifier_count$(ePContentType){return 0;}
+float calc_modifier_power$(ePContentType){return 0;}
+float calc_modifier_biased_power$(ePContentType){return 0;}
+float calc_item_power_fuzziness$(ePContentType){return 0;}
+float calc_modifier_power_fuzziness$(ePContentType){return 0;}
+ePContentType calc_general_type${return PT_INVALID;}
+ePContentType calc_armor_coverage$(ePContentType){return PT_INVALID;}
+float CalcModifierGoldValue$(ePContentType,float,float){return 0;}
+int calc_gold_value$(ePContentType){return 0;}

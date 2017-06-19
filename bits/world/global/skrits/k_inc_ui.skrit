@@ -1,0 +1,37 @@
+
+
+bool DisplayMessage$ (string text$)
+{
+	UIWindow window$ = UIShell.FindUIWindow ("text_box_message", "message_box_large");
+	UITextBox tBox$ = QueryDerivedTextBox (window$);
+	
+	if (tBox$ == NULL)
+	{
+		report.messagebox ("null");
+		return false;
+	}
+	tBox$.text = text$;
+	tBox$.visible = true;
+	
+	UIShell.ActivateInterface ("ui:interfaces:multiplayer:message_box_large", true);
+		
+	return true;
+}
+bool SetUIWindowState$ (string name$, string interface$, bool visible$, bool enabled$)
+{
+	if (StringTool.IsEmpty (name$) || StringTool.IsEmpty (interface$))
+	{
+		return false;
+	}
+	
+	UIWindow window$ = UIShell.FindUIWindow (name$, interface$);
+	if (window$ == NULL)
+	{
+		return false;
+	}
+	
+	window$.SetVisible (visible$);
+	window$.SetEnabled (enabled$);
+	
+	return true;
+}

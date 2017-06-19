@@ -1,0 +1,308 @@
+/*
+ *  This file is part of dsmmorpg.
+ *  
+ *  dsmmorpg is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  dsmmorpg is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU General Public License
+ *  along with dsmmorpg.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+[staging_area_create_character]
+{
+	interface = true;
+
+	skrit = [[
+
+		owner = UIWindow;
+		
+		#include "k_inc_ui"
+		#include "k_inc_rs_packet"
+		
+		poll$()
+		{
+			bool transition$ = false;
+			
+			if (NetworkManager.IsConnected())
+			{
+				int received$ = NetworkManager.Receive();
+				if (received$ > 0)
+				{
+					Packet packet$ = NetworkManager.NextPacket();
+					
+					int type$ = packet$.ReadUInt8();
+					if (type$ == 1)
+					{
+						int success$ = packet$.ReadUInt8();
+						if (success$ == 0)
+						{
+							SetUIWindowState$ ("login_ok", "staging_area_create_character", true, true);
+							SetUIWindowState$ ("account_name_edit_box", "staging_area_create_character", true, true);
+							SetUIWindowState$ ("password_edit_box", "staging_area_create_character", true, true);
+							
+							DisplayMessage$ ("Incorrent Username or Password");
+						}
+						else
+						{
+							transition$ = true;
+						}
+					}
+					
+					NetworkManager.DiscardPacket (packet$);
+				}
+			}
+			
+			if (transition$ == true)
+			{
+				string rnd$ = GenerateRandomString (64);
+				QueryDerivedEditBox (UIShell.FindUIWindow ("staging_char_name_edit_box", "staging_area_create_character")).SetText (rnd$);
+				
+				Player player$ = Server.LocalHumanPlayer;
+				
+				Messenger.Notify ("staging_create_character_ok", owner);
+				Messenger.Notify ("staging_start_game", owner);
+				
+				if (player$ != NULL)
+				{
+					player$.RSSetHeroCloneSourceTemplate ("portal");
+					// RSSetHeroHead
+					player$.RSSetHeroSkin (MakePlayerSkin (0), "b_c_gah_fg_skin_002,b_c_gah_fg_hair_001");
+					player$.RSSetHeroSkin (MakePlayerSkin (1), "b_c_pos_a1_pant_006,b_c_pos_a1_shrt_009");
+					report.screen ("SET SUCCESSFULLY!");
+					
+					UICharacterSelect.RSGeneratePortrait (player$.Id);
+				}
+			}
+			else
+			{
+				// keep polling
+				UIWindow window$ = UIShell.FindUIWindow ("timer01", "staging_area_create_character");
+				window$.ProcessAction (action_alphaanimation, "1,0,0");
+			}
+		}
+		
+		login$()
+		{
+			UIWindow blocked$ = UIShell.FindUIWindow ("login_ok", "staging_area_create_character");
+			if (blocked$.IsEnabled != true)
+			{
+				return;
+			}
+			
+			string username$; QueryDerivedEditBox (UIShell.FindUIWindow ("account_name_edit_box", "staging_area_create_character")).GetText(username$);
+			string password$; QueryDerivedEditBox (UIShell.FindUIWindow ("password_edit_box", "staging_area_create_character")).GetText(password$);
+			if (StringTool.IsEmpty (username$) || StringTool.IsEmpty (password$))
+			{
+				DisplayMessage$ ("Please enter a username and password");
+				return;
+			}
+			
+			SetUIWindowState$ ("login_ok", "staging_area_create_character", true, false);
+			SetUIWindowState$ ("account_name_edit_box", "staging_area_create_character", true, false);
+			SetUIWindowState$ ("password_edit_box", "staging_area_create_character", true, false);
+			
+			RSRequestAuthentication$ (username$, password$);
+		}
+		
+		onescape$()
+		{
+			if (NetworkManager.IsConnected())
+			{
+				NetworkManager.Disconnect();
+			}
+			
+			Messenger.Notify ("staging_create_character_cancel", owner);
+		}
+	]];
+	
+	[t:window,n:timer01]
+	{
+		[messages]
+		{
+			onshow = alphaanimation(1.0,0.0,0.0);
+			onanimcomplete = call (poll$);
+		}
+	}
+	
+	[t:text,n:account_name_text]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 68;
+		font_color = 0;
+		font_size = 12;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		rect = 560,70,780,86;
+		text = "Account Name";
+		texture = none;
+		type = text;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:dialog_box,n:accountname_background]
+	{
+		alpha = 1.000000;
+		common_control = true;
+		common_template = cpbox;
+		draw_order = 2;
+		rect = 560,90,780,114;
+		texture = none;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:edit_box,n:account_name_edit_box]
+	{
+		alpha = 1.000000;
+		clear_select = false;
+		common_control = false;
+		common_template = ;
+		draw_order = 6;
+		font_color = -1;
+		font_size = 12;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		max_string_size = 14;
+		permanent_focus = false;
+		rect = 564,94,776,110;
+		tab_stop = 0;
+		text = ;
+		texture = none;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		excluded_chars = [["<>:/\|?*.%;]];
+		max_pixels = 155;
+		has_pixel_limit = true;
+		[messages]
+		{
+			onenter = call (login$);
+			onescape = call (onescape$);
+		}
+		[prompt]
+		{
+			texture = b_gui_fe_m_single_prompt;
+			width = 1;
+		}
+	}
+
+	[t:text,n:password_text]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 68;
+		font_color = 0;
+		font_size = 12;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = left;
+		rect = 560,120,780,136;
+		text = "Password";
+		texture = none;
+		type = text;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:dialog_box,n:password_background]
+	{
+		alpha = 1.000000;
+		common_control = true;
+		common_template = cpbox;
+		draw_order = 2;
+		rect = 560,140,780,164;
+		texture = none;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:edit_box,n:password_edit_box]
+	{
+		alpha = 1.000000;
+		clear_select = false;
+		common_control = false;
+		common_template = ;
+		draw_order = 6;
+		font_color = -1;
+		font_size = 12;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		max_string_size = 14;
+		permanent_focus = false;
+		rect = 564,144,776,160;
+		tab_stop = 1;
+		text = ;
+		texture = none;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		excluded_chars = [["<>:/\|?*.%;]];
+		max_pixels = 155;
+		has_pixel_limit = true;
+		[messages]
+		{
+			onenter = call (login$);
+			onescape = call (onescape$);
+		}
+		[prompt]
+		{
+			texture = b_gui_fe_m_single_prompt;
+			width = 1;
+		}
+	}
+	
+	[t:button,n:login_ok]
+	{
+		alpha = 1.000000;
+		common_control = true;
+		common_template = button_4;
+		draw_order = 18;
+		rect = 630,193,780,209;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		disable_color = 0x99555555;
+		[t:text,n:login_ok_text]
+		{
+			alpha = 1.000000;
+			common_control = false;
+			common_template = ;
+			draw_order = 68;
+			font_color = -1;
+			font_size = 12;
+			font_type = b_gui_fnt_12p_copperplate-light;
+			justify = center;
+			rect = 544,283,650,297;
+			text = "Login";
+			texture = none;
+			type = text;
+			uvcoords = 0.000000,0.000000,1.000000,1.000000;
+			wrap_mode = clamp;
+		}
+		[messages]
+		{
+			onbuttonpress = call (login$);
+		}
+	}
+	
+	[t:edit_box,n:staging_char_name_edit_box]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		font_color = -1;
+		font_size = 12;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		rect = 10564,10094,10776,10110;
+		text = ;
+		texture = none;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		excluded_chars = [["<>:/\|?*.%;]];
+		[prompt]
+		{
+			texture = b_gui_fe_m_single_prompt;
+			width=1;
+		}
+	}
+}

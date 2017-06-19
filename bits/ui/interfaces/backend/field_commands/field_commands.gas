@@ -1,0 +1,306 @@
+[field_commands]
+{
+	interface = true;
+	
+	[t:window,n:timer01]
+	{
+		[messages]
+		{
+			oncreated = command (UIShell.ShiftInterface ("field_commands", 10000, 10000));
+		}
+	}
+	
+	[t:checkbox,n:button_follow]
+	{
+	  f alpha = 1.000000;		
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 88;
+		group = fc_max;
+		is_bottom_anchor = true;
+		is_right_anchor = true;
+		rect = 519,284,563,308;
+		right_anchor = 69;
+		bottom_anchor = 99;
+		rollover_help = follow_on;
+		texture = b_gui_ig_mnu_follow_on_up;
+		uvcoords = 0.000000,0.250000,0.687500,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:radio_button,n:button_formation_circle]
+	{
+	  f alpha = 1.000000;
+		bottom_anchor = 99;
+	  b common_control = false;
+		common_template = ;
+		consumable = true;
+	  x draw_order = 30;
+		group = formations;
+		is_bottom_anchor = true;
+		is_right_anchor = true;
+		radio_group = radio_formations;
+		rect = 547,401,572,425;
+		right_anchor = 93;
+		rollover_help = formation_circle;
+		texture = b_gui_ig_mnu_form7_up;
+		uvcoords = 0.000000,0.250000,0.781250,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:radio_button,n:button_formation_column]
+	{
+	  f alpha = 1.000000;
+		bottom_anchor = 99;
+	  b common_control = false;
+		common_template = ;
+		consumable = true;
+	  x draw_order = 26;
+		group = formations;
+		is_bottom_anchor = true;
+		is_right_anchor = true;
+		radio_group = radio_formations;
+		rect = 475,401,500,425;
+		right_anchor = 165;
+		rollover_help = formation_column;
+		texture = b_gui_ig_mnu_form3_up;
+		uvcoords = 0.000000,0.250000,0.781250,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:radio_button,n:button_formation_double_column]
+	{
+	  f alpha = 1.000000;
+		bottom_anchor = 99;
+	  b common_control = false;
+		common_template = ;
+		consumable = true;
+	  x draw_order = 27;
+		group = formations;
+		is_bottom_anchor = true;
+		is_right_anchor = true;
+		radio_group = radio_formations;
+		rect = 499,401,524,425;
+		right_anchor = 141;
+		rollover_help = formation_double_column;
+		texture = b_gui_ig_mnu_form4_up;
+		uvcoords = 0.000000,0.250000,0.781250,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:radio_button,n:button_formation_double_row]
+	{
+	  f alpha = 1.000000;
+		bottom_anchor = 99;
+	  b common_control = false;
+		common_template = ;
+		consumable = true;
+	  x draw_order = 25;
+		group = formations;
+		is_bottom_anchor = true;
+		is_right_anchor = true;
+		radio_group = radio_formations;
+		rect = 452,401,477,425;
+		right_anchor = 188;
+		rollover_help = formation_double_row;
+		texture = b_gui_ig_mnu_form2_up;
+		uvcoords = 0.000000,0.250000,0.781250,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:radio_button,n:button_formation_pyramid]
+	{
+	  f alpha = 1.000000;
+		bottom_anchor = 99;
+	  b common_control = false;
+		common_template = ;
+		consumable = true;
+	  x draw_order = 29;
+		group = formations;
+		is_bottom_anchor = true;
+		is_right_anchor = true;
+		radio_group = radio_formations;
+		rect = 523,401,548,425;
+		right_anchor = 117;
+		rollover_help = formation_pyramid;
+		texture = b_gui_ig_mnu_form6_dwn;
+		uvcoords = 0.000000,0.250000,0.781250,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:radio_button,n:button_formation_row]
+	{
+	  f alpha = 1.000000;
+		bottom_anchor = 99;
+	  b common_control = false;
+		common_template = ;
+		consumable = true;
+	  x draw_order = 24;
+		group = formations;
+		is_bottom_anchor = true;
+		is_right_anchor = true;
+		radio_group = radio_formations;
+		rect = 428,401,453,425;
+		right_anchor = 212;
+		rollover_help = formation_row;
+		texture = b_gui_ig_mnu_form1_up;
+		uvcoords = 0.000000,0.250000,0.781250,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:radio_button,n:radio_button_attack_fightback]
+	{
+	  f alpha = 1.000000;
+	  i bottom_anchor = 130;
+	  b common_control = true;
+		common_template = crystal;
+	  x draw_order = 136;
+		group = fc_max;
+	  b is_bottom_anchor = true;
+	  b is_right_anchor = true;
+		radio_group = radio_attack;
+		rect = 587,370,599,383;
+	  i right_anchor = 53;
+		rollover_help = attack_fightback;
+		texture = b_gui_cmn_crystal_off_up;
+		uvcoords = 0.000000,0.187500,0.812500,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:radio_button,n:radio_button_attack_free]
+	{
+	  f alpha = 1.000000;
+	  i bottom_anchor = 130;
+	  b common_control = true;
+		common_template = crystal;
+	  x draw_order = 135;
+		group = fc_max;
+	  b is_bottom_anchor = true;
+	  b is_right_anchor = true;
+		radio_group = radio_attack;
+		rect = 574,370,586,383;
+	  i right_anchor = 66;
+		rollover_help = attack_free;
+		texture = b_gui_cmn_crystal_off_up;
+		uvcoords = 0.000000,0.187500,0.812500,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:radio_button,n:radio_button_attack_holdfire]
+	{
+	  f alpha = 1.000000;
+	  i bottom_anchor = 130;
+	  b common_control = true;
+		common_template = crystal;
+	  x draw_order = 107;
+		group = fc_max;
+	  b is_bottom_anchor = true;
+	  b is_right_anchor = true;
+		radio_group = radio_attack;
+		rect = 600,370,612,383;
+	  i right_anchor = 40;
+		rollover_help = attack_holdfire;
+		texture = b_gui_cmn_crystal_off_up;
+		uvcoords = 0.000000,0.187500,0.812500,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:radio_button,n:radio_button_movement_engage]
+	{
+	  f alpha = 1.000000;
+	  i bottom_anchor = 146;
+	  b common_control = true;
+		common_template = crystal;
+	  x draw_order = 110;
+		group = fc_max;
+	  b is_bottom_anchor = true;
+	  b is_right_anchor = true;
+		radio_group = radio_movement;
+		rect = 587,354,599,367;
+	  i right_anchor = 53;
+		rollover_help = movement_engage;
+		texture = b_gui_cmn_crystal_off_up;
+		uvcoords = 0.000000,0.187500,0.812500,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:radio_button,n:radio_button_movement_free]
+	{
+	  f alpha = 1.000000;
+	  i bottom_anchor = 146;
+	  b common_control = true;
+		common_template = crystal;
+	  x draw_order = 122;
+		group = fc_max;
+	  b is_bottom_anchor = true;
+	  b is_right_anchor = true;
+		radio_group = radio_movement;
+		rect = 574,354,586,367;
+	  i right_anchor = 66;
+		rollover_help = movement_free;
+		texture = b_gui_cmn_crystal_off_up;
+		uvcoords = 0.000000,0.187500,0.812500,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:radio_button,n:radio_button_movement_holdground]
+	{
+	  f alpha = 1.000000;
+	  i bottom_anchor = 146;
+	  b common_control = true;
+		common_template = crystal;
+	  x draw_order = 109;
+		group = fc_max;
+	  b is_bottom_anchor = true;
+	  b is_right_anchor = true;
+		radio_group = radio_movement;
+		rect = 600,354,612,367;
+	  i right_anchor = 40;
+		rollover_help = movement_holdground;
+		texture = b_gui_cmn_crystal_off_up;
+		uvcoords = 0.000000,0.187500,0.812500,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:radio_button,n:radio_button_target_closest]
+	{
+	  f alpha = 1.000000;
+	  i bottom_anchor = 114;
+	  b common_control = true;
+		common_template = crystal;
+	  x draw_order = 151;
+		group = fc_max;
+	  b is_bottom_anchor = true;
+	  b is_right_anchor = true;
+		radio_group = radio_targeting;
+		rect = 574,386,586,399;
+	  i right_anchor = 66;
+		rollover_help = target_closest;
+		texture = b_gui_cmn_crystal_off_up;
+		uvcoords = 0.000000,0.187500,0.812500,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:radio_button,n:radio_button_target_strongest]
+	{
+	  f alpha = 1.000000;
+	  i bottom_anchor = 114;
+	  b common_control = true;
+		common_template = crystal;
+	  x draw_order = 154;
+		group = fc_max;
+	  b is_bottom_anchor = true;
+	  b is_right_anchor = true;
+		radio_group = radio_targeting;
+		rect = 587,386,599,399;
+	  i right_anchor = 53;
+		rollover_help = target_strongest;
+		texture = b_gui_cmn_crystal_off_up;
+		uvcoords = 0.000000,0.187500,0.812500,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:radio_button,n:radio_button_target_weakest]
+	{
+	  f alpha = 1.000000;
+	  i bottom_anchor = 114;
+	  b common_control = true;
+		common_template = crystal;
+	  x draw_order = 151;
+		group = fc_max;
+	  b is_bottom_anchor = true;
+	  b is_right_anchor = true;
+		radio_group = radio_targeting;
+		rect = 600,386,612,399;
+	  i right_anchor = 40;
+		rollover_help = target_weakest;
+		texture = b_gui_cmn_crystal_off_up;
+		uvcoords = 0.000000,0.187500,0.812500,1.000000;
+		wrap_mode = clamp;
+	}
+}

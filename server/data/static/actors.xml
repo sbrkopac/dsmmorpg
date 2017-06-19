@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+	<template template_name="humangirl">
+		<actor strength="8" />
+		<aspect model="humangirl" flesh="b_c_gah_fg_skin_002,b_c_gah_fg_hair_001" cloth="b_c_pos_a1_pant_006,b_c_pos_a1_shrt_009" />
+		<inventory>
+			<item template_name="sword_of_a_thousand_gpg_pwnage" equip_slot="es_weapon_hand" />
+		</inventory>
+		<scripts>
+			<test_script>
+				<variable name="j00kie" type="int" value="500" />
+			</test_script>
+		</scripts>
+	</template>
+	<template template_name="bat">
+		<actor strength="6" dexterity="4" intelligence="2" charisma="15" wisdom="5" constitution="4" />
+		<aspect model="firebat" visible="true" />
+		<common name="bat" description="yet another j00kie dude" />
+		<mind />
+		<inventory />
+		<placement />
+	</template>
+</templates>

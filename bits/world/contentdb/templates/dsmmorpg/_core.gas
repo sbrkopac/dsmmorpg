@@ -1,0 +1,98 @@
+/*
+	In my mind's eye, I see... a bunch of skrit code.
+*/
+
+[t:template,n:playable]
+{
+	doc = "This is a hero that the actor can choose at the start of game";
+	specializes = actor_good;
+	[actor]
+	{
+		[skills]
+		{
+		}
+	}
+	[aspect]
+	{
+	}
+	[attack]
+	{
+	}
+	[guts_manager]
+	{
+		effect_name = melee_hit_2;
+	}
+	[object]
+	{
+	}
+	[common]
+	{
+		auto_expiration_class = never;
+		forced_expiration_class = never;
+	}
+	[inventory]
+	{
+	}
+	[mind]
+	{
+		jat_get = world\ai\jobs\dsmmorpg\job_get.skrit;
+		jat_move = world\ai\jobs\dsmmorpg\job_move.skrit;
+		jat_brain = world\ai\jobs\dsmmorpg\job_nothing.skrit;
+		jat_follow = world\ai\jobs\dsmmorpg\job_nothing.skrit;
+	}
+
+	[physics]
+	{
+		fire_effect = human_physics_fire;
+        fire_resistance = 0.0;
+        fire_burn_threshold = 999;
+        elasticity = 0.2;
+	}
+}
+
+/*
+{
+	specializes = actor;
+
+	[attack]
+	{
+		ammo_attach_bone = weapon_grip;
+		attack_range = 0.5;
+		reload_delay = 0;
+	}
+
+	[common]
+	{
+		forced_expiration_class = never;
+		auto_expiration_class = never;
+	}
+
+	[guts_manager]
+	{
+		effect_name = melee_hit_2;
+	}
+
+	[object]
+	{
+	}
+
+	[inventory]
+	{
+		grid_height = 13;
+		grid_width = 4;
+	}
+
+	[mind]
+	{
+		jat_move = world\ai\jobs\common\job_move.skrit;
+	}
+
+	[physics]
+	{
+		fire_effect = human_physics_fire;
+        fire_resistance = 0.0;
+        fire_burn_threshold = 999;
+        elasticity = 0.2;
+	}
+}
+*/

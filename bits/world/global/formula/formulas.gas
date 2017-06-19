@@ -1,0 +1,396 @@
+///////////////////////////////////////////////////////////////////////////////
+//	combat_constants
+//
+//	This block contains values/coefficients used in combat related formulas
+//	for calculating how much damage to take, whether or not a hit was a success
+//	and other stuff of the like.
+//
+
+[combat_constants]
+{
+	//
+	// Attack/defend rating coefficients
+	//
+	// rating = (skill_scalar * skill_level) + (dex_scalar * dex) + (int_scalar * int);
+
+	[attack_rating]	{	skill_scalar = 0.45; dex_scalar = 0.55; int_scalar = 0.15; }
+	[defend_rating]	{	skill_scalar = 0.45; dex_scalar = 0.55; int_scalar = 0.15; }
+
+	// Variables related to determing whether or not one go was successfull in
+	// landing a hit on a defending go
+	hit_chance				=	50.0;
+	attacker_diff_scalar	=	2.1;
+	victim_diff_scalar		=	2.1;
+	attacker_hit_cap		=	95.0;
+	defender_hit_cap		=	5.0;
+
+	// Death threshold is used to determine how far below zero character life can
+	// go before the character goes from being unconscious to dead
+	death_threshold			=	0.66;
+
+	// Radius of sphere check for when a character is unconscious and has healed
+	// through natural recovery - if there is an enemy within this sphere then
+	// the character will continue to lie on the ground until threat is gone
+	enemy_near_sphere		=	8.0;
+
+	// Minimum amount of time that a character will stay unconscious regardless of
+	// how close to zero the character is when he went unconscious
+	min_unconscious_duration=	5.0;
+
+	// Armor scalar is used for tuning amount of damage that is done with regard
+	// to the amount of armor the victim has
+	armor_scalar			=	1.0;
+
+	// Aiming error calculation constants for ranged combat
+	// error_*((100 - ATan( (dex_*Dexterity + int_*Intelligence + skill_*Skill_level)/14.7 )*63)/100);
+	error_scalar	=	4.0;	// +/- amount of error in degrees
+	dex_scalar		=	0.35;
+	int_scalar		=	0.10;
+	skill_scalar	=	0.55;
+
+	// Difficulty level multipliers - damage done from attackers perspective
+	difficulty_easy_player	 	=	1.35;
+	difficulty_easy_computer  	=	0.5;
+
+	difficulty_medium_player	=	1.0;
+	difficulty_medium_computer	=	1.0;
+
+	difficulty_hard_player	 	=	0.85;
+	difficulty_hard_computer 	=	1.45;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+//	recalculation_constants
+//
+//	Only actors that level up use these recovery rates otherwise there could be
+//	a problem where a monsters was knocked unconscious instead of dying
+
+[recalculation_constants]
+{
+	// If any attribute is greater than 10 then 9 points are subtracted before
+	// performing this calculation:
+	// max_life = (str * str_percent * constant) + (dex * dex_percent * constant )
+	//			+ (int * int_percent * constant ) + max_life_base
+	max_life_base			= 0.0;
+	max_life_constant		= 14.0;
+	max_life_str_percent	= 2.1;
+	max_life_dex_percent	= 0.7;
+	max_life_int_percent	= 0.7;
+
+	// max_mana = (str-9 * str_percent * constant) + (dex-9 * dex_percent * constant)
+	//			+ (int-9 * int_percent * constant) + max_mana_base
+	max_mana_base			= 0.0;
+	max_mana_constant		= 1.0;
+	max_mana_str_percent	= 1.0;
+	max_mana_dex_percent	= 4.0;
+	max_mana_int_percent	= 25.0;
+
+	// Period before synchronizing mana and life according from the server to all clients
+	sync_period				= 5.0;
+	sync_random				= 1.0;	// +/- amount to add to sync_period when resetting for a go
+}
+
+///////////////////////////////////////////////////////////////////////////////
+//	pack_constants
+//
+// 	Pack animal/person related - takes the sum of all the actors skills in the
+//	party and averages them together. The average of each skill is then
+//	multiplied by the corresponding influence and then the pack animal/person's
+//	attribute is set to that value
+
+[pack_constants]
+{
+	strength_influence		=	0.9;
+	intelligence_influence	=	0.2;
+	dexterity_influence		=	1.5;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+//	actor_skills
+//
+//	Defines characteristics of character skills in the game - all skills are
+//	based off of the amount of experience the character has received from killing
+//	monsters.
+//
+//	Level is determined from the specified xp_table
+//
+
+[actor_skills]
+{
+	//
+	//	Basic skills
+	//
+
+	[skill*] { name	= "Uber"; }
+
+	[skill*] { name	= "Strength";		max_level = 180; }
+	[skill*] { name	= "Intelligence"; 	max_level = 180; }
+	[skill*] { name	= "Dexterity"; 		max_level = 180; }
+
+	//
+	//	Combat skills
+	//
+	//	Depending on how a monster/actor was attacked the weapon/spell used improves
+	//	the combat skills below which also effect the innate skills of the character
+	//	by redistributing a specified percentage of the experience attained.
+	//
+
+	[skill*]
+	{
+		name	= "Melee";
+		screen_name	= "Fighter";
+
+		max_level = 180;
+
+	 	str_influence = 0.64;
+	 	dex_influence = 0.27;
+	 	int_influence = 0.09;
+
+		[level_up_indicator*] {	level_range	= 1-5;		script	= melee_up_locked1, bip01; }
+		[level_up_indicator*] { level_range	= 6-10;		script	= melee_up_locked2, bip01; }
+		[level_up_indicator*] {	level_range	= 11-20;	script	= melee_up_locked3, bip01; }
+		[level_up_indicator*] {	level_range	= 21-250;	script	= melee_up_locked4, bip01; }
+	}
+
+	[skill*]
+	{
+		name	= "Ranged";
+		screen_name	= "Archer";
+
+		max_level = 180;
+
+		str_influence = 0.25;
+		dex_influence = 0.62;
+		int_influence = 0.13;
+
+		[level_up_indicator*] { level_range	= 1-5;		script = ranged_up_locked1, bip01; }
+		[level_up_indicator*] { level_range	= 6-10;		script = ranged_up_locked2, bip01; }
+		[level_up_indicator*] { level_range	= 11-20;	script = ranged_up_locked3, bip01; }
+		[level_up_indicator*] { level_range	= 21-250;	script = ranged_up_locked4, bip01; }
+	}
+
+	[skill*]
+	{
+		name	= "Nature Magic";
+		screen_name	= "Nature Mage";
+
+		max_level = 180;
+
+		str_influence = 0.09;
+		dex_influence = 0.18;
+		int_influence = 0.73;
+
+		[level_up_indicator*] {	level_range	= 1-5;		script = gmagic_up_locked1, bip01; }
+		[level_up_indicator*] {	level_range	= 6-10;		script = gmagic_up_locked2, bip01; }
+		[level_up_indicator*] {	level_range	= 11-20;	script = gmagic_up_locked3, bip01; }
+		[level_up_indicator*] {	level_range	= 21-250;	script = gmagic_up_locked4, bip01; }
+	}
+
+	[skill*]
+	{
+		name	= "Combat Magic";
+		screen_name	= "Combat Mage";
+
+		max_level = 180;
+
+		str_influence = 0.13;
+		dex_influence = 0.17;
+		int_influence = 0.7;
+
+		[level_up_indicator*] {	level_range	= 1-5;		script = dmagic_up_locked1, bip01; }
+		[level_up_indicator*] {	level_range	= 6-10;		script = dmagic_up_locked2, bip01; }
+		[level_up_indicator*] {	level_range	= 11-20;	script = dmagic_up_locked3, bip01; }
+		[level_up_indicator*] {	level_range	= 21-250;	script = dmagic_up_locked4, bip01; }
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+//  experience_table
+//
+//	Contains experience values for each level starting at 0 to max
+//
+
+[experience_table]
+{
+	* = [[	0,70,650,1450,2350,3350,4650,6650,9450,12950,17100,22000,27800,
+			34300,41300,49191,58327,68882,81054,95071,111190,129706,150954,
+			175317,203567,236338,274352,318449,369600,428936,497766,577609,
+			670226,777662,902288,1046855,1214551,1409080,1634732,1896489,
+			2200128,2552348,2960924,3434872,3984651,4622395,5362179,6220327,
+			7215779,8370504,9709985,11263782,13066188,15156978,17582294,
+			20395661,23659167,27444833,31836207,36930200,42839232,49780637,
+			58283859,68700306,81460453,97091634,116239830,139696370,168430631,
+			203630102,246749453,299570658,364276635,443541456,540640862,659587634,
+			805297430,983791930,1202447693,1470301002,1798421306,2200368678,
+			2692754209,3295926485,4034812522,4939947918,6048738778,7407007581,
+			9070886865,11109138988,13605997839,16664649931,20411498744,
+			25001388540,30624003540,37511706915,45949143550,56285003427,
+			68946431776,84456681504,103456737421,126731805919,155243764829,
+			190170914494,232956672834,285369226800,349574605408,428226194203,
+			524574390477,642600930913,787183442946,964297020188,1181261152309,
+			1447042214156,1772624014920,2171461720855,2660037910626,
+			3258543743095,3991713387870,4889846202719,5990058900910,
+			7337819456193,8988826136414,11011309319686,13488851219194,
+			16523840046091,20241701359039,24796081467402,30375197100145,
+			37209613750256,45581774146643,55837670632215,68401143827042,
+			83791398490705,102644460453692,125739461358351,
+			154030837466559,188687773199113,231142519471492,
+			283149583655156,346858237280144,424901337970755,
+			520504136316754,637617564290602,781081513558566,
+			956824851411821,1172110440282060,1435835286648100,
+			1758898223446500,2154650321024540,2639446640557650    ]];
+}
+
+///////////////////////////////////////////////////////////////////////////////
+//	experience_limiter
+
+[experience_limiting_factors]
+{
+	first_level		= 0.10;
+	later_levels	= 0.025;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+//  multiplayer scaling stuff
+//
+//	Based on the number of players in a party the life and experience point
+//	worth of computer controlled gos will be scaled by the values below.
+//	
+
+[mp_scaling]
+{
+	life	= [[ .35, .5, .8, 1, 2.15, 3.1, 4.17, 5 ]];
+	xp		= [[ .35, .59, .8, 1, 1.25, 1.5, 1.75, 2 ]];
+}
+
+///////////////////////////////////////////////////////////////////////////////
+//	physics_constants
+//
+//	This block contains global values associated with settings for physics
+//	objects
+
+[physics_constants]
+{
+	enemy_attach_life	=	12;
+	party_attach_life	=	4;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+//	general_formulas
+//
+//	These formulas are meant for general purpose formula evaluation allowed
+//  from skrit.
+//
+//	The function for a formula must be named the same as the formula name, take
+//	no parameters and return the type that the caller is interested in. Other
+//	functions can be stored in the skrit (or you can do #include) for utility
+//	purposes.
+//
+//	If you put properties in the formula, then you can set those properties in
+//	the caller by using the URL-style formatting. For example:
+//
+//		float f$ = ContentDb.EvalFloatFormula( "jooky?prop1=10&prop2=yo", 0.0 );
+//
+//	Note that the second parameter in this function is a default return value.
+//	This will be used if there is an error in the function call. This parameter
+//	is optional and defaults to 0.0, 0, or false depending on function.
+
+[general_formulas]
+{
+	skrit =
+	[[
+		// Recovery rate stuff
+		property float str$				= 1.0		doc = "default strength";
+		property float int$				= 1.0		doc = "default intelligence";
+		property float dex$				= 1.0		doc = "default dexterity";
+
+		property float melee$			= 0 		doc = "default melee skill level";
+		property float ranged$			= 0 		doc = "default ranged skill level";
+		property float nmagic$			= 0 		doc = "default nature magic skill level";
+		property float cmagic$			= 0			doc = "default combat magic skill level";
+
+
+		property float lr_unit$			= 1.0		doc = "default life_recovery_unit";
+		property float lr_period$		= 4.0		doc = "default life_recovery_period";
+
+		property float mr_unit$			= 1.0		doc = "default mana_recovery_unit";
+		property float mr_period$		= 3.0		doc = "default mana_recovery_period";
+
+		property float guts_rate_high$	= 12.0		doc = "Number of seconds before spewing guts again, Max ObjectDetailLevel";
+		property float guts_rate_low$	= 25.0		doc = "Number of seconds before spewing guts again, Min ObjectDetailLevel";
+		
+		property float in_player_high$	= 0.2		doc = "seconds between splash checks while in water with player Max LODFI";
+		property float in_player_low$	= 0.4		doc = "seconds between splash checks while in water with player Min LODFI";
+		
+		property float out_player_high$	= 1.0		doc = "seconds between splash checks not in water with player Max LODFI";
+		property float out_player_low$	= 2.0		doc = "seconds between splash checks not in water with player Min LODFI";
+
+		property float in_monster_high$	= 0.2		doc = "seconds between splash checks while in water with monster Max LODFI";
+		property float in_monster_low$	= 0.6		doc = "seconds between splash checks while in water with monster Min LODFI";
+		
+		property float out_monster_high$ = 1.0		doc = "seconds between splash checks not in water with monster Max LODFI";
+		property float out_monster_low$	= 2.0		doc = "seconds between splash checks not in water with monster Min LODFI";
+		
+		bool should_spawn_broken_container$
+		{
+			// $ yo, this is just test stuff i added, needs tweaking. -sb
+
+			if ( WorldOptions.ObjectDetailLevel >= .9 )
+			{
+				// lod of .9+ means always show it
+				return ( true );
+			}
+			else if ( WorldOptions.ObjectDetailLevel >= .5 )
+			{
+				// lod of .5+ means show it 50% of the time
+				return ( Math.RandomInt( 1 ) == 1 );
+			}
+
+			// below .5 means never show it
+			return ( false );
+		}
+
+		int frames_before_next_guts_spew$
+		{
+			// $ this formula determines now many frames must pass before an actor can play an effect when he is hit again. -ET
+			return ( Math.Round( ( WorldOptions.ObjectDetailLevel * guts_rate_high$ ) + ( (1.0 - WorldOptions.ObjectDetailLevel) * guts_rate_low$ ) ) );
+		}
+
+		float water_check_time_player_in$
+		{
+			// $ this formula determines now much time must pass before an actor will check to see if he make a splash in the water again. -ET
+			return ( WorldOptions.ObjectDetailLevel * in_player_high$ ) + ( (1.0 - WorldOptions.ObjectDetailLevel) * in_player_low$ );
+		}
+        
+		float water_check_time_player_out$
+		{
+			// $ this formula determines now much time must pass before an actor will check to see if he make a splash in the water again. -ET
+			return ( WorldOptions.ObjectDetailLevel * out_player_high$ ) + ( (1.0 - WorldOptions.ObjectDetailLevel) * out_player_low$ );
+		}
+        
+		float water_check_time_monster_in$
+		{
+			// $ this formula determines now much time must pass before an actor will check to see if he make a splash in the water again. -ET
+			return ( WorldOptions.ObjectDetailLevel * in_monster_high$ ) + ( (1.0 - WorldOptions.ObjectDetailLevel) * in_monster_low$ );
+		}
+        
+		float water_check_time_monster_out$
+		{
+			// $ this formula determines now much time must pass before an actor will check to see if he make a splash in the water again. -ET
+			return ( WorldOptions.ObjectDetailLevel * out_monster_high$ ) + ( (1.0 - WorldOptions.ObjectDetailLevel) * out_monster_low$ );
+		}
+
+		float life_recovery_rate$
+		{
+			return 0.0;
+		}
+
+		float mana_recovery_rate$
+		{
+   			return 0.0;
+		}
+	]];
+}
+
+///////////////////////////////////////////////////////////////////////////////

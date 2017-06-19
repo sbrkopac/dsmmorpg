@@ -1,0 +1,288 @@
+/*
+  ============================================================================
+  ----------------------------------------------------------------------------
+
+	File		: job_attack_object_melee.skrit
+
+	Author(s)	: Bartosz Kijanka, biddle, Eric Tams
+
+	Purpose		: This is a basic, walk-over-to-the-guy and beat him with a
+				  club/sword/bare hands job.
+
+	(C)opyright 2000 Gas Powered Games, Inc.
+
+  ----------------------------------------------------------------------------
+  ============================================================================
+*/
+
+Go		m_Go$;
+GoMind	m_Mind$;
+GoBody  m_Body$;
+Job		m_Job$;
+Go		m_Weapon$;
+
+float	m_RangeToTarget$;
+Goid	m_Target$;
+
+////////////////////////////////////////////////////////////////////////////////
+
+#include "k_job_c_mcp_attack_utils"
+#include "k_job_c_mcp_fidget_utils"
+
+startup state startup$
+{
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//	init
+event OnJobInitPointers$( Job job$ )
+{
+	m_Job$			= job$;
+	m_Go$			= job$.Go;
+	m_Mind$			= job$.Go.Mind;
+	m_Body$			= job$.Go.Body;
+	m_Weapon$		= job$.GoalModifier.Go;
+}
+
+
+event OnJobInit$( Job job$ )
+{
+	OnJobInitPointers$( job$ );
+	
+	if( m_Weapon$ == NULL )
+	{
+		m_Weapon$ = m_Go$;
+	}
+
+	m_Target$ = job$.GoalObject;
+
+	if( m_Target$.Go == NULL )
+	{
+		SetState Exiting$;
+	}
+	else
+	{
+		ResetPathFindingParameters$();
+
+ 		// Account distance that the weapon can extend the attacker's space
+
+		m_RangeToTarget$ = m_Go$.mind.PersonalSpaceRange + m_Weapon$.Attack.AttackRange;
+		m_RangeToTarget$ += m_Target$.go.HasMind() ? m_Target$.go.mind.PersonalSpaceRange : m_Target$.go.aspect.BoundingSphereRadius;
+		// $$$ Mike - is this a 2D range I'm specifying?
+		
+		SetState( RequestAction$ );
+	}
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+//	global message handling
+
+trigger OnWorldMessage$( WE_MCP_INVALIDATED    ) { SetState CleaningUpAndExiting$ ; }
+trigger OnWorldMessage$( WE_MCP_NODE_BLOCKED   ) { SetState PathBlockedExiting$   ; }
+trigger OnWorldMessage$( WE_REQ_JOB_END        ) { SetState CleaningUpAndExiting$ ; }
+trigger OnWorldMessage$( WE_ENGAGED_INVALID    ) { SetState CleaningUpAndExiting$ ; }
+trigger OnWorldMessage$( WE_ENGAGED_KILLED     ) { SetState CleaningUpAndExiting$ ; }
+trigger OnWorldMessage$( WE_ENGAGED_HIT_KILLED ) { SetState CleaningUpAndExiting$ ; }
+trigger OnWorldMessage$( WE_DESTRUCTED         ) { SetState Exiting$              ; }
+trigger OnWorldMessage$( WE_JOB_DESTRUCTED     ) { SetState Exiting$              ; }
+
+
+////////////////////////////////////////////////////////////////////////////////
+//	
+state RequestAction$
+{
+	// used to always just go to TargetMoved if the dependency was broken. 
+	// Now we are going to check to see if we are swinging before allowing our dependency to be broken.
+	trigger OnWorldMessage$( WE_MCP_DEPENDANCY_BROKEN )
+	{
+		//current chore...
+		eAnimChore ch$ = m_Go$.Aspect.AspectHandle.GetCurrentChore();
+				
+		if( ch$ != CHORE_ATTACK )
+		{
+//			report.generic("Target is moving trying to re-target!!\n");
+			// setstate TargetMoved$; // if target moves let them move, the server never told us to follow
+		}	
+	}
+	
+	transition
+	{
+		-> ContinueAction$:					OnWorldMessage( WE_MCP_MUTUAL_DEPENDANCY );
+		-> RequestAction$:					OnWorldMessage( WE_JOB_TIMER_DONE );
+		-> DamagingAndFollowingThrough$:	OnWorldMessage( WE_ANIM_WEAPON_FIRE );
+		-> Error_FireNotFound$:				OnWorldMessage( WE_ANIM_DONE );
+	}
+
+	event OnEnterState$
+	{
+		if( !m_Target$.IsValid )
+		{
+			SetState Exiting$;
+			return;
+		}
+		
+		report.reportf("aiskrit","%s:ATTACK TARGET\n",m_Go$.TemplateName);
+
+		////////////////////////////////////////
+		//	start an attack iteration
+
+		// Pick a Random animation to be used
+		eAnimStance stance$ = m_Go$.inventory.animstance;
+		int subanim$ = m_Go$.Aspect.AspectHandle.Blender.GetNumSubAnims(CHORE_ATTACK,stance$);
+		subanim$ = Math.RandomInt( 0, Math.MaxInt( 0, subanim$-2 ) );
+
+		// Need to make the length of the attack loop a tunable parameter
+
+		// Adding the Reload delay to the attack loop duration will keep the
+		// attacker from coming to a standstill. It also removes the need for a 
+		// timer state. Once we see an ANIM_DONE, we know we have delayed for the 
+		// correct amount of time.
+
+		float attack_loop_duration$ = m_Weapon$.Attack.ReloadDelay;
+		attack_loop_duration$ += m_Go$.Aspect.AspectHandle.Blender.GetBaseDuration(CHORE_ATTACK,stance$);
+		eReqRetCode ret$;
+
+
+		ret$ = MCPManager.MakeRequest(	m_Go$.Goid,
+									   	PL_ATTACK_OBJECT_MELEE,
+									   	attack_loop_duration$,
+									   	subanim$,
+									   	m_Target$,
+										m_LookAhead$, 
+										m_MaxApproachTime$,
+									   	m_RangeToTarget$,
+									   	reqflag_default);
+
+		report.reportf( "aimove","[%s] PL_ATTACK_OBJECT_MELEE [%s] returned [%s]\n", m_Go$.TemplateName, m_Target$.go.TemplateName, ToString(ret$) );
+
+		if( RequestFailed(ret$) )
+		{
+			if (ret$ == REQUEST_FAILED_OVERCROWDED)
+			{
+				m_Job$.MarkForDeletion( JR_OK );
+			}
+			else
+			{
+				m_Job$.MarkForDeletion( JR_FAILED_NO_PATH );
+			}
+			SetState( Exiting$ );
+		}
+		else if (ret$ == REQUEST_OK_BEYOND_RANGE)
+		{
+			SetState( MovingCloser$ );
+		}
+		else // ret$ == OK
+		{
+			m_Job$.EnterAtomicState( attack_loop_duration$ );
+			report.reportf( "aiskrit", "%s: within melee range of %s [%s]\n",m_Go$.TemplateName, m_Target$.go.TemplateName, ToString(ret$) );
+		}
+	}
+}
+
+state ContinueAction$
+{
+	// We arrive at this state after we receive a 'WE_MCP_MUTUAL_DEPENDANCY' message
+	// or if the characters is within range and we want to ignore any WE_MCP_MUTUAL_DEPENDANCY
+
+	// used to always just go to TargetMoved if the dependency was broken. 
+	// Now we are going to check to see if we are swinging before allowing our dependency to be broken.
+	trigger OnWorldMessage$( WE_MCP_DEPENDANCY_BROKEN )
+	{
+		//current chore...
+		eAnimChore ch$ = m_Go$.Aspect.AspectHandle.GetCurrentChore();
+				
+		if( ch$ != CHORE_ATTACK )
+		{
+//			report.generic("Target is moving trying to re-target!!\n");
+			setstate TargetMoved$;
+		}
+	}
+
+	transition
+	{
+		-> DamagingAndFollowingThrough$:	OnWorldMessage( WE_ANIM_WEAPON_FIRE );
+		-> Error_FireNotFound$:				OnWorldMessage( WE_ANIM_DONE );
+	}		
+}
+
+state DamagingAndFollowingThrough$
+{
+	transition
+	{
+		-> DamagingAndFollowingThrough$:	OnWorldMessage( WE_ANIM_WEAPON_FIRE );
+		-> CleaningUpAndExiting$:		   	OnWorldMessage( WE_ANIM_DONE );
+		-> CleaningUpAndExiting$:			OnWorldMessage( WE_ENGAGED_HIT_KILLED );
+	}
+
+	event OnEnterState$
+	{
+		report.reportf("aiskrit","%s:DAMAGE AND FOLLOW THROUGH!\n",m_Go$.TemplateName);
+		
+		m_Mind$.RequestProcessHitEngaged();
+	}
+}
+
+state Error_FireNotFound$
+{
+	transition
+	{
+		-> Exiting$:					OnWorldMessage( WE_JOB_TIMER_DONE );
+	}
+
+	event OnEnterState$
+	{
+		report.reportf("aiskrit","%s:NO FIRE FOUND!\n",m_Go$.TemplateName);
+		
+		m_Mind$.RequestProcessHitEngaged();
+		
+		m_Job$.SetTimer( m_Weapon$.Attack.ReloadDelay );
+	}
+
+}
+
+
+state CleaningUpAndExiting$
+{
+	transition
+	{
+		-> Exiting$:						OnWorldMessage( WE_ANIM_DONE );
+	}
+	event OnEnterState$
+	{
+		// Let an attack animation finish its follow through
+		report.reportf("aiskrit","%s:CLEANING UP!\n",m_Go$.TemplateName);
+
+		m_Job$.MarkCleaningUp();
+
+		if ( m_Go$.Aspect.AspectHandle.CurrentChore != CHORE_ATTACK )
+		{
+			m_Job$.MarkForDeletion( JR_OK );
+			SetState(Exiting$);
+		} 
+	}
+
+}
+
+state PathBlockedExiting$
+{
+	event OnEnterState$
+	{
+		report.reportf("aiskrit","%s:EXIT ATTACK, PATH BLOCKED!\n",m_Go$.TemplateName);
+		m_Job$.LeaveAtomicState();
+		m_Job$.MarkForDeletion(JR_FAILED_NO_PATH);
+	}
+}
+
+state Exiting$
+{
+	event OnEnterState$
+	{
+		report.reportf("aiskrit","%s:EXIT ATTACK!\n",m_Go$.TemplateName);
+		m_Job$.LeaveAtomicState();
+		m_Job$.MarkForDeletion();
+	}
+}
+
+
+															

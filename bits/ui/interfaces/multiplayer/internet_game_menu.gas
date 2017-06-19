@@ -1,0 +1,78 @@
+/*
+ *  This file is part of dsmmorpg.
+ *  
+ *  dsmmorpg is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  dsmmorpg is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU General Public License
+ *  along with dsmmorpg.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+[internet_game_menu]
+{
+	interface = true;
+	
+	skrit = [[
+		
+		owner = UIWindow;
+		
+		created$()
+		{
+			Server.RCSetAllowPausing (false);
+			Server.RCSetAllowNewCharactersOnly (true);
+			
+			UIShell.ShiftInterface ("internet_game_menu", 10000, 10000);
+		}
+		
+		timer01$()
+		{
+			UIWindow window$ = UIShell.FindUIWindow ("internet_player_name_edit_box", "internet_game_menu");
+			
+			UIEditBox edit_box$ = QueryDerivedEditBox (window$);
+			edit_box$.SetText ("dsmmorpg");
+			
+			Messenger.Notify ("internet_host", window$);
+		}
+	]];
+	
+	[t:window,n:timer01]
+	{
+		[messages]
+		{
+			oncreated = call (created$);
+			onshow = alphaanimation(0.1,0.0,0.0);
+			onanimcomplete = call (timer01$);
+		}
+	}
+	
+	[t:edit_box,n:internet_player_name_edit_box]
+	{
+	  f alpha = 1.000000;
+	  b clear_select = false;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 72;
+	  i font_color = -1;
+	  i font_size = 12;
+		font_type = b_gui_fnt_12p_copperplate-light;
+	  i max_string_size = 20;
+	  b permanent_focus = false;
+		rect = 294,94,506,110;
+		text = "";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		tab_stop = 1;
+		[prompt]
+		{
+			texture = b_gui_fe_m_single_prompt;
+			width = 1;
+		}
+	}
+}

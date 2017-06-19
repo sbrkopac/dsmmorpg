@@ -1,0 +1,6 @@
+[t:template,n:NetworkManager]
+{
+	[network]
+	{
+	}
+}

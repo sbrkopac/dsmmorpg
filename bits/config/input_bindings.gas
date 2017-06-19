@@ -1,0 +1,410 @@
+[input_bindings]
+{
+	[dev,console_visible]
+	{
+		[console_toggle_visibility]  { input = key_special;  							 		}
+		[console_toggle_mode]		 { input = key_special;			qualifiers = control;		}
+		[console_clear]              { input = key_escape;   							 		}
+		[console_scroll_up]          { input = key_pageup;   		qualifiers = ignore_shift;	}
+		[console_scroll_down]        { input = key_pagedown; 		qualifiers = ignore_shift;	}
+		[console_last_input]         { input = key_up;											}
+		[console_next_input]         { input = key_down;										}
+		[console_home]               { input = key_home;     									}
+		[console_end]                { input = key_tab;      									}
+		[console_end]                { input = key_end;      									}
+		[console_next_command]       { input = key_left;     									}
+		[console_previous_command]   { input = key_right;    									}
+		[console_backspace]          { input = key_back;     									}
+		[console_execute]            { input = key_return;   									}
+		[console_copy_command_line]  { input = key_c;        		qualifiers = control;		}
+		[console_paste_command_line] { input = key_v;        		qualifiers = control;		}
+		[console_cut_command_line]   { input = key_x;        		qualifiers = control;		}
+	}
+
+	[dev,console_hidden]
+	{
+		[console_toggle_visibility]  { screen_name = "Toggle Console";						input = key_special;										}
+		[debug_net_probe]			 { screen_name = "Debug Net Probe";						input = key_f8;			qualifiers = alt; dev_only = true;  }
+	}
+
+	[intro]
+	{
+		[exit_intro]				{ screen_name = "Exit Intro";							input = key_escape;											}
+		[selection_down]			{ screen_name = "Exit Intro";							input = left_down; 											}
+		[context_down]				{ screen_name = "Exit Intro";							input = right_down; 										}
+		[special_down]				{ screen_name = "Exit Intro";							input = middle_down; 										}
+	}
+
+	[outro]
+	{
+		[restart_movie]				{ screen_name = "Restart Credits";						input = key_back;  }
+		[pause_movie]				{ screen_name = "Pause Credits";						input = key_space;  }
+		[skip_current_movie]		{ screen_name = "Skip Credits";							input = key_escape;  }
+	}
+
+	[global]
+	{
+		[take_screenshot] 			{ screen_name = "Take Screenshot";						input = key_printscreen;											}
+		[take_screenshot_no_gui]	{ screen_name = "Take Screenshot no GUI";				input = key_printscreen;			qualifiers = shift;	      		}
+		[copy_screenshot] 			{ screen_name = "Copy Screenshot to Clipboard";			input = key_printscreen;			qualifiers = control;			}
+		[copy_screenshot_no_gui]	{ screen_name = "Copy Screenshot to Clipboard no GUI";	input = key_printscreen;			qualifiers = control | shift;  	}
+		[profile_1]			 		{ screen_name = "Profile 1 Frame";						input = key_f1;			qualifiers = alt | shift; dev_only = true;  }
+		[profile_10]			 	{ screen_name = "Profile 10 Frames";					input =	key_f1;			qualifiers = alt; dev_only = true;  }
+		[profile_50]			 	{ screen_name = "Profile 50 Frames";					input =	key_f2;			qualifiers = alt; dev_only = true;  }
+		[profile_100]			 	{ screen_name = "Profile 100 Frames";					input = key_f3;			qualifiers = alt; dev_only = true;  }
+	}
+
+	[frontend]
+	{
+		[skip_current_movie]		{ screen_name = "Skip current movie";					input = key_escape;											}
+		[restart_movie]				{ screen_name = "Restart movie sequence";				input = key_back; 											}
+		[pause_movie]				{ screen_name = "Pause movie";							input = key_space; 											}
+		[selection_down]			{ screen_name = "Skip current movie";					input = left_down; 											}
+		[context_down]				{ screen_name = "Skip current movie";					input = right_down; 										}
+		[special_down]				{ screen_name = "Skip current movie";					input = middle_down; 										}
+	}
+
+	[gui_library]
+	{
+		[left_button_down]			{ input = left_down;			qualifiers = ignore_qualifiers;		}
+		[left_button_up]			{ input = left_up;				qualifiers = ignore_qualifiers;		}
+		[left_double_click]			{ input = left_dbl_click;		qualifiers = ignore_qualifiers;		}
+		[right_button_down]			{ input = right_down;			qualifiers = ignore_qualifiers;		}
+		[right_button_up]			{ input = right_up;				qualifiers = ignore_qualifiers;		}
+	}
+
+	[nis]
+	{
+		[exit_nis]					{ input = key_escape;			qualifiers = ignore_qualifiers; 	}
+	}
+
+	[game]
+	{
+		//////////////////////////////////////////////////////////////////////////////
+		//	Party/Actions
+		[t:group,n:*]
+		{
+			id = 1;
+			screen_name = "Party Controls";
+			
+			[party_heal_body_with_potions]  { screen_name = "Drink Health Potion";			input = key_h; 											}
+			[party_heal_magic_with_potions] { screen_name = "Drink Mana Potion";			input = key_m; 											}
+	
+			[attack]                        { screen_name = "Force Attack";					input = key_a;       					   				}
+			[cast]                          { screen_name = "Force Cast Spell";				input = key_c;             					   			}
+			// [guard]                         { screen_name = "Guard Character";				input = key_g;       					   				}
+			[move]                          { screen_name = "Move";							input = key_none;       				   				}
+			[dev,patrol]                    { screen_name = "Patrol";						input = key_o;       					   				}
+			[stop]                          { screen_name = "Stop";							input = key_s;       					   				}
+
+			/*
+			[get_group_1]					{ screen_name = "Recall Party Group 1";			input = key_f1;											}
+			[get_group_2]					{ screen_name = "Recall Party Group 2";			input = key_f2;											}
+			[get_group_3]					{ screen_name = "Recall Party Group 3";			input = key_f3;											}
+			[get_group_4]					{ screen_name = "Recall Party Group 4";			input = key_f4;											}
+			[get_group_5]					{ screen_name = "Recall Party Group 5";			input = key_f5;											}
+			[get_group_6]					{ screen_name = "Recall Party Group 6";			input = key_f6;											}
+			[get_group_7]					{ screen_name = "Recall Party Group 7";			input = key_f7;											}
+			[get_group_8]					{ screen_name = "Recall Party Group 8";			input = key_f8;											}
+			[set_group_1]					{ screen_name = "Save Party Group 1";			input = key_f1;			qualifiers = control;			}
+			[set_group_2]					{ screen_name = "Save Party Group 2";			input = key_f2;			qualifiers = control;			}
+			[set_group_3]					{ screen_name = "Save Party Group 3";			input = key_f3;			qualifiers = control;			}
+			[set_group_4]					{ screen_name = "Save Party Group 4";			input = key_f4;			qualifiers = control;			}
+			[set_group_5]					{ screen_name = "Save Party Group 5";			input = key_f5;			qualifiers = control;			}
+			[set_group_6]					{ screen_name = "Save Party Group 6";			input = key_f6;			qualifiers = control;			}
+			[set_group_7]					{ screen_name = "Save Party Group 7";			input = key_f7;			qualifiers = control;			}
+			[set_group_8]					{ screen_name = "Save Party Group 8";			input = key_f8;			qualifiers = control;			}
+	
+			[set_awp_01]					{ screen_name = "Save Weapon Config. 1";		input = key_1;			qualifiers = control;			}
+			[set_awp_02]					{ screen_name = "Save Weapon Config. 2";		input = key_2;			qualifiers = control;			}
+			[set_awp_03]					{ screen_name = "Save Weapon Config. 3";		input = key_3;			qualifiers = control;			}
+			[set_awp_04]					{ screen_name = "Save Weapon Config. 4";		input = key_4;			qualifiers = control;			}
+			[set_awp_05]					{ screen_name = "Save Weapon Config. 5";		input = key_5;			qualifiers = control;			}
+			[set_awp_06]					{ screen_name = "Save Weapon Config. 6";		input = key_6;			qualifiers = control;			}
+			[set_awp_07]					{ screen_name = "Save Weapon Config. 7";		input = key_7;			qualifiers = control;			}
+			[set_awp_08]					{ screen_name = "Save Weapon Config. 8";		input = key_8;			qualifiers = control;			}
+			[set_awp_09]					{ screen_name = "Save Weapon Config. 9";		input = key_9;			qualifiers = control;			}
+			[set_awp_10]					{ screen_name = "Save Weapon Config. 0";		input = key_0;			qualifiers = control;			}
+	
+			[get_awp_01]					{ screen_name = "Recall Weapon Config. 1";		input = key_1;											}
+			[get_awp_02]					{ screen_name = "Recall Weapon Config. 2";		input = key_2;											}
+			[get_awp_03]					{ screen_name = "Recall Weapon Config. 3";		input = key_3;											}
+			[get_awp_04]					{ screen_name = "Recall Weapon Config. 4";		input = key_4;											}
+			[get_awp_05]					{ screen_name = "Recall Weapon Config. 5";		input = key_5;											}
+			[get_awp_06]					{ screen_name = "Recall Weapon Config. 6";		input = key_6;											}
+			[get_awp_07]					{ screen_name = "Recall Weapon Config. 7";		input = key_7;											}
+			[get_awp_08]					{ screen_name = "Recall Weapon Config. 8";		input = key_8;											}
+			[get_awp_09]					{ screen_name = "Recall Weapon Config. 9";		input = key_9;											}
+			[get_awp_10]					{ screen_name = "Recall Weapon Config. 0";		input = key_0;											}
+		
+			[move_order_free]				{ screen_name = "Movement: Move Freely";		input = key_q;			qualifiers = alt;				}
+			[move_order_limited]			{ screen_name = "Movement: Engage Only";		input = key_w;			qualifiers = alt;				}
+			[move_order_never]				{ screen_name = "Movement: Hold Ground";		input = key_e;			qualifiers = alt;				}
+			
+			[fight_order_always]			{ screen_name = "Attack: Fight Freely";			input = key_a;			qualifiers = alt;				}
+			[fight_order_back_only]			{ screen_name = "Attack: Defend";				input = key_s;			qualifiers = alt;				}
+			[fight_order_never]				{ screen_name = "Attack: Hold Fire";			input = key_d;			qualifiers = alt;				}
+	
+			[target_closest]				{ screen_name = "Targeting: Target Closest";	input = key_z;			qualifiers = alt;				}
+			[target_weakest]				{ screen_name = "Targeting: Target Weakest";	input = key_c;			qualifiers = alt;				}
+			[target_strongest]				{ screen_name = "Targeting: Target Strongest";	input = key_x;			qualifiers = alt;				}
+			
+			[select_all_party_members]		{ screen_name = "Select All Party Members";		input = key_a;      	qualifiers = control; 			}
+			[select_all_party_members]		{ screen_name = "Select All Party Members";		input = key_e;      						 			}
+			[select_next_player]     		{ screen_name = "Select Next Party Member";		input = key_period;          							}
+			[select_last_player]     		{ screen_name = "Select Last Party Member";		input = key_comma;										}
+			[select_lead_character]			{ screen_name = "Select Lead Party Member";		input = key_slash;										}
+			*/
+			[rotate_selected_slots]         { screen_name = "Quick Weapon Select";			input = key_q;							   				}
+			[rotate_primary_spell_slot]    	{ screen_name = "Cycle Active Spell 1";			input = key_none;										}
+			[rotate_secondary_spell_slot]   { screen_name = "Cycle Active Spell 2";			input = key_none;										}
+			
+			/*
+			[formation_increase_spacing]	{ screen_name = "Formation: Expand";			input = key_lbracket;	qualifiers = key_down | key_up | ignore_rbutton;	}
+			[formation_decrease_spacing]	{ screen_name = "Formation: Contract";			input = key_rbracket;	qualifiers = key_down | key_up | ignore_rbutton;	}			
+			[cycle_formations]				{ screen_name = "Formation: Cycle";				input = key_none;										}
+			*/
+		}
+
+		//////////////////////////////////////////////////////////////////////////////
+		//	Camera
+		[t:group,n:*]
+		{
+			id = 2;
+			screen_name = "View Controls";
+			
+			[camera_track_toggle]          	{ screen_name = "Camera: Track/Hold Toggle";	input = key_t; 								   			}
+			[camera_rotate_left]  			{ screen_name = "Camera: Rotate Left"; 			input = key_left;  		qualifiers = key_down | key_up;	}
+			[camera_rotate_right] 			{ screen_name = "Camera: Rotate Right";			input = key_right; 		qualifiers = key_down | key_up;	}
+			[camera_rotate_up]				{ screen_name = "Camera: Rotate Up";			input = key_up;			qualifiers = key_down | key_up;	}
+			[camera_rotate_down]			{ screen_name = "Camera: Rotate Down";			input = key_down;		qualifiers = key_down | key_up;	}
+			[camera_zoom_out]             	{ screen_name = "Camera: Zoom Out";    			input = key_minus; 		qualifiers = key_down | key_up;	}
+			[camera_zoom_in]              	{ screen_name = "Camera: Zoom In";     			input = key_equals;  	qualifiers = key_down | key_up;	}
+			[camera_zoom_out]             	{ screen_name = "Camera: Zoom Out";				input = wheel_down; 									}
+			[camera_zoom_in]              	{ screen_name = "Camera: Zoom In";				input = wheel_up;  										}
+			[camera_free_look]				{ screen_name = "Camera: Free Look";			input = key_d;			qualifiers = key_down | key_up;	}
+		}
+
+		//////////////////////////////////////////////////////////////////////////////
+		//	UI Mappings
+		[t:group,n:*]
+		{
+			id = 3;
+			screen_name = "User Interface";
+
+			/*
+			[game_pause]             		{ screen_name = "Pause Dungeon Siege";          input = key_space;										}
+			[game_pause]             		{ screen_name = "Pause Dungeon Siege";          input = key_pause;      								}
+			*/
+			[toggle_game_timer] 			{ screen_name = "Game Timer";					input = key_semicolon;									}
+			[toggle_player_labels]			{ screen_name = "Character Labels";				input = key_l;											}
+			[toggle_player_ranks]    		{ screen_name = "Multiplayer Scoreboard";		input = key_backslash;	qualifiers = key_down | key_up;	}
+			/*
+			[tutorial_tips]		 			{ screen_name = "Adventurer's Handbook";        input = key_f12;										}
+			*/
+			
+			[sort_inventory]				{ screen_name = "Auto-Sort Inventory";			input = key_k;											}
+			// [field_commands]         		{ screen_name = "Field Commands";          		input = key_f;      									}
+			[inventory]              		{ screen_name = "Inventory";               		input = key_i;          								}
+			[magic]                  		{ screen_name = "Spell Book";					input = key_b;          								}
+	
+			[toggle_item_labels]			{ screen_name = "Item Labels";					input = key_alt;		qualifiers = alt | key_up;		}
+			[toggle_mini_map]        		{ screen_name = "MegaMap";						input = key_tab;										}
+			[toggle_status_bars]     		{ screen_name = "Health/Mana Bars";      		input = key_x;          								}
+	
+			[toggle_gui_edit_box]			{ screen_name = "Chat Window";			   		input = key_return;										}
+			[toggle_gui_edit_box_team]		{ screen_name = "Chat Window (Send to Team)";	input = key_return;		qualifiers = shift;				}
+			[toggle_gui_edit_box_everyone]	{ screen_name = "Chat Window (Send to All)";    input = key_return;		qualifiers = control;			}
+			[expert_gui_mode]        		{ screen_name = "Minimize/Maximize Weapons Panel"; input = key_w;          								}
+			[toggle_quest_log]				{ screen_name = "Journal";	      				input = key_j;											}
+			[collect_loot]					{ screen_name = "Collect Loot";		      		input = key_z;											}
+			[chat_history_up]				{ screen_name = "Chat History: Scroll Up";		input = key_pageup;										}
+			[chat_history_down]				{ screen_name = "Chat History: Scroll Down";	input = key_pagedown;									}
+			[chat_history_clear]			{ screen_name = "Chat History: Clear History";	input = key_end;										}
+			[chat_history_lock]				{ screen_name = "Chat History: Lock Toggle";	input = key_scrolllock;									}
+	
+			[disband_selected]				{ screen_name = "Disband Selected Members";		input = key_d;			 qualifiers = control;			}
+		}
+
+		//////////////////////////////////////////////////////////////////////////////
+		//	Game Settings
+		[t:group,n:*]
+		{
+			id = 4;
+			screen_name = "Game Settings";
+			
+			/*
+			[game_speed_up]           		{ screen_name = "Game Speed: Increase";			input = key_equals; 	qualifiers = control; 			}
+			[game_speed_down]          		{ screen_name = "Game Speed: Decrease";			input = key_minus;  	qualifiers = control; 			}
+			[game_speed_reset]          	{ screen_name = "Game Speed: Reset";			input = key_back; 		qualifiers = control; 			}
+			*/
+			[dev,game_speed_max]          	{ screen_name = "Game Speed: Maximize";			input = key_equals; 	qualifiers = shift | control; 	}
+			[dev,game_speed_min]          	{ screen_name = "Game Speed: Minimize";			input = key_minus; 		qualifiers = shift | control; 	}
+			/*
+			[quick_save]					{ screen_name = "Quick Save";					input = key_f9;											}
+			[quick_load]					{ screen_name = "Quick Load";					input = key_f11;										}
+			[save_game]		 				{ screen_name = "Save Game";               		input = key_s;			qualifiers = control;			}
+			[load_game]		 				{ screen_name = "Load Game";               		input = key_l;			qualifiers = control;			}
+			[game_options]		 			{ screen_name = "Game Options";            		input = key_f10;										}
+			*/
+			[close_dialogs]	 				{ screen_name = "Close Dialogs";           		input = key_none;										}
+		}
+
+		//////////////////////////////////////////////////////////////////////////////
+		//	Debug
+		
+		[dev,teleport]               		{ screen_name = "[DEBUG] Teleport";				input = key_z;          qualifiers = control;							}
+		[dev,game_single_step]       		{ screen_name = "Game Single Step";        		input = key_insert;     							dev_only = true;	}
+
+		[dev,selection_speed_up]    		{ screen_name = "Selection Speed Up";			input = key_equals;		qualifiers = alt; 			dev_only = true;	}
+		[dev,selection_speed_down]  		{ screen_name = "Selection Speed Down"; 		input = key_minus;  	qualifiers = alt; 			dev_only = true;	}
+		[dev,selection_speed_reset] 		{ screen_name = "Selection Speed Reset";		input = key_0;      	qualifiers = alt; 			dev_only = true;	}
+
+		[dev,selection_copy]              	{ screen_name = "Selection Copy";  				input = key_c;      	qualifiers = control; 		dev_only = true;	}
+		[dev,selection_paste]             	{ screen_name = "Selection Paste"; 				input = key_v;      	qualifiers = control; 		dev_only = true;	}
+		[dev,selection_delete]            	{ screen_name = "Selection Delete";	 			input = key_delete; 								dev_only = true;	}
+
+		[dev,debug_combat_probe]          	{ screen_name = "Debug Combat Probe";			input = key_back;     	qualifiers = alt;   		dev_only = true;	}
+		[dev,debug_mind_probe]             	{ screen_name = "Debug Mind Prob";				input = key_f5;     	qualifiers = alt;   		dev_only = true;	}
+		[dev,debug_body_probe]            	{ screen_name = "Debug Body Probe";				input = key_f6;     	qualifiers = alt;   		dev_only = true;	}
+		[dev,debug_aspect_probe]           	{ screen_name = "Debug Aspect Probe";			input = key_f7;     	qualifiers = alt;   		dev_only = true;	}
+		[dev,debug_verbose_toggle]			{ screen_name = "Debug Probe Verbose Toggle";	input = key_v;			qualifiers = alt; 			dev_only = true;	}
+
+		[dev,debug_object_update_break]   	{ screen_name = "Debug Object Update Break";	input = key_f9;     	qualifiers = alt;   		dev_only = true;	}
+		[dev,debug_object_hud]            	{ screen_name = "Debug Object Hud";				input = key_1;      	qualifiers = alt;   		dev_only = true;	}
+		[dev,debug_actors_hud]            	{ screen_name = "Debug Actors Hud";				input = key_2;      	qualifiers = alt;   		dev_only = true;	}
+		[dev,debug_items_hud]             	{ screen_name = "Debug Items Hud";				input = key_3;      	qualifiers = alt;   		dev_only = true;	}
+		[dev,debug_commands_hud]            { screen_name = "Debug Commands Hud";			input = key_4;      	qualifiers = alt;   		dev_only = true;	}
+		[dev,debug_mics_hud]              	{ screen_name = "Debug Mics Hud";				input = key_5;      	qualifiers = alt;   		dev_only = true;	}
+		[dev,debug_all_hud]               	{ screen_name = "Debug All Hud";				input = key_6;      	qualifiers = alt;   		dev_only = true;	}
+		[dev,debug_hud_labels]				{ screen_name = "Debug Hud Labels";				input = key_7;			qualifiers = alt;			dev_only = true;	}
+		[dev,debug_hud_errors]				{ screen_name = "Debug Hud Errors";				input = key_8;			qualifiers = alt;			dev_only = true;	}
+		[dev,debug_hud_depth]				{ screen_name = "Debug Hud Depth";				input = key_9;			qualifiers = alt;			dev_only = true;	}
+
+		[dev,debug_toggle_selection_brain]	{ screen_name = "Toggle Brain";					input = key_b;       	qualifiers = alt;   		dev_only = true;	}
+
+		[dev,debug_increment_animation]	    { screen_name = "Debug Increment Anim";			input = key_add;    								dev_only = true;	}
+		[dev,debug_increment_animation]	    { screen_name = "Debug Increment Anim";			input = key_add;    	qualifiers = control;		dev_only = true;	}
+
+		[dev,camera_none_mode]				{ screen_name = "Camera None Mode"; 			input = key_divide;									dev_only = true;	}
+		[dev,camera_crane_mode]				{ screen_name = "Camera Crane Mode";			input = key_numpad1;								dev_only = true;	}
+		[dev,camera_zoom_mode]				{ screen_name = "Camera Zoom Mode"; 			input = key_numpad2;								dev_only = true;	}
+		[dev,camera_orbit_mode]				{ screen_name = "Camera Orbit Mode";			input = key_numpad3;								dev_only = true;	}
+		[dev,camera_dolly_mode]				{ screen_name = "Camera Dolly Mode";			input = key_numpad5;								dev_only = true;	}
+
+		[dev,super_recovery]         		{ screen_name = "[DEBUG] Super Recovery";  		input = key_slash;		qualifiers = control;							}
+	}
+
+	[key_codes]
+	{
+		// this area is for loc teams to plug in their own overrides for the
+		// following keys. these keys do not have virtual key equivalents in
+		// the win32 sdk and so the codes for them must be set on a per-language
+		// basis. note that the autodetect code in dungeon siege ought to get
+		// most of them right, but if any are wrong, they can be corrected here.
+		// note that these values are illustrative only and don't correspond to
+		// any real key codes!
+
+		/*
+		key_grave      = 0x15;
+		key_minus      = 0x16;
+		key_equals     = 0x17;
+		key_lbracket   = 0x18;
+		key_rbracket   = 0x19;
+		key_semicolon  = 0x1A;
+		key_apostrophe = 0x1B;
+		key_comma      = 0x1C;
+		key_period     = 0x1D;
+		key_slash      = 0x1E;
+		key_backslash  = 0x1F;
+		*/
+	}
+}
+
+
+/*  *** DOCUMENTATION ***
+
+    Possible INPUT:
+
+        key_grave                    key_0                  key_f1
+        key_minus                    key_1                  key_f2
+        key_equals                   key_2                  key_f3
+        key_lbracket                 key_3                  key_f4
+        key_rbracket                 key_4                  key_f5
+        key_semicolon                key_5                  key_f6
+        key_apostrophe               key_6                  key_f7
+        key_comma                    key_7                  key_f8
+        key_period                   key_8                  key_f9
+        key_slash                    key_9                  key_f10
+        key_backslash                                       key_f11
+                                     key_a                  key_f12
+        key_none                     key_b                  key_f13
+        key_lbutton                  key_c                  key_f14
+        key_rbutton                  key_d                  key_f15
+        key_break                    key_e                  key_f16
+        key_mbutton                  key_f                  key_f17
+        key_xbutton1                 key_g                  key_f18
+        key_xbutton2                 key_h                  key_f19
+        key_back                     key_i                  key_f20
+        key_tab                      key_j                  key_f21
+        key_clear                    key_k                  key_f22
+        key_return                   key_l                  key_f23
+        key_shift                    key_m                  key_f24
+        key_control                  key_n
+        key_alt                      key_o                  key_numlock
+        key_pause                    key_p                  key_scrolllock
+        key_capslock                 key_q
+                                     key_r
+        key_browser_back             key_s                  key_escape
+        key_browser_forward          key_t                  key_space
+        key_browser_refresh          key_u                  key_pageup
+        key_browser_stop             key_v                  key_pagedown
+        key_browser_search           key_w                  key_end
+        key_browser_favorites        key_x                  key_home
+        key_browser_home             key_y                  key_left
+        key_volume_mute              key_z                  key_up
+        key_volume_down                                     key_right
+        key_volume_up                key_lwin               key_down
+        key_media_next_track         key_rwin               key_select
+        key_media_prev_track         key_apps               key_print
+        key_media_stop               key_sleep              key_printscreen
+        key_media_play_pause         key_numpad0            key_insert
+        key_launch_mail              key_numpad1            key_delete
+        key_launch_media_select      key_numpad2            key_help
+        key_launch_app1              key_numpad3
+        key_launch_app2              key_numpad4
+                                     key_numpad5
+        key_kana                     key_numpad6
+        key_junja                    key_numpad7
+        key_final                    key_numpad8
+        key_hanja                    key_numpad9
+        key_kanji                    key_multiply
+                                     key_add
+                                     key_separator
+                                     key_subtract
+                                     key_decimal
+                                     key_divide
+
+        $ Note: certain keys may not work on all systems. for example,
+                key_grave may not exist on certain non-us keyboards. also,
+                obviously key_browser_back and other extended keys will only
+                function on keyboards that have those keys.
+
+    Possible QUALIFIERS:
+
+        shift           lbutton         ignore_shift         ignore_lbutton
+        control         mbutton         ignore_control       ignore_mbutton
+        alt             rbutton         ignore_alt           ignore_rbutton
+        special         xbutton1        ignore_special       ignore_xbutton1
+        key_down        xbutton2        ignore_key_down      ignore_xbutton2
+        key_up          any_button      ignore_key_up        ignore_buttons
+        any_key                         ignore_keys
+                                                             ignore_qualifiers
+                                                             none
+
+        $ Note: 'none' is the default for all mouse button bindings. for key
+                bindings, the default is ignore_buttons, and if a key is not
+                tagged as key_up, then it defaults to key_down. if you don't
+                wish this default behavior, explicitly state 'none' as your
+                qualifier.
+*/

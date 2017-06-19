@@ -1,0 +1,185 @@
+[compass_hotpoints]
+{
+	interface = true;
+	
+	skrit = [[
+		
+		owner = UIWindow;
+		
+		Goid spawn_base$ (int node$)
+		{
+			GoCloneReq req$ = MakeGoCloneReq ("cow_black_white");
+			req$.SnapToTerrain = true;
+			req$.StartingPos = SiegePos.Make (0.000000, 0.000000, 0.00000, node$);
+			
+			return GoDb.SCloneGo (req$);
+		}
+		
+		Goid spawn_offset$ (int node$)
+		{
+			GoCloneReq req$ = MakeGoCloneReq ("cow_brown");
+			req$.SnapToTerrain = true;
+			req$.StartingPos = SiegePos.Make (1.000000, 0.000000, 1.00000, node$);
+			
+			return GoDb.SCloneGo (req$);
+		}
+		
+		void do_it$()
+		{
+			//report.messagebox ("call");
+			
+			int count$ = MapMaker.ReadNodesDotGasFrom ("H:\\Documents and Settings\\aaron\\My Documents\\My Projects\\dsmmorpg\\bits\\world\\maps\\dsmmorpg\\regions\\1\\terrain_nodes\\nodes.gas");
+			
+			// report.messageboxf ("count$ = %i", count$);
+			
+			SiegePos origin$ = Server.ScreenHero.Placement.Position;
+			
+			Log log$ = CreateLog ("H:\\log.txt");
+			
+			// print to a file "<region>"
+			log$.ReportF ("<region>");
+			
+			report.screenf ("%d nodes were found", count$);
+			while (count$ > 0)
+			{
+				count$ -= 1;
+				
+				int guid$ = MapMaker.GetNodeGuidAt (count$);
+				Goid object$ = spawn_base$ (guid$);
+				Goid offset$ = spawn_offset$ (guid$);
+				
+				Vector v$ = GetZeroVector();
+				GetSiegeDifference (v$, origin$, object$.Go.Placement.Position);
+				
+				// OrbitAngleToTarget -- make sure north on the root tile is actually what we want to be north
+				// is an angle in radians or degrees? assuming degrees
+				float angle$;
+				
+				// determine where the cow is relative to the screen hero
+				// angle$ = AzimuthAngleToTarget (Server.ScreenHero.Goid, object$);
+				angle$ = 180 / Math.Pi();
+				int x1$ = (angle$ > 0 && angle$ < 180) ? 1 : -1;
+				int y1$ = (angle$ > 90 && angle$ < 270) ? -1 : 1;
+				
+				// determine where the screen hero is relative to the cow
+				// angle$ = AzimuthAngleToTarget (object$, Server.ScreenHero.Goid);
+				angle$ = 180 / Math.Pi();
+				int x2$ = (angle$ > 0 && angle$ < 180) ? 1 : -1;
+				int y2$ = (angle$ > 90 && angle$ < 270) ? -1 : 1;
+				
+				// 0 - unknow, 1 - north, 2 - east, 3 - south, 4 - west
+				int orientation$ = 0;
+				if (y1$ * y2$ * x1$ * x2$ == 1)
+				{
+					orientation$ = (y1$ * y2$ == -1) ? 1 : 3;
+				}
+				else
+				{
+					orientation$ = (x1$ * y2$ == -1) ? 2 : 4;
+				}
+				
+				// actually y and z might be mixed up or something weird like that... i hate siegepos's -_- (siege p..o..s.... piece of ...)
+				// now print to a file "<node id=\" + guid$ + "\" x=\"" + v$.X + "\" y=\"" + v$.Y + "\" z=\"" + v$.Z + "\" rotation=\" + orientation$ "\" />"
+				log$.ReportF ("\t<node id=\"0x%x\" x=\"%f\" y=\"%f\" z=\"%f\" rotation=\"%i\" />", guid$, v$.X, v$.Z, v$.Y, orientation$);
+			}
+			
+			log$.ReportF ("</region>");
+			
+			DestroyLog (log$);
+		}
+	]];
+
+	[t:window,n:compass_drag_window]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		draw_order = 0;
+		rect = 0,0,108,108;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;		
+		[messages]
+		{
+			ondrag = Notify(drag_compass);
+		}
+		is_right_anchor = true;
+		right_anchor = 108;
+
+		pass_through = true;
+
+		rollover_help = compass_drag_window;
+	}
+
+	[t:button,n:button_compass_hide]
+	{
+		f alpha = 1.000000;
+		b common_control = false;
+		  common_template = ;
+		x draw_order = 0x00000004;
+		  rect = 604,12,627,37;
+		  texture = b_gui_ig_mnu_compass_spinner-up;
+		  uvcoords = 0.125000,0.125000,0.843750,0.906250;
+		  wrap_mode = clamp;
+		[messages]
+		{
+			  onbuttonpress = notify(compass_hide) & playsound(s_e_gui_element_small) & call (do_it$);
+			  onlbuttondown = loadtexture(b_gui_ig_mnu_compass_spinner-dwn);
+			  onlbuttonup = loadtexture(b_gui_ig_mnu_compass_spinner-up);
+			  onrolloff = loadtexture(b_gui_ig_mnu_compass_spinner-up);
+			  onrollover = loadtexture(b_gui_ig_mnu_compass_spinner-hov);
+		}
+		is_right_anchor = true;
+		right_anchor = 37;
+
+		rollover_help = compass_hide;
+	}
+	[t:button,n:button_compass_show]
+	{
+		f alpha = 1.000000;
+		b common_control = false;
+		  common_template = ;
+		x draw_order = 0x00000006;
+		  rect = 587,12,627,53;
+		  texture = b_gui_ig_mnu_compass_spinner_small;
+		  uvcoords = 0.343750,0.328125,0.656250,0.656250;
+		  wrap_mode = clamp;
+		  visible = false;
+		is_right_anchor = true;
+		right_anchor = 53;
+
+		[messages]
+		{
+			  onbuttonpress = notify(compass_show) & playsound(s_e_gui_element_small);
+			  onlbuttondown = loadtexture(b_gui_ig_mnu_compass_spinner_small-dwn);
+			  onlbuttonup = loadtexture(b_gui_ig_mnu_compass_spinner_small);
+			  onrolloff = loadtexture(b_gui_ig_mnu_compass_spinner_small);
+			  onrollover = loadtexture(b_gui_ig_mnu_compass_spinner_small-hov);
+		}
+
+		rollover_help = compass_show;
+	}
+
+	[t:button,n:window_camera]
+	{
+	  f alpha = 1.000000;		
+	  b common_control = false;
+		common_template = ;		
+	  i draw_order = 2;	
+	  	
+		is_right_anchor = true;
+		right_anchor = 50;
+		
+		rect = 390,100,422,132;		
+		rollover_help = tracking_indicator;
+		texture = b_gui_ig_mnu_camera;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		visible = false;
+		wrap_mode = clamp;		
+
+		[messages]
+		{
+			onbuttonpress = notify(camera_track) & playsound(s_e_frontend_tiny_button);
+			onstartanim = flashanimation(0.35,true,1,6);
+		}
+	}
+}

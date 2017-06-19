@@ -1,0 +1,57 @@
+[multiplayer_load]
+{
+	centered = window_main_panel;
+	intended_resolution_height = 480;
+	intended_resolution_width = 640;
+	interface = true;
+
+	[t:status_bar,n:loading_bar]
+	{
+	  f alpha = 0.000000;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 0;
+		rect = 10000,10000,10000,10000;
+		texture = b_t_alpha;
+		uv_map = true;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:panel_1]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 1;
+		group = loading_bar;
+	  b pass_through = true;
+		rect = 63,117,319,373;
+		texture = b_gui_fe_m_mn_3d_prep1;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:panel_2]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 2;
+		group = loading_bar;
+	  b pass_through = true;
+		rect = 319,117,575,373;
+		texture = b_gui_fe_m_mn_3d_prep2;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:window_main_panel]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 7;
+	  b pass_through = true;
+		rect = 90,161,550,319;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+}

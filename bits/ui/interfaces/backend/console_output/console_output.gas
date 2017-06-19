@@ -1,0 +1,49 @@
+[t:interface,n:console_output]
+{
+	interface = true;
+
+	[t:chat_box,n:console_box]
+	{
+		f alpha = 1.0000000;
+		b common_control = false;
+		  common_template = ;
+		  console = true;
+		i draw_order = 0;
+		  font_color = 0xffffffff;
+		i font_size = 15;
+		  font_type = b_gui_fnt_12p_copperplate-light;
+		  font_1024x768 = b_gui_fnt_14p_copperplate-light;
+		  font_800x600 = b_gui_fnt_12p_copperplate-light;
+		  font_640x480 = b_gui_fnt_12p_copperplate-light;
+		b has_slider = true;
+		f line_timeout = 7.500000;
+		i max_string_size = 0;
+		  pass_through = true;
+		  delete_timeouts = false;
+		  rect = 152,6,551,137;
+		b scroll_down = true;
+		  text = "";
+		  texture = b_gui_cmn_box_alpha_154;
+		  uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		  wrap_mode = clamp;	
+		  delete_timeouts = false;		
+		i max_history = 100;
+		b stretch_x = true;	 
+		b stretch_y = true; 
+	}
+
+	[t:window;n:rollover_console]
+	{
+		i draw_order = 1;
+		b pass_through = true;
+		b stretch_x = true;	
+		b stretch_y = true;   
+		rect = 152,6,551,21;
+		
+		[messages]
+		{
+			onrollover = notify(console_expand);
+			onrolloff = notify(console_shrink);
+		}		
+	}
+}

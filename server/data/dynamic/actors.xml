@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects>
+	<go id="1">
+		<actor>
+			<alignment value="aa_good" />
+			<can_level_up value="true" />
+			<skills>
+				<skill name="strength" level="10.0" experience="25000" />
+				<skill name="intelligence" level="10.0" experience="25000" />
+				<skill name="dexterity" level="10.0" experience="25000" />
+				<skill name="melee" level="1.0" experience="250" />
+				<skill name="ranged" level="0.0" experience="0" />
+				<skill name="nature magic" level="3.0" experience="12000" />
+				<skill name="combat magic" level="8.0" experience="200000" />
+			</skills>
+		</actor>
+		<aspect>
+			 <bounding_sphere_radius value="1.0" />
+			 <current_life value="100.0" />
+			 <current_mana value="100.0" />
+			 <flesh value="b_c_gah_fg_skin_002,b_c_gah_fg_hair_001" />
+			 <cloth value="b_c_pos_a1_pant_006,b_c_pos_a1_shrt_009" />
+			 <life_state value="ls_alive_conscious" />
+			 <max_life value="100.0" />
+			 <max_mana value="100.0" />
+			 <model value="humangirl" />
+			 <render_scale value="1.1" />
+		</aspect>
+		<attack>
+			<damage_max value="3.0" />
+			<damage_min value="1.0" />
+		</attack>
+		<body>
+			<avg_move_velocity value="4.5" />
+			<max_move_velocity value="4.5" />
+			<min_move_velocity value="4.5" />
+		</body>
+		<common>
+			<auto_expiration_class value="never" />
+			<forced_expiration_class value="auto" />
+			<screen_name value="xmen90s" />
+		</common>
+		<mind />
+		<inventory />
+		<placement />
+	</go>
+	<go id="2">
+		<actor>
+			<alignment value="aa_good" />
+			<can_level_up value="true" />
+			<skills>
+				<skill name="strength" level="10.0" experience="25000" />
+				<skill name="intelligence" level="10.0" experience="25000" />
+				<skill name="dexterity" level="10.0" experience="25000" />
+				<skill name="melee" level="1.0" experience="250" />
+				<skill name="ranged" level="0.0" experience="0" />
+				<skill name="nature magic" level="3.0" experience="12000" />
+				<skill name="combat magic" level="8.0" experience="200000" />
+			</skills>
+		</actor>
+		<aspect>
+			 <bounding_sphere_radius value="1.0" />
+			 <current_life value="100.0" />
+			 <current_mana value="100.0" />
+			 <flesh value="b_c_gah_fg_skin_003,b_c_gah_fg_hair_002" />
+			 <cloth value="b_c_pos_a1_pant_005,b_c_pos_a1_shrt_008" />
+			 <life_state value="ls_alive_conscious" />
+			 <max_life value="100.0" />
+			 <max_mana value="100.0" />
+			 <model value="humangirl" />
+			 <render_scale value="1.1" />
+		</aspect>
+		<attack>
+			<damage_max value="3.0" />
+			<damage_min value="1.0" />
+		</attack>
+		<body>
+			<avg_move_velocity value="4.5" />
+			<max_move_velocity value="4.5" />
+			<min_move_velocity value="4.5" />
+		</body>
+		<common>
+			<auto_expiration_class value="never" />
+			<forced_expiration_class value="auto" />
+			<screen_name value="brkopac" />
+		</common>
+		<mind />
+		<inventory />
+		<placement />
+	</go>
+	<go id="3">
+		<actor strength="6" dexterity="4" intelligence="2" charisma="15" wisdom="5" constitution="4" />
+		<aspect model="humangirl" flesh="b_c_gah_fg_skin_004,b_c_gah_fg_hair_004" cloth="b_c_pos_a1_pant_005,b_c_pos_a1_shrt_008" visible="true" />
+		<common name="techiem2" description="yet another j00kie dude" />
+		<mind />
+		<inventory />
+		<placement />
+	</go>
+	<go id="4">
+		<actor strength="6" dexterity="4" intelligence="2" charisma="15" wisdom="5" constitution="4" />
+		<aspect model="humangirl" flesh="b_c_gah_fg_skin_004,b_c_gah_fg_hair_004" cloth="b_c_pos_a1_pant_005,b_c_pos_a1_shrt_008" visible="true" />
+		<common name="Kenjuudo" description="yet another j00kie dude" />
+		<mind />
+		<inventory />
+		<placement />
+	</go>
+	<go id="5">
+		<actor>
+			<alignment value="aa_evil" />
+			<can_level_up value="true" />
+			<skills>
+				<skill name="strength" level="10.0" experience="25000" />
+				<skill name="intelligence" level="10.0" experience="25000" />
+				<skill name="dexterity" level="10.0" experience="25000" />
+				<skill name="melee" level="1.0" experience="250" />
+				<skill name="ranged" level="0.0" experience="0" />
+				<skill name="nature magic" level="3.0" experience="12000" />
+				<skill name="combat magic" level="8.0" experience="200000" />
+			</skills>
+		</actor>
+		<aspect>
+			 <bounding_sphere_radius value="1.0" />
+			 <current_life value="100.0" />
+			 <current_mana value="100.0" />
+			 <flesh value="b_c_gah_fg_skin_01" />
+			 <cloth value="b_c_pos_a1_pant_005,b_c_pos_a1_shrt_008" />
+			 <life_state value="ls_alive_conscious" />
+			 <max_life value="100.0" />
+			 <max_mana value="100.0" />
+			 <model value="humangirl" />
+			 <render_scale value="1.1" />
+		</aspect>
+		<attack>
+			<damage_max value="3.0" />
+			<damage_min value="1.0" />
+		</attack>
+		<body>
+			<avg_move_velocity value="4.5" />
+			<max_move_velocity value="4.5" />
+			<min_move_velocity value="4.5" />
+		</body>
+		<common>
+			<auto_expiration_class value="never" />
+			<forced_expiration_class value="auto" />
+			<screen_name value="test actor" />
+		</common>
+		<mind />
+		<inventory />
+		<placement region="1">
+			<position node="4053099924" x="1.000000" y="0.000000" z="1.000000" />
+		</placement>
+	</go>
+	<go id="6">
+		<actor strength="6" dexterity="4" intelligence="2" charisma="15" wisdom="5" constitution="4" />
+		<aspect model="firebat" visible="true" />
+		<common name="firebat" description="yet another j00kie dude" />
+		<mind />
+		<inventory />
+		<placement />
+	</go>
+</objects>

@@ -1,0 +1,7 @@
+[t:tsd,n:b_gui_fe_m_mn_3d_prep2]
+{
+  b dither = true;
+  b hasalpha = true;
+    layer1texture1 = b_gui_fe_m_mn_3d_prep2;
+  i texturedetail = 0;
+}

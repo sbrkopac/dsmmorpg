@@ -1,0 +1,70 @@
+/*
+ *  This file is part of dsmmorpg.
+ *  
+ *  dsmmorpg is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  dsmmorpg is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU General Public License
+ *  along with dsmmorpg.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+[options]
+{
+	[video]
+	{
+		[allowed_res]
+		{
+			* = 640x480x32;
+			* = 800x600x32;
+			* = 1024x768x32;
+			* = 1280x1024x32;
+		}
+		screen_res = 800x600x32;
+		screen_res_alternate = 1024x768x32;
+		gamma = 1.0;
+		video_shadows = complex_party;
+		texture_filtering = bilinear;
+		object_detail = 1.0;
+	}
+	[audio]
+	{
+		sound_enabled = true;
+		eax_enabled = false;
+						 //0-127
+		master_volume =		108; // was 100 -MM 01.23.02
+		music_volume = 		108; // was  84 -MM 01.23.02
+		sfx_volume = 		74;
+		ambient_volume = 	90;
+		voice_volume = 		85; // was 80 -MM 06.14.2002
+	}
+	[input]
+	{
+		invert_camera_x_axis = false;
+		invert_camera_y_axis = false;
+		lock_camera_x_axis	 = false;
+		lock_camera_y_axi	 = false;
+		screen_edge_tracking = true;
+		camera_rate = 50; // 0-100
+		mouse_rate = 50;
+	}
+	[game]
+	{
+		show_framerate = false;
+		show_tooltips = false;
+		game_speed = 1.0;
+		text_scroll = 5.0;
+		max_text	= 6.0;
+		tutorial_tips = false;
+		difficulty = normal;
+		blood = disabled;
+		dismemberment = false;
+		priority_boost = true;
+	}
+}

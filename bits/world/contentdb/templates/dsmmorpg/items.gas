@@ -1,0 +1,122 @@
+[t:template,n:great_sword_of_pwnage]
+{
+	doc = "Great Sword";
+	specializes = base_sword;
+	
+	[object]
+	{
+	}
+	
+	[aspect]
+	{
+		model = m_w_swd_017;
+	}
+	[attack]
+	{
+		is_two_handed = true;
+	}
+	[common]
+	{
+		screen_name = "Great Sword of pwnage";
+	}
+	[gui]
+	{
+		active_icon = b_gui_ig_i_ic_swd_007;
+		inventory_height = 4;
+		inventory_icon = b_gui_ig_i_w_swd_035;
+		inventory_width = 1;
+	}
+}
+
+[t:template,n:special_armor]
+{
+	doc = "Standard Plate";
+	specializes = base_body_armor_plate;
+	
+	[object]
+	{
+	}
+	
+	[common]
+	{
+		screen_name = "Standard Plate";
+	}
+	[defend]
+	{
+		armor_style = 014;
+		armor_type = a3;
+	  f defense = 204.000000;
+	}
+	[gui]
+	{
+		inventory_height = 3;
+		inventory_icon = b_gui_ig_i_a_pos_a3_014;
+		inventory_width = 2;
+	}
+}
+
+[t:template,n:long_bow]
+{
+	category_name = "weapon";
+	doc = "Long Backed Bow";
+	specializes = base_bow;
+	
+	[object]
+	{
+	}
+	
+	[aspect]
+	{
+		model = m_w_bow_028;
+	}
+	[attack]
+	{
+		attack_range = 13;
+	  f damage_max = 110.000000;
+	  f damage_min = 94.000000;
+		reload_delay = 0.3;
+	}
+	[common]
+	{
+		screen_name = "Long Backed Bow";
+	}
+	[gui]
+	{
+		active_icon = b_gui_ig_i_ic_bow_002;
+		inventory_height = 4;
+		inventory_icon = b_gui_ig_i_w_bow_080;
+		inventory_width = 1;
+	}
+	[physics]
+	{
+		velocity = 25.0;
+	}
+}
+[t:template,n:revive]
+{
+	category_name = "magic";
+	doc = "revive spell";
+	specializes = base_spell_good;
+	[aspect]
+	{
+	}
+	[common]
+	{
+		screen_name = "revive";
+	}
+	[gui]
+	{
+		active_icon = b_gui_ig_i_ic_sp_013;
+		inventory_icon = b_gui_ig_i_ic_sp_013_inv;
+	}
+	[magic]
+	{
+		cast_range = 12;
+		cast_reload_delay = 1;
+		is_one_shot = true;
+		mana_cost = 0;
+		requires_line_of_sight = true;
+		target_type_flags = tt_actor;
+		usage_context_flags = uc_offensive;
+	}
+}

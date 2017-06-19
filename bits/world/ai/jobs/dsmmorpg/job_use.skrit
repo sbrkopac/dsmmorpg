@@ -1,0 +1,140 @@
+/*
+  ============================================================================
+  ----------------------------------------------------------------------------
+
+	File		: job_use.skrit
+
+	Author(s)	: Bartosz Kijanka
+
+	Purpose		: Use an item.
+
+	(C)opyright 2000 Gas Powered Games, Inc.
+
+  ----------------------------------------------------------------------------
+  ============================================================================
+*/
+
+
+Go		m_Go$;
+GoMind	m_Mind$;
+GoBody  m_Body$;
+Job		m_Job$;
+Goid	m_Target$;
+
+////////////////////////////////////////////////////////////////////////////////
+
+#include "k_job_c_mcp_path_utils" 
+
+////////////////////////////////////////////////////////////////////////////////
+
+startup state Startup$
+{
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+//	init
+event OnJobInitPointers$( Job job$ )
+{
+	m_Job$		= job$;
+	m_Go$		= job$.GetGo;
+	m_Mind$		= job$.GetGo.GetMind;
+	m_Body$		= job$.GetGo.GetBody;
+}
+
+
+event OnJobInit$( Job job$ )
+{
+	OnJobInitPointers$( job$ );
+
+	m_Target$ = job$.GoalObject;
+
+	m_Go$.Inventory.SBeginUse( m_Target$ );
+
+	ResetPathFindingParameters$();
+
+	SetState RequestAction$;
+}
+
+
+state RequestAction$
+{
+	transition
+	{
+		->TargetMoved$:	OnWorldMessage( WE_MCP_DEPENDANCY_BROKEN );
+		->Using$:		OnWorldMessage( WE_MCP_SECTION_COMPLETED );
+		->Using$:		OnWorldMessage( WE_ANIM_DONE );
+		->Exiting$:		OnWorldMessage( WE_MCP_INVALIDATED );
+	}
+
+	event OnEnterState$
+	{
+  		if( !m_Target$.IsValid )
+  		{
+  			report.genericf("Invalid target for job_use ran by %s\n",m_Go$.TemplateName);
+  			SetState Exiting$;
+  			return;
+  		}
+  		
+  		if( !m_Target$.Go.HasAspect )
+  		{
+  			report.GenericF("%s, scid:0x%08x is trying to use an invalid object!!\n %s, scid:0x%08x doesn't have an aspect!!",m_Go$.TemplateName, m_Go$.Scid, m_Target$.Go.TemplateName, m_Target$.Go.Scid);
+  			SetState Exiting$;
+  			return;
+  		}
+  			
+  		eReqRetCode ret$ = MCPManager.MakeRequest(
+  									m_Go$.Goid, 
+  									PL_APPROACH, 
+  									m_Target$, 
+									m_LookAhead$, m_MaxApproachTime$,
+  									m_Mind$.PersonalSpaceRange+m_Target$.Go.Aspect.UseRange );
+
+		report.ReportF("aimove","[%s] USE (PL_APPROACH) [%s] returned [%s]\n",
+		 	m_Go$.TemplateName,
+		 	m_Target$.go.TemplateName,
+			ToString(ret$) );
+
+		
+		if( RequestFailed(ret$) )
+		{
+			Report.Genericf("[%s] USE - FAILED could not get to target [%s]. Aborting job.\n",
+				m_Go$.TemplateName, m_Job$.GoalObject.GetGo.TemplateName);
+			SetState( Exiting$ );
+		}
+		else if (ret$ == REQUEST_OK_IN_RANGE)
+		{
+			SetState( Using$ );
+		}
+		else if ( (ret$ == REQUEST_OK) || (ret$ == REQUEST_OK_CROWDED) )
+		{
+			// just stay in this state we are going to make it to our goal in this move.
+		}
+		else // anything else we just want to try to get closer.
+		{
+			SetState( MovingCloser$ );
+		}
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//	
+state Using$
+{
+	event OnEnterState$
+	{
+		// use the item
+		m_Go$.Inventory.SAutoUse( m_Target$, m_Job$.Origin, true );
+		SetState Exiting$;
+	}
+}
+
+
+state Exiting$
+{
+	event OnEnterState$
+	{
+		m_Go$.Inventory.SEndUse( m_Target$ );
+		m_Job$.MarkForDeletion();
+	}
+}

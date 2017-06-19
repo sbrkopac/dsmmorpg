@@ -1,0 +1,463 @@
+[t:template,n:hero]
+{
+	doc = "This is a hero that the actor can choose at the start of game";
+	specializes = actor_good;
+	[actor]
+	{
+		can_level_up = true;
+		race = human;
+		[skills]
+		{
+			strength 	=	0, 0, 10;
+			intelligence= 	0, 0, 10;
+			dexterity	= 	0, 0, 10;
+		}
+	}
+	[aspect]
+	{
+		life_recovery_unit   = 1;
+		life_recovery_period = 4;
+
+		mana_recovery_unit   = 1;
+		mana_recovery_period = 3;
+
+	}
+	[attack]
+	{
+		ammo_attach_bone = weapon_grip;
+		attack_range = 0.5;
+		reload_delay = 0;
+   		damage_max = 0;
+		damage_min = 0;
+
+	}
+	[guts_manager]
+	{
+		effect_name = melee_hit_2;
+	}
+	[common]
+	{
+		membership = hero;
+		auto_expiration_class = never;
+		forced_expiration_class = never;
+	}
+	[inventory]
+	{
+		grid_height = 13;
+		grid_width = 4;
+	}
+	[mind]
+	{
+		/*
+			In my mind's eye, I see... a bunch of skrit code.
+		*/
+
+		////////////////////////////////////////
+		//	jobs
+
+		jat_brain 	= world\ai\jobs\common\brain_hero.skrit;
+		jat_listen 	= world\ai\jobs\common\job_listen.skrit;
+
+		////////////////////////////////////////
+		//	params
+
+		melee_engage_range              = 0.9;
+		ranged_engage_range             = 5.5;
+		sensor_scan_period              = 0.25;
+		sight_range                     = 12.0;
+
+		actor_life_ratio_low_threshold  = 0.5;
+		actor_life_ratio_high_threshold = 0.8;
+		actor_mana_ratio_low_threshold  = 0.5;
+		actor_mana_ratio_high_threshold = 0.8;
+
+		actor_weapon_preference         = WP_NONE;
+
+		////////////////////////////////////////
+		//	permissions
+
+		combat_orders                              = CO_LIMITED;
+		movement_orders                            = MO_LIMITED;
+
+		actor_auto_switches_to_magic               = false;
+		actor_auto_defends_others                  = true;
+		actor_auto_heals_others_life               = true;
+		actor_auto_switches_to_karate              = false;
+        actor_auto_switches_to_melee               = false;
+
+		on_enemy_entered_icz_switch_to_melee       = false;
+		on_engaged_lost_consciousness_abort_attack = false;
+	}
+
+	[physics]
+	{
+		fire_effect = human_physics_fire;
+        fire_resistance = 0.0;
+        fire_burn_threshold = 999;
+        elasticity = 0.2;
+	}
+}
+
+[t:template,n:base_farmboy]
+{
+	doc = "Farm boy base template";
+	specializes = hero;
+	[actor] { portrait_icon=b_gui_ig_i_ic_c_fb_01; }
+	[aspect]
+	{
+		model = m_c_gah_fb_pos_a1;
+		[textures]
+		{
+			0 = b_c_gah_fb_skin_04;
+			1 = b_c_pos_a1_008;
+		}
+		[voice]
+		{
+			[die] { *=s_e_die_male; }
+		}
+	}
+	[body]
+	{
+		armor_version = gah_fb;
+		avg_move_velocity = 4.500000;
+		initial_chore = chore_fidget;
+		[bone_translator]
+		{
+			body_anterior = bip01_head;
+			body_mid = bip01_spine2;
+			body_posterior = bip01_pelvis;
+			kill_bone = bip01_spine2;
+			shield_bone = shield_grip;
+			weapon_bone = weapon_grip;
+		}
+		[chore_dictionary]
+		{
+			chore_prefix = a_c_gah_fb_fs;
+			[chore_attack]
+			{
+				chore_stances = 0,1,2,3,4,5,6,7,8;
+				skrit = select_attack;
+				[anim_files]
+				{
+					0mid = at;
+					high = at-02;
+					loww = at-03;
+					extr = at-04;
+					qffg = dff;
+				}
+		 	  	[anim_durations]
+				{
+					fs0 = 1.250;
+					fs1 = 0.830;
+					fs2 = 0.830;
+					fs3 = 1.250;
+					fs4 = 1.250;
+					fs5 = 1.250;
+					fs6 = 1.000;
+					fs7 = 0.125;
+					fs8 = 1.000;
+				}
+			}
+			[chore_default]
+			{
+				chore_stances = 0,1,2,3,4,5,6,7,8;
+				skrit = simple_loop;
+				[anim_files] { 00=dff; }
+			}
+			[chore_die]
+			{
+				chore_stances = 0,1,2,3,4,5,6,7,8;
+				skrit = select_transition;
+				[anim_files] { 00=di; }
+			}
+			[chore_fidget]
+			{
+				chore_stances = 0,1,2,3,4,5,6,7,8;
+				skrit = select_fidget;
+				[anim_files]
+				{
+					00 = dff;
+					01 = dff-02;
+				}
+			}
+			[chore_magic]
+			{
+				chore_stances = 0,5;
+				skrit = select_attack;
+				[anim_files]
+				{
+					00 = mg;
+					01 = mg-02;
+				}
+			}
+			[chore_misc]
+			{
+				chore_stances = ignore;
+				skrit = select_transition;
+				[anim_files]
+				{
+					drnk = a_c_gah_fb_fs1_dk;
+					gtup = a_c_gah_fb_fs0_up;
+					look = a_c_gah_fb_fs0_dsf;
+					wyme = a_c_gah_fb_fs0_dsf-02;
+					frtd = a_c_gah_fb_fs0_dsf-03;
+					talk = a_c_gah_fb_fs0_dsf-04;
+					bed1 = a_c_gah_fb_fs0_dsf-05;
+					bed2 = a_c_gah_fb_fs0_dsf-06;
+					bed3 = a_c_gah_fb_fs0_dsf-07;
+					mrik = a_c_gah_fb_fs0_dsf-08;
+					sit1 = a_c_gah_fb_fs0_dsf-09;
+					sit2 = a_c_gah_fb_fs0_dsf-10;
+					bed4 = a_c_gah_fb_fs0_dsf-11;
+					bed5 = a_c_gah_fb_fs0_dsf-12;
+					froz = a_c_gah_fb_fs0_dsf-16;
+					andi = a_c_gah_fb_fs0_dsf-17;
+					lsn2 = a_c_gah_fb_fs0_dsf-18;
+					knee = a_c_gah_fb_fs1_dsf-03;
+					lstn = a_c_gah_fb_fs1_dsf-04;
+					lblg = a_c_gah_fb_fs2_dsf-02;
+					hoe1 = a_c_gah_fb_fs5_dsf-02;
+				}
+			}
+			[chore_walk]
+			{
+				chore_stances = 0,1,2,3,4,5,6,7,8;
+				skrit = select_walk;
+				[anim_files] { 05=rl; }
+			}
+		}
+	}
+	[common] { screen_name="Farm boy"; }
+}
+[t:template,n:base_farmgirl]
+{
+	doc = "Farm girl base template";
+	specializes = hero;
+	[actor]
+	{
+		portrait_icon=b_gui_ig_i_ic_c_fg_a_01;
+		is_male = false;
+	}
+	[aspect]
+	{
+		model = m_c_gah_fg_pos_a1;
+		[textures]
+		{
+			0 = b_c_gah_fg_skin_01;
+			1 = b_c_pos_a1_009;
+		}
+		[voice]
+		{
+			[die] { *=s_e_die_female; }
+		}
+	}
+	[body]
+	{
+		armor_version = gah_fg;
+		avg_move_velocity = 4.500000;
+		[bone_translator]
+		{
+			body_anterior = bip01_head;
+			body_mid = bip01_spine2;
+			body_posterior = bip01_pelvis;
+			kill_bone = bip01_spine2;
+			shield_bone = shield_grip;
+			weapon_bone = weapon_grip;
+		}
+		[weapon_scales]
+		{
+			as_single_melee		= 0.8, 0.8, 0.8;
+			as_two_handed_melee	= 0.8, 0.8, 0.8;
+			as_two_handed_sword	= 0.8, 0.8, 0.8;
+			as_staff			= 1.0, 1.0, 1.0;
+			as_bow_and_arrow	= 0.8, 0.8, 0.8;
+			as_minigun			= 0.8, 0.8, 0.8;
+			as_shield_only		= 0.9, 0.9, 0.9;
+		}
+		[chore_dictionary]
+		{
+			chore_prefix = a_c_gah_fg_fs;
+			[chore_attack]
+			{
+				chore_stances = 0,1,2,3,4,5,6,7,8;
+				skrit = select_attack;
+				[anim_files]
+				{
+					0mid = at;
+					high = at-02;
+					loww = at-03;
+					extr = at-04;
+					qffg = dff;
+				}
+		 	  	[anim_durations]
+				{
+					fs0 = 1.250;
+					fs1 = 0.830;
+					fs2 = 0.830;
+					fs3 = 1.250;
+					fs4 = 1.250;
+					fs5 = 1.250;
+					fs6 = 1.000;
+					fs7 = 0.125;
+					fs8 = 1.000;
+				}
+			}
+			[chore_default]
+			{
+				chore_stances = 0,1,2,3,4,5,6,7,8;
+				skrit = simple_loop;
+				[anim_files] { 00=dff; }
+			}
+			[chore_die]
+			{
+				chore_stances = 0,1,2,3,4,5,6,7,8;
+				skrit = select_transition;
+				[anim_files] { 00=di; }
+			}
+			[chore_fidget]
+			{
+				chore_stances = 0,1,2,3,4,5,6,7,8;
+				skrit = select_fidget;
+				[anim_files]
+				{
+					00 = dff;
+					01 = dff-02;
+				}
+			}
+			[chore_magic]
+			{
+				chore_stances = 0,5;
+				skrit = select_attack;
+				[anim_files]
+				{
+					00 = mg;
+					01 = mg-02;
+				}
+			}
+			[chore_misc]
+			{
+				chore_stances = ignore;
+				skrit = select_transition;
+				[anim_files]
+				{
+					drnk = a_c_gah_fg_fs1_dk;
+					gtup = a_c_gah_fg_fs0_up;
+					look = a_c_gah_fg_fs0_dsf;
+					talk = a_c_gah_fg_fs0_dsf-02;
+					wyme = a_c_gah_fg_fs0_dsf-03;
+					ulor = a_c_gah_fg_fs0_dsf-04;
+					hddl = a_c_gah_fg_fs0_dsf-05;
+					hdup = a_c_gah_fg_fs0_dsf-06;
+					knee = a_c_gah_fg_fs1_dsf-03;
+					lstn = a_c_gah_fg_fs1_dsf-04;
+                    frtd = a_c_gah_fg_fs0_dsf-03;
+                    ulo1 = a_c_gah_fg_fs0_dsf-04;
+                    sit1 = a_c_gah_fg_fs0_dsf-08;
+					hoe1 = a_c_gah_fg_fs5_dsf-03;
+				}
+			}
+			[chore_walk]
+			{
+				chore_stances = 0,1,2,3,4,5,6,7,8;
+				skrit = select_walk;
+				[anim_files] { 00=rl; }
+			}
+		}
+	}
+	[common] { screen_name="Farm girl"; }
+}
+[t:template,n:farmboy]
+{
+	doc = "Farmboy";
+	specializes = base_farmboy;
+	[actor]
+	{
+		is_hero=true;
+		screen_class = "Farmer";
+	}
+	[aspect]
+	{
+		megamap_override = true; // RAID#7185: MP: Teammates in MP should be non-Line of Sight on map.  -MM 02.03.2002
+	}
+	[inventory]
+	{
+		[equipment]
+		{
+        	 es_weapon_hand=dg_g_d_1h_fun;
+             es_feet = bo_bo_le_light;
+             es_spellbook = book_glb_magic_01;
+
+		}
+        [pcontent]
+        {
+			[gold*]
+			{
+				chance = 1.0;
+				max = 30;
+				min = 30;
+			}
+        }
+	}
+	[water_effects] {}
+}
+[t:template,n:farmgirl]
+{
+	doc = "Farmgirl";
+	specializes = base_farmgirl;
+	[actor]
+	{
+		is_hero=true;
+		screen_class = "Farmer";
+	}
+	[aspect]
+	{
+		megamap_override = true; // RAID#7185: MP: Teammates in MP should be non-Line of Sight on map.  -MM 02.03.2002
+	}
+	[inventory]
+	{
+		[equipment]
+		{
+			 es_weapon_hand=dg_g_d_1h_fun;
+             es_feet = bo_bo_le_light;
+			 es_spellbook = book_glb_magic_01;
+
+		}
+        [pcontent]
+        {
+			[gold*]
+			{
+				chance = 1.0;
+				max = 30;
+				min = 30;
+			}
+        }
+	}
+	[water_effects] {}
+}
+
+[t:template,n:humangirl]
+{
+	doc = "Farmgirl";
+	specializes = base_farmgirl;
+	[actor]
+	{
+		is_hero=false;
+		screen_class = "Farmer";
+	}
+	[aspect]
+	{
+		megamap_override = true; // RAID#7185: MP: Teammates in MP should be non-Line of Sight on map.  -MM 02.03.2002
+		is_invincible		= true;
+	}
+	[inventory]
+	{
+	}
+	[mind]
+	{
+		jat_brain = world\ai\jobs\dsmmorpg\job_nothing.skrit;
+	}
+	[water_effects] {}
+	[object]
+	{
+	}
+}

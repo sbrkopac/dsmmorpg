@@ -1,0 +1,99 @@
+[t:interface,n:game_console_mp]
+{
+	interface = true;
+	
+	skrit = [[
+		
+		owner = UIWindow;
+		
+		#include "k_inc_rs_packet"
+		
+		console_submit_text$()
+		{
+			UIEditBox window$ = QueryDerivedEditBox (UIShell.FindUIWindow ("console_edit", "game_console_mp"));
+			string message$; window$.GetText (message$);
+			
+			if (StringTool.IsEmpty (message$))
+			{
+				return;
+			}
+			
+			string grab$; grab$ = StringTool.Left (message$, 1);
+			
+			if (grab$ == "/")
+			{
+				string command$; command$ = StringTool.Right (message$, 1);
+				report.screenf ("firing slash command to the server: %s", command$);
+			}
+			else
+			{
+				RSChat$ (message$);
+			}
+			
+			window$.SetText ("");
+		}
+	]];
+	
+	[t:edit_box,n:console_edit]
+	{
+	  f alpha = 0.300000;
+		bottom_anchor = 76;
+	  b clear_select = true;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 73;
+	  i font_color = -1;
+	  i font_size = 15;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		group = console_edit;
+		is_bottom_anchor = true;
+	  i max_string_size = 256;
+	  b permanent_focus = true;
+		rect = 24,404,394,422;
+		text = "";
+	  b topmost = true;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		topmost = true;
+		[messages]
+		{
+			oncreated = setvisible (false) & showgroup (false);
+			oneditselect = call (console_submit_text$) & setvisible (false) & notify (hide_console);
+		}
+		[prompt]
+		{
+			texture = b_gui_fe_m_single_prompt;
+			width = 1;
+		}	
+	}
+	[t:dialog_box,n:dialog_box_console_bg]
+	{
+	  f alpha = 1.000000;
+		bottom_anchor = 78;
+	  b common_control = true;
+		common_template = cpbox;
+	  i draw_order = 16;
+		group = console_edit;
+		is_bottom_anchor = true;
+		rect = 20,402,396,424;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		consumable = true;
+		topmost = true;
+	}
+	[t:window,n:window_chat_bg]
+	{
+	  b is_bottom_anchor = true;
+		bottom_anchor = 76;
+		group = console_edit;
+	  f alpha = 0.3000000;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 39;
+		rect = 22,404,394,422;
+		texture = b_gui_fe_m_mp_staging_player_bg;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		topmost = true;
+	}
+}

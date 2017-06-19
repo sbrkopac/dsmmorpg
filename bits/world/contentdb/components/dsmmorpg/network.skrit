@@ -1,0 +1,110 @@
+/*
+ *  This file is part of dsmmorpg.
+ *  
+ *  dsmmorpg is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  dsmmorpg is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU General Public License
+ *  along with dsmmorpg.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+owner = GoSkritComponent;
+
+#include "k_inc_rc_packet"
+
+startup state startup$
+{
+	event OnGoUpdate$ (float)
+	{
+		if (NetworkManager.IsConnected())
+		{
+			int received$ = NetworkManager.Receive();
+			while (received$ > 0)
+			{
+				Packet packet$ = NetworkManager.NextPacket();
+				
+				int type$ = packet$.ReadUInt8();
+				if (type$ == 6)
+				{
+					RCCreateActor$ (packet$);
+				}
+				else if (type$ == 7)
+				{
+					RCCreateItem$( packet$);
+				}
+				else if (type$ == 11)
+				{
+					RCChat$ (packet$);
+				}
+				else if (type$ == 12)
+				{
+					RCMove$ (packet$);
+				}
+				else if (type$ == 13)
+				{
+					RCDestroyGo$ (packet$);
+				}
+				else if (type$ == 14)
+				{
+					RCSetScreenHero$ (packet$);
+				}
+				else if (type$ == 20)
+				{
+					RCGet$ (packet$);
+				}
+				else if (type$ == 21)
+				{
+					RCDrop$ (packet$);
+				}
+				else if (type$ == 22)
+				{
+					RCEquip$ (packet$);
+				}
+				else if (type$ == 23)
+				{
+					RCUnequip$ (packet$);
+				}
+				else if (type$ == 24)
+				{
+					RCAttackMelee$ (packet$);
+				}
+				else if (type$ == 25)
+				{
+					RCAttackRanged$ (packet$);
+				}
+				else if (type$ == 27)
+				{
+					RCApproach$ (packet$);
+				}
+				else if (type$ == 28)
+				{
+					RCKill$ (packet$);
+				}
+				else if (type$ == 29)
+				{
+	 				RCDamage$ (packet$);
+				}
+				else if (type$ == 30)
+				{
+					RCRevive$ (packet$);
+				}
+				
+				NetworkManager.DiscardPacket (packet$);
+				received$ -= 1;
+			}
+		}
+		else
+		{
+			// so how do you want to handle errors of this sort?
+			// what happens if someones connection drops?
+			report.screen ("error");
+		}
+	}
+}

@@ -1,0 +1,142 @@
+/*
+ *  This file is part of dsmmorpg.
+ *  
+ *  dsmmorpg is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  dsmmorpg is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU General Public License
+ *  along with dsmmorpg.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+[global_settings]
+{
+	[locale]
+	{		
+		dismemberment_option	= false;
+		red_blood_option		= false;
+		resize_labels			= true;
+		eula_name				= eula.rtf;
+		warranty_name			= warranty.rtf;
+		name_prefix_first		= true;					// if this is false, prefix will be placed after the item's screen name	
+	}
+
+	[selection_indicators]
+	{
+		texture_default	= "art\bitmaps\terrain\b_t_alpha";
+		texture_focus	= "art\bitmaps\terrain\b_t_alpha";
+
+		//					   R     G     B	( 0.00 - 1.00 )
+		item_color			= 0.080, 0.080, 0.625;
+
+		enemy_color			= 0.525, 0.080, 0.080;
+		friend_color		= 0.080, 0.625, 0.080;
+
+		party_member_color	= 0.080, 0.525, 0.080;
+		focus_go_color		= 0.080, 0.700, 0.080;
+
+		dead_enemy_color	= 0.000, 0.000, 0.000;
+		dead_friend_color	= 0.000, 0.000, 0.230;
+	}
+
+	[tooltip_colors]
+	{
+		// All colors are in 0xaarrggbb ( alpha-red-green-blue ) format
+		magic = 0xff5789e9;
+        unique = 0xffcacb44;
+        rare = 0xff9b9bfb;
+		required = 0xffff0000;
+        nature_magic = 0xff43ca83;
+		combat_magic = 0xffeaa935;  //cccccc  cc22aa
+		//next_skill = 0xffff44ff;
+		small_combo = 0xff5789e9;
+        negative = 0xff995422;
+		rollover_cast = 0xff62a5c4;
+		rollover_dead = 0xffff0000;
+		rollover_unconscious = 0xffffff00;
+		rollover_ghost = 0xffc0c0c0;
+	}
+
+	[gui_font_map]
+	{
+		default								= "MS Gothic,15";		
+		b_gui_fnt_12p_copperplate-light		= "MS Gothic,14";
+		b_gui_fnt_14p_copperplate-light		= "MS Gothic,16";		
+		b_gui_fnt_16p_copperplate-light		= "MS Gothic,18";		
+		b_gui_fnt_20p_copperplate-light		= "MS Gothic,22";				
+		b_gui_fnt_30p-numbers				= "MS Gothic,32";		
+		subtitle_font						= "MS Gothic,16";
+	}
+
+	[gui_misc]
+	{
+		item_drag_tolerance = 4;
+	}	
+
+	[gui_linespacer_map]
+	{
+		// Insert the amount of pixels you want spaced between each line
+		dialogue_box		= 0;	// The standard in-game box used for character dialog
+		text_subtitle		= 0;	// The box used for the NIS subtitles
+		console_box			= 0;	// The box used for outputting various messages during gameplay at the top of the screen
+		default				= 0;
+	}
+
+	[portrait_colors]
+	{
+		portrait_inactive_color = 0x55c0c0c0;
+	}
+
+	[inventory_highlights]
+	{
+		grid_invalid = 0x33ff0000;
+		grid_active_spell_book = 0x666F6F6F;		
+		grid_rollover = 0x666F6F6F;
+		grid_rollover_overlap = 0x66FFFFFF;
+		grid_magic = 0x3368acf8;
+	}
+
+	[character_panel_highlights]
+	{
+		text_positive = 0xff0088ff;
+		text_negative = 0xffff0000;
+	}
+
+	[save_game_settings]
+	{
+		thumbnail_width			= 80;
+		thumbnail_height		= 60;
+		quick_save_color		= 0x3368acf8;
+		auto_save_color			= 0x3368acf8;
+		max_party_save_period	= 120;			// maximum time in seconds between autosaves of party
+		min_party_save_period	= 10;			// minimum time in seconds between autosaves of party
+	}
+
+	[journal_settings]
+	{
+		chapter_color			= 0xffffE6a0;
+		active_quest_color		= 0xffffffff;
+		completed_quest_color	= 0xff141414;
+		speaker_color			= 0xff3A200A;
+	}
+
+	[timeouts]
+	{
+		f surface_expiration_time		= 15.0;		// how long rapi keeps surfaces in its cache after they've been released (to fill the gap for periodic fx, helps cpu perf)
+		f clonesrc_expiration_time		= 60.0;		// how long clone sources are kept around after last being touched before getting nuked (another cache)
+		f clonesrc_expire_check_time	= 5.0;		// how often we check for clonesrc expiration
+		f recent_deletion_retire_time	= 30.0;		// how long we remember recently deleted go's (for mp early-out of rpc's)
+		f ui_logo_time					= 13.0;		// how long until the DS logo flys back up if esc is not pressed.
+	}
+
+	[mega_map]
+	{
+		show_border_meters = 75.0f;	// Once you zoom out to this amount, the gui border for the mega map will appear
+	}
+}

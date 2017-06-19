@@ -1,0 +1,58 @@
+
+String ScreenName$;
+
+void KillCharacter$ (goid target$)
+{
+	if (target$.IsValid())
+	{
+		target$.Go.Common.GetScreenName (ScreenName$);
+		Report.ScreenF ("attempting to kill: %s", ScreenName$);
+		
+		// kill the target
+		target$.Go.Aspect.IsInvincible = true;
+		target$.Go.Aspect.SSetCurrentLife (0.1);
+			
+		target$.Go.Mind.SetMayAttack (false);
+		target$.Go.Mind.SetMayBeAttacked (false);
+			
+		PostWorldMessage (WE_LOST_CONSCIOUSNESS, target$, target$, 0);
+		target$.Go.PlayVoiceSound ("die", 5, 80, false);
+	}
+}
+
+void DamageCharacter$ (goid target$, float amount$)
+{
+	if (target$.IsValid())
+	{
+		target$.Go.Common.GetScreenName (ScreenName$);
+		Report.ScreenF ("attempting to damage: %s", ScreenName$);
+		
+		// damage the target
+		if (amount$ < 0)
+		{
+			return;
+		}
+		else
+		{
+			target$.Go.Aspect.SSetCurrentLife (target$.Go.Aspect.CurrentLife - amount$);
+		}
+	}
+}
+
+void ReviveCharacter$ (goid target$)
+{
+	if (target$.IsValid())
+	{
+		target$.Go.Common.GetScreenName (ScreenName$);
+		Report.ScreenF ("attempting to revive: %s", ScreenName$);
+		
+		// revive the character
+		target$.Go.Aspect.SSetCurrentLife (target$.Go.Aspect.MaxLife);
+		target$.Go.Aspect.IsInvincible = false;
+			
+		target$.Go.Mind.SetMayAttack (true);
+		target$.Go.Mind.SetMayBeAttacked (true);
+			
+		PostWorldMessage (WE_GAINED_CONSCIOUSNESS, target$, target$, 0);
+	}
+}

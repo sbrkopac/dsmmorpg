@@ -1,0 +1,47 @@
+[t:template,n:portal]
+{
+	specializes	= base_farmgirl;
+	
+	[actor]
+	{
+		is_hero=true;
+		screen_class = "Farmer";
+		alignment = aa_good;
+	}
+	/*
+	[aspect]
+	{
+		megamap_override = true; // RAID#7185: MP: Teammates in MP should be non-Line of Sight on map.  -MM 02.03.2002
+		[textures]
+		{
+			0 = b_t_alpha;
+			1 = b_t_alpha;
+		}
+		//is_visible = false;
+	}
+	*/
+	[inventory]
+	{
+	}
+	[common]
+	{
+		screen_name = "";
+	}
+	
+	[mind]
+	{
+		jat_move = world\ai\jobs\dsmmorpg\job_move.skrit;
+		jat_get = world\ai\jobs\dsmmorpg\job_get.skrit;
+		jat_drop = world\ai\jobs\dsmmorpg\job_drop.skrit;
+		jat_equip = world\ai\jobs\dsmmorpg\job_equip.skrit;
+		jat_use = world\ai\jobs\dsmmorpg\job_use.skrit;
+		jat_attack_object = world\ai\jobs\dsmmorpg\job_attack_object.skrit;
+		
+		jat_brain = world\ai\jobs\dsmmorpg\job_nothing.skrit;
+		jat_follow = world\ai\jobs\dsmmorpg\job_nothing.skrit;
+	}
+	
+	[portal]
+	{
+	}
+}

@@ -1,0 +1,95 @@
+/*
+ *  This file is part of dsmmorpg.
+ *  
+ *  dsmmorpg is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  dsmmorpg is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU General Public License
+ *  along with dsmmorpg.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+owner = GoSkritComponent;
+
+#include "k_inc_rs_packet"
+
+property	int			id$;
+property	string		name$;
+property	string		description$;
+
+			Go			go$;
+			Goid		bubble$;
+			
+
+startup state startup$
+{
+	event OnGoHandleMessage$ (eWorldEvent event$, WorldMessage message$)
+	{
+		if (event$ == we_mousehover)
+		{
+			//GameAuditor.GetDb.SetInt ("game:hovered:goid", MakeInt (owner.Goid));
+			//report.screenf ("now hovering %d", MakeInt (owner.Goid));
+		}
+		
+		else if (event$ == we_unmousehover)
+		{
+			int owner$ = MakeInt (owner.Goid);
+			int hovered$ = GameAuditor.GetDb.GetInt ("game:hovered:goid");
+			
+			if (hovered$ == owner$)
+			{
+				//GameAuditor.GetDb.SetInt ("game:hovered:goid", 0);
+				//report.screen ("hovering no one anymore");
+			}
+		}
+		
+		else if (event$ == we_entered_world)
+		{
+			go$ = owner.Go;
+			
+			if (go$.IsActor())
+			{
+				/*
+				SiegePos position$ = go$.Placement.Position;
+				position$.Pos.Y = position$.Pos.Y + 2.0;
+				
+				GoCloneReq req$ = MakeGoCloneReq ("bubble_name");
+				req$.StartingPos = position$;
+				
+				bubble$ = GoDb.SCloneGo (req$);
+				bubble$.Go.Common.SSetScreenName (name$);
+				
+				MCPManager.MakeRequest (bubble$, pl_follow, go$.Goid);
+				
+				if (bubble$.Go.HasComponent ("bubble"))
+				{
+					bubble$.Go.SetComponentInt ("bubble", "id", id$);
+					bubble$.Go.SetComponentInt ("bubble", "goid", MakeInt (go$.Goid));
+				}
+				*/
+				return;
+			}
+			
+			if (go$.IsItem())
+			{
+				//go$.Common.SSetScreenName (name$);
+				
+				return;
+			}
+		}
+		
+		else if (event$ == we_left_world)
+		{
+			if (go$.IsActor())
+			{
+				// PostWorldMessage (we_req_delete, bubble$, bubble$, 0.0);
+			}
+		}
+	}
+}

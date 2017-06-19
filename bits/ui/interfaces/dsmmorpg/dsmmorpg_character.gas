@@ -1,0 +1,293 @@
+[dsmmorpg_character]
+{
+  interface = True;
+
+  skrit = [[
+
+    owner = UIWindow;
+
+    init$()
+    {
+      UIWindow window$ = UIShell.FindUIWindow ("interface_background", "dsmmorpg_character");
+      
+      /*
+      window$.DumpMemoryByte();
+      window$.DumpMemoryDwords();
+      window$.DumpMemoryFloat();*/
+
+      GameAuditor.GetDb.SetInt ("ui:interfaces:dsmmorpg_character:x", window$.Rect.GetLeft());
+      GameAuditor.GetDb.SetInt ("ui:interfaces:dsmmorpg_character:y", window$.Rect.GetTop());
+      
+      window$.Children.Add (UIShell.FindUIWindow ("dialog_background", "dsmmorpg_character"));
+      window$.Children.Add (UIShell.FindUIWindow ("text_name", "dsmmorpg_character"));
+      window$.Children.Add (UIShell.FindUIWindow ("text_level", "dsmmorpg_character"));
+      window$.Children.Add (UIShell.FindUIWindow ("text_strength", "dsmmorpg_character"));
+      window$.Children.Add (UIShell.FindUIWindow ("text_dexterity", "dsmmorpg_character"));
+      window$.Children.Add (UIShell.FindUIWindow ("text_intelligence", "dsmmorpg_character"));
+      window$.Children.Add (UIShell.FindUIWindow ("text_wisdom", "dsmmorpg_character"));
+      window$.Children.Add (UIShell.FIndUIWindow ("text_charisma", "dsmmorpg_character"));
+      window$.Children.Add (UIShell.FindUIWindow ("text_constitution", "dsmmorpg_character"));
+      window$.Children.Add (UIShell.FindUIWindow ("text_exp_to_level", "dsmmorpg_character"));
+      window$.Children.Add (UIShell.FindUIWindow ("text_health", "dsmmorpg_character"));
+      window$.Children.Add (UIShell.FindUIWindow ("text_mana", "dsmmorpg_character"));
+    }
+
+    drag$()
+    {
+      UIWindow window$ = UIShell.FindUIWindow ("interface_background", "dsmmorpg_character");
+
+      int delta_x$ = window$.Rect.GetLeft() - GameAuditor.GetDb.GetInt ("ui:interfaces:dsmmorpg_character:x");
+      int delta_y$ = window$.Rect.GetTop() - GameAuditor.GetDb.GetInt ("ui:interfaces:dsmmorpg_character:y");
+
+      UIWindowVec children$ = window$.Children;
+
+      int i$ = 0;
+      while (i$ < children$.Size())
+      {
+        UIWindow child$ = children$.Get (i$);
+
+        child$.SetRect (child$.Rect.GetLeft() + delta_x$, child$.Rect.GetRight() + delta_x$, child$.Rect.GetTop() + delta_y$, child$.Rect.GetBottom() + delta_y$, false);
+
+        i$ += 1;
+      }
+
+      // update position
+      GameAuditor.GetDb.SetInt ("ui:interfaces:dsmmorpg_character:x", window$.Rect.GetLeft());
+      GameAuditor.GetDb.SetInt ("ui:interfaces:dsmmorpg_character:y", window$.Rect.GetTop());
+    }
+    
+    setstats$()
+    {    	
+    }
+
+  ]];
+
+[t:dialog_box,n:interface_background]
+{
+	  f alpha = 1;
+	  b common_control = True;
+		common_template = cpbox;
+	  i draw_order = 0;
+		rect = 0,2,304,23;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = Clamp;
+		
+		draggable = true;
+		drag_x = 1;
+		drag_y = 1;
+		drag_delay = 0.025;
+		
+		[messages]
+		{
+			ondrag = call (drag$);
+			onshow = call (setstats$);
+		}
+}
+		/*
+		[t:dialog_box,n:blahblah]
+		{
+		  f alpha = 1;
+		  b common_control = True;
+			common_template = cpbox;
+		  i draw_order = 0;
+			rect = 0,2,304,23;
+			uvcoords = 0.000000,0.000000,1.000000,1.000000;
+			wrap_mode = Clamp;
+		}*/
+		[t:dialog_box,n:dialog_background]
+           {
+             f alpha = 1;
+             b common_control = True;
+             common_template = cpbox;
+             i draw_order = 1;
+             rect = 0,24,304,279;
+             uvcoords = 0.000000,0.000000,1.000000,1.000000;
+             wrap_mode = Clamp;
+           }
+
+           [t:text,n:text_charisma]
+           {
+             pass_through = False;
+             common_control = False;
+             rect = 18,118,145,134;
+             texture = ;
+             uvcoords = 0.0,0.0,1.0,1.0;
+             wrap_mode = Clamp;
+             alpha = 1;
+             visible = True;
+             group = ;
+             text = Charisma:;
+             draw_order = 3;
+             font_type = b_gui_fnt_12p_copperplate-light;
+           }
+
+           [t:text,n:text_constitution]
+           {
+             pass_through = False;
+             common_control = False;
+             rect = 18,156,145,172;
+             texture = ;
+             uvcoords = 0.0,0.0,1.0,1.0;
+             wrap_mode = Clamp;
+             alpha = 1;
+             visible = True;
+             group = ;
+             text = Constitution:;
+             draw_order = 3;
+             font_type = b_gui_fnt_12p_copperplate-light;
+           }
+
+           [t:text,n:text_wisdom]
+           {
+             pass_through = False;
+             common_control = False;
+             rect = 18,137,145,153;
+             texture = ;
+             uvcoords = 0.0,0.0,1.0,1.0;
+             wrap_mode = Clamp;
+             alpha = 1;
+             visible = True;
+             group = ;
+             text = Wisdom:;
+             draw_order = 3;
+             font_type = b_gui_fnt_12p_copperplate-light;
+           }
+
+           [t:text,n:text_dexterity]
+           {
+             pass_through = False;
+             common_control = False;
+             rect = 18,99,145,115;
+             texture = ;
+             uvcoords = 0.0,0.0,1.0,1.0;
+             wrap_mode = Clamp;
+             alpha = 1;
+             visible = True;
+             group = ;
+             text = strength:;
+             draw_order = 4;
+             font_type = b_gui_fnt_12p_copperplate-light;
+           }
+
+           [t:text,n:text_intelligence]
+           {
+             pass_through = False;
+             common_control = False;
+             rect = 18,80,145,96;
+             texture = ;
+             uvcoords = 0.0,0.0,1.0,1.0;
+             wrap_mode = Clamp;
+             alpha = 1;
+             visible = True;
+             group = ;
+             text = Intelligence;
+             draw_order = 5;
+             font_type = b_gui_fnt_12p_copperplate-light;
+           }
+
+           [t:text,n:text_mana]
+           {
+             pass_through = False;
+             common_control = False;
+             rect = 156,81,283,97;
+             texture = ;
+             uvcoords = 0.0,0.0,1.0,1.0;
+             wrap_mode = Clamp;
+             alpha = 1;
+             visible = True;
+             group = ;
+             text = Mana:;
+             draw_order = 6;
+             font_type = b_gui_fnt_12p_copperplate-light;
+           }
+
+           [t:text,n:text_exp_to_level]
+           {
+             pass_through = False;
+             common_control = False;
+             rect = 156,156,283,172;
+             texture = ;
+             uvcoords = 0.0,0.0,1.0,1.0;
+             wrap_mode = Clamp;
+             alpha = 1;
+             visible = True;
+             group = ;
+             text = ExpToLevel:;
+             draw_order = 6;
+             font_type = b_gui_fnt_12p_copperplate-light;
+
+           }
+
+           [t:text,n:text_health]
+           {
+             pass_through = False;
+             common_control = False;
+             rect = 156,62,283,78;
+             texture = ;
+             uvcoords = 0.0,0.0,1.0,1.0;
+             wrap_mode = Clamp;
+             alpha = 1;
+             visible = True;
+             group = ;
+             text = Health:;
+             draw_order = 6;
+             font_type = b_gui_fnt_12p_copperplate-light;
+
+           }
+
+           [t:text,n:text_strength]
+           {
+             pass_through = False;
+             common_control = False;
+             rect = 18,62,145,78;
+             texture = ;
+             uvcoords = 0.0,0.0,1.0,1.0;
+             wrap_mode = Clamp;
+             alpha = 1;
+             visible = True;
+             group = ;
+             text = strength:;
+             draw_order = 6;
+             font_type = b_gui_fnt_12p_copperplate-light;
+           }
+
+           [t:text,n:text_level]
+           {
+             pass_through = False;
+             common_control = False;
+             rect = 157,28,237,45;
+             texture = ;
+             uvcoords = 0.0,0.0,1.0,1.0;
+             wrap_mode = Clamp;
+             alpha = 1;
+             visible = True;
+             group = ;
+             text = Level:;
+             draw_order = 7;
+             font_type = b_gui_fnt_12p_copperplate-light;
+           }
+
+           [t:text,n:text_name]
+           {
+             pass_through = False;
+             common_control = False;
+             rect = 20,28,100,45;
+             texture = ;
+             uvcoords = 0.0,0.0,1.0,1.0;
+             wrap_mode = Clamp;
+             alpha = 1;
+             visible = True;
+             group = ;
+             text = Name:;
+             draw_order = 7;
+             font_type = b_gui_fnt_12p_copperplate-light;
+
+           }
+           [t:window,n:timer01]
+			{
+				[messages]
+				{
+					oncreated = call (init$);
+				}
+			}
+}

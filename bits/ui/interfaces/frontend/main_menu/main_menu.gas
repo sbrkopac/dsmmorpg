@@ -1,0 +1,153 @@
+/*
+ *  This file is part of dsmmorpg.
+ *  
+ *  dsmmorpg is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  dsmmorpg is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU General Public License
+ *  along with dsmmorpg.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+[main_menu]
+{
+	interface = true;
+	
+	[t:window,n:timer01]
+	{
+		[messages]
+		{
+			onshow = alphaanimation(0.1,0.0,0.0);
+			onanimcomplete = notify (multi_player_button_press);
+		}
+	}
+	
+	[t:window,n:bg1]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		draw_order = 0;
+		rect = 0,0,256,256;
+		texture = b_gui_fe_m_mp_background_01;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:bg2]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		draw_order = 0;
+		rect = 256,0,512,256;
+		texture = b_gui_fe_m_mp_background_02;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:bg3]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		draw_order = 0;
+		rect = 512,0,768,256;
+		texture = b_gui_fe_m_mp_background_03;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:bg4]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		draw_order = 0;
+		rect = 768,0,800,256;
+		texture = b_gui_fe_m_mp_background_04;
+		uvcoords = 0.0,0.000000,0.125,1.000000;
+		wrap_mode = clamp;
+	}
+
+	[t:window,n:bg5]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		draw_order = 0;
+		rect = 0,256,256,512;
+		texture = b_gui_fe_m_mp_background_05;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:bg6]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		draw_order = 0;
+		rect = 256,256,512,512;
+		texture = b_gui_fe_m_mp_background_06;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:bg7]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		draw_order = 0;
+		rect = 512,256,768,512;
+		texture = b_gui_fe_m_mp_background_07;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:bg8]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		draw_order = 0;
+		rect = 768,256,800,512;
+		texture = b_gui_fe_m_mp_background_08;
+		uvcoords = 0.0,0.000000,0.125,1.000000;
+		wrap_mode = clamp;
+	}
+
+	[t:window,n:bg9]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		draw_order = 0;
+		rect = 0,512,256,600;
+		texture = b_gui_fe_m_mp_background_09;
+		uvcoords = 0.000000,0.65625,1.000000,1.0000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:bg10]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		draw_order = 0;
+		rect = 256,512,512,600;
+		texture = b_gui_fe_m_mp_background_10;
+		uvcoords = 0.000000,0.65625,1.000000,1.0000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:bg11]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		draw_order = 0;
+		rect = 512,512,768,600;
+		texture = b_gui_fe_m_mp_background_11;
+		uvcoords = 0.000000,0.65625,1.000000,1.0000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:bg12]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		draw_order = 0;
+		rect = 768,512,800,600;
+		texture = b_gui_fe_m_mp_background_12;
+		uvcoords = 0.000000,0.65625,0.125,1.000000;
+		wrap_mode = clamp;
+	}
+}

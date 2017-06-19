@@ -1,0 +1,105 @@
+/*
+ *  This file is part of dsmmorpg.
+ *  
+ *  dsmmorpg is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  dsmmorpg is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU General Public License
+ *  along with dsmmorpg.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+owner = GoSkritComponent;
+
+property	int			id$;
+
+			Goid		watching$;
+
+#include "k_inc_rs_packet"
+
+startup state startup$
+{
+	event OnGoHandleMessage$ (eWorldEvent event$, WorldMessage message$)
+	{
+		if (event$ == we_entered_world)
+		{
+			owner.Go.Common.SSetScreenName ("");
+			owner.Go.Aspect.SetRenderScale (0.001);
+			
+			GoCloneReq req$ = MakeGoCloneReq ("NetworkManager");
+			req$.Omni = true;
+			Goid network$ = GoDb.SCloneGo (req$);
+			
+			GameAuditor.GetDb.SetInt ("client:network:manager", MakeInt (network$));
+			
+			RSPlayerReady$();
+		}
+	}
+	
+	event OnGoHandleCcMessage$ (eWorldEvent event$, WorldMessage message$)
+	{
+		if (event$ == we_mind_processing_new_job)
+		{
+			watching$ = MakeGoid (id$);
+			if (watching$.IsValid())
+			{
+				eJobAbstractType jat$ = watching$.Go.Mind.FrontActionJat;
+				if (jat$ == jat_move)
+				{
+					SetState (moving$);
+				}
+			}
+		}
+	}
+}
+
+state moving$
+{
+	event OnEnterState$
+	{
+		this.CreateTimer (1, 1.2);
+	}
+	
+	trigger OnTimer$ (1)
+	{
+		this.CreateTimer (1, 1.2);
+		
+		RSJobTravelDistanceReached$ (watching$.Go.Placement.Position);
+	}
+	
+	event OnGoHandleCcMessage$ (eWorldEvent event$, WorldMessage message$)
+	{
+		if (event$ == we_mind_processing_new_job)
+		{
+			eJobAbstractType jat$ = watching$.Go.Mind.FrontActionJat;
+			if (jat$ != jat_move)
+			{
+				RSJobTravelDistanceReached$ (watching$.Go.Placement.Position);
+				
+				SetState (idle$);
+			}
+		}
+	}
+}
+
+state idle$
+{
+	event OnGoHandleCcMessage$ (eWorldEvent event$, WorldMessage message$)
+	{
+		if (event$ == we_mind_processing_new_job)
+		{
+			eJobAbstractType jat$ = watching$.Go.Mind.FrontActionJat;
+			
+			if (jat$ == jat_move)
+			{
+				SetState (moving$);
+			}
+		}
+	}
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server>
+	<account username="aanderse" password="a">
+		<go id="1" />
+	</account>
+	<account username="brkopac" password="b">
+		<go id="2" />
+	</account>
+	<account username="techiem" password="c">
+		<go id="3" />
+	</account>
+	<account username="kenjuudo" password="d">
+		<go id="4" />
+	</account>
+	<account username="firebat" password="e">
+		<go id="6" />
+	</account>
+</server>

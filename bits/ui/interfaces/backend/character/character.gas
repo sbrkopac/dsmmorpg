@@ -1,0 +1,1147 @@
+[character]
+{
+  i intended_resolution_height = 480;
+  i intended_resolution_width = 640;
+  b interface = true;
+	[t:itemslot,n:amulet]
+	{
+	  x activate_color = 0x666F6F6F;
+	  f alpha = 1.000000;
+	  x border_color = 0x66FFFFFF;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000055;
+		group = equipment;
+	  b is_equip_slot = true;
+		rect = 228,278,250,323;
+		rollover_help = empty_amulet;
+		slot_type = amulet;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:itemslot,n:armor]
+	{
+	  x activate_color = 0x666F6F6F;
+	  f alpha = 1.000000;
+	  x border_color = 0x66FFFFFF;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x0000004c;
+		group = equipment;
+	  b is_equip_slot = true;
+		rect = 139,279,201,374;
+		rollover_help = empty_armor;
+		slot_type = armor;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:itemslot,n:boots]
+	{
+	  x activate_color = 0x666F6F6F;
+	  f alpha = 1.000000;
+	  x border_color = 0x66FFFFFF;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000059;
+		group = equipment;
+	  b is_equip_slot = true;
+		rect = 157,378,181,427;
+		rollover_help = empty_boots;
+		slot_type = boots;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:button,n:button_spellbook_hide]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x disable_color = 0xff5f5f5f;
+	  x draw_order = 0x00000252;
+		group = equipment;
+		rect = 229,238,250,269;
+		rollover_help = spellbook_hide;
+		texture = b_gui_ig_mnu_minimize-book-up;
+	  b topmost = true;
+		uvcoords = 0.000000,0.500000,0.656250,0.984375;
+		visible = false;
+		wrap_mode = clamp;
+		[messages]
+		{
+			onbuttonpress = notify(spell_expand);
+			onlbuttondown = loadtexture(b_gui_ig_mnu_minimize-book-dwn);
+			onlbuttonup = loadtexture(b_gui_ig_mnu_minimize-book-up);
+			onrolloff = loadtexture(b_gui_ig_mnu_minimize-book-up);
+			onrollover = loadtexture(b_gui_ig_mnu_minimize-book-hov);
+		}
+	}
+	[t:button,n:button_spellbook_show]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x disable_color = 0xff5f5f5f;
+	  x draw_order = 0x00000129;
+		group = equipment;
+		rect = 229,238,250,269;
+		rollover_help = spellbook_show;
+		texture = b_gui_ig_mnu_minimize-book-up;
+	  b topmost = true;
+		uvcoords = 0.000000,0.000000,0.656250,0.484375;
+		wrap_mode = clamp;
+		[messages]
+		{
+			onbuttonpress = notify(spell_expand);
+			onlbuttondown = loadtexture(b_gui_ig_mnu_minimize-book-dwn);
+			onlbuttonup = loadtexture(b_gui_ig_mnu_minimize-book-up);
+			onrolloff = loadtexture(b_gui_ig_mnu_minimize-book-up);
+			onrollover = loadtexture(b_gui_ig_mnu_minimize-book-hov);
+		}
+	}
+	[t:text,n:character_class]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000006;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 91,23,249,36;
+		rollover_help = character_class;
+		text = "Character Class";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:text,n:character_name]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000005;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 91,5,248,17;
+		rollover_help = character_name;
+		text = "Character Name";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:character_pane_1]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+		consumable = true;
+	  x draw_order = 0x00000003;
+		rect = 87,0,254,116;
+		texture = b_gui_ig_mnu_cp_top_01;
+		uvcoords = 0.000000,0.093750,0.652344,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:character_pane_2]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+		consumable = true;
+	  x draw_order = 0x00000002;
+		rect = 87,116,254,228;
+		texture = b_gui_ig_mnu_cp_mid_01;
+		uvcoords = 0.000000,0.125000,0.652344,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:character_paperdoll]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000003;
+		group = equipment;
+		rect = 87,228,254,449;
+		texture = b_gui_ig_mnu_cp_bot_01;
+		topmost = true;
+		uvcoords = 0.000000,0.136719,0.652344,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:listener,n:character_paperdoll_listener]
+	{
+		alpha = 1.000000;
+		common_control = false;
+		common_template = ;
+		consumable = true;
+	  x draw_order = 0x00000002;
+		rect = 88,227,253,449;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:status_bar,n:character_status_dark_magic_bar]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000125;
+		dynamic_edge = right;
+		rect = 89,172,200,185;
+		texture = b_gui_ig_mnu_cp_mid_01;
+		uvcoords = 0.000000,-0.007813,0.433594,0.085938;
+		wrap_mode = clamp;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:character_status_dexterity_bar]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000082;
+		dynamic_edge = right;
+		rect = 102,87,213,100;
+		texture = b_gui_ig_mnu_cp_mid_01;
+		uvcoords = 0.000000,-0.007813,0.433594,0.085938;
+		wrap_mode = clamp;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:character_status_good_magic_bar]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000124;
+		dynamic_edge = right;
+		rect = 89,158,200,171;
+		texture = b_gui_ig_mnu_cp_mid_01;
+		uvcoords = 0.000000,-0.007813,0.433594,0.085938;
+		wrap_mode = clamp;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:character_status_intelligence_bar]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000082;
+		dynamic_edge = right;
+		rect = 102,101,213,114;
+		texture = b_gui_ig_mnu_cp_mid_01;
+		uvcoords = 0.000000,-0.007813,0.433594,0.085938;
+		wrap_mode = clamp;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:character_status_melee_bar]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000082;
+		dynamic_edge = right;
+		rect = 89,130,200,143;
+		texture = b_gui_ig_mnu_cp_mid_01;
+		uvcoords = 0.000000,-0.007813,0.433594,0.085938;
+		wrap_mode = clamp;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:character_status_ranged_bar]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000081;
+		dynamic_edge = right;
+		rect = 89,144,200,157;
+		texture = b_gui_ig_mnu_cp_mid_01;
+		uvcoords = 0.000000,-0.007813,0.433594,0.085938;
+		wrap_mode = clamp;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:status_bar,n:character_status_strength_bar]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000082;
+		dynamic_edge = right;
+		rect = 102,73,213,86;
+		texture = b_gui_ig_mnu_cp_mid_01;
+		uvcoords = 0.000000,-0.007813,0.433594,0.085938;
+		wrap_mode = clamp;
+		draw_advance = true;
+		advance_color = 0x0000ff00;
+		advance_duration = 1.0;
+	}
+	[t:text,n:character_text_armor_value]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000023;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 200,214,250,227;
+		rollover_help = character_armor_value;
+		text = "999";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:text,n:character_text_dexterity_value]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000017;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 214,87,236,100;
+		rollover_help = character_dex_value;
+		text = "999";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:text,n:character_text_health_value]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x0000000a;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 102,58,168,72;
+		rollover_help = character_health_value;
+		text = "9999/9999";
+		truncate = true;
+		uvcoords = 0.000000,0.000000,1.000000,0.291667;
+		wrap_mode = clamp;
+	}
+	[t:text,n:character_text_intelligence_value]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x0000001e;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 214,101,236,114;
+		rollover_help = character_int_value;
+		text = "999";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:text,n:character_text_mana_value]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x0000000b;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 171,58,237,72;
+		rollover_help = character_mana_value;
+		text = "9999/9999";
+		truncate = true;
+		uvcoords = 0.000000,0.000000,1.000000,0.283019;
+		wrap_mode = clamp;
+	}
+	[t:text,n:character_text_skills_dark_magic_value]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000098;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 200,172,250,185;
+		rollover_help = character_combat_magic_value;
+		text = "999";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:text,n:character_text_skills_good_magic_value]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000094;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 200,158,250,171;
+		rollover_help = character_nature_magic_value;
+		text = "999";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:text,n:character_text_skills_melee_value]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x0000001f;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 200,130,250,143;
+		rollover_help = character_melee_value;
+		text = "999";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:text,n:character_text_skills_ranged_value]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000021;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 200,144,250,157;
+		rollover_help = character_ranged_value;
+		text = "999";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:text,n:character_text_strength_value]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000019;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 214,73,236,86;
+		rollover_help = character_str_value;
+		text = "999";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:itemslot,n:gauntlets]
+	{
+	  x activate_color = 0x666F6F6F;
+	  f alpha = 1.000000;
+	  x border_color = 0x66FFFFFF;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x000000ab;
+		group = equipment;
+	  b is_equip_slot = true;
+		rect = 205,278,227,323;
+		rollover_help = empty_gauntlets;
+		slot_type = gauntlets;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:ghost_amulet]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000002;
+		group = equipment;
+		pass_though = true;
+		rect = 228,290,252,314;
+		texture = b_gui_ig_mnu_cp_ghost_amulet;
+		topmost = true;
+		uvcoords = 0.000000,0.250000,0.750000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:ghost_armor]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000002;
+		group = equipment;
+		pass_though = true;
+		rect = 141,282,201,372;
+		texture = b_gui_ig_mnu_cp_ghost_body;
+		topmost = true;
+		uvcoords = 0.000000,0.296875,0.937500,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:ghost_book]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000002;
+		group = equipment;
+		pass_though = true;
+		rect = 205,232,229,276;
+		texture = b_gui_ig_mnu_cp_ghost_book;
+		topmost = true;
+		uvcoords = 0.000000,0.312500,0.750000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:ghost_boots]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000002;
+		group = equipment;
+		pass_though = true;
+		rect = 156,379,182,427;
+		texture = b_gui_ig_mnu_cp_ghost_boot;
+		topmost = true;
+		uvcoords = 0.000000,0.250000,0.812500,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:ghost_gauntlets]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000002;
+		group = equipment;
+		pass_though = true;
+		rect = 205,278,229,325;
+		texture = b_gui_ig_mnu_cp_ghost_gloves;
+		topmost = true;
+		uvcoords = 0.000000,0.265625,0.750000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:ghost_helmet]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000002;
+		group = equipment;
+		pass_though = true;
+		rect = 158,233,186,273;
+		texture = b_gui_ig_mnu_cp_ghost_helmet;
+		topmost = true;
+		uvcoords = 0.000000,0.375000,0.875000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:ghost_melee]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000002;
+		group = equipment;
+		pass_though = true;
+		rect = 92,354,134,443;
+		texture = b_gui_ig_mnu_cp_ghost_sword;
+		topmost = true;
+		uvcoords = 0.000000,0.304688,0.656250,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:ghost_ranged]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000002;
+		group = equipment;
+		pass_though = true;
+		rect = 103,232,125,322;
+		texture = b_gui_ig_mnu_cp_ghost_bow;
+		topmost = true;
+		uvcoords = 0.000000,0.296875,0.687500,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:ghost_ring_1]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000002;
+		group = equipment;
+		pass_though = true;
+		rect = 94,332,110,348;
+		texture = b_gui_ig_mnu_cp_ghost_ring;
+		topmost = true;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:ghost_ring_2]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000002;
+		group = equipment;
+		pass_though = true;
+		rect = 117,332,133,348;
+		texture = b_gui_ig_mnu_cp_ghost_ring;
+		topmost = true;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:ghost_ring_3]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000002;
+		group = equipment;
+		pass_though = true;
+		rect = 210,332,226,348;
+		texture = b_gui_ig_mnu_cp_ghost_ring;
+		topmost = true;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:ghost_ring_4]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000002;
+		group = equipment;
+		pass_though = true;
+		rect = 233,332,249,348;
+		texture = b_gui_ig_mnu_cp_ghost_ring;
+		topmost = true;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:ghost_shield]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000002;
+		group = equipment;
+		pass_though = true;
+		rect = 210,366,247,434;
+		texture = b_gui_ig_mnu_cp_ghost_shield;
+		topmost = true;
+		uvcoords = 0.000000,0.468750,0.578125,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:itemslot,n:helmet]
+	{
+	  x activate_color = 0x666F6F6F;
+	  f alpha = 1.000000;
+	  x border_color = 0x66FFFFFF;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x0000004e;
+		group = equipment;
+	  b is_equip_slot = true;
+		rect = 149,232,192,275;
+		rollover_help = empty_helmet;
+		slot_type = helmet;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:icon_cmagic]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 597;
+		rect = 183,170,199,186;
+		texture = b_gui_ig_mnu_combat-magic;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:icon_melee]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 596;
+		rect = 183,128,199,144;
+		texture = b_gui_ig_mnu_combat;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:icon_nmagic]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 598;
+		rect = 183,156,199,172;
+		texture = b_gui_ig_mnu_nature-magic;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:icon_ranged]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  i draw_order = 599;
+		rect = 184,142,200,158;
+		texture = b_gui_ig_mnu_ranged;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:itemslot,n:melee_weapon]
+	{
+	  x activate_color = 0x666F6F6F;
+	  f alpha = 1.000000;
+	  x border_color = 0x66FFFFFF;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000057;
+		group = equipment;
+	  b is_equip_slot = true;
+		rect = 90,353,135,444;
+		rollover_help = empty_melee;
+		slot_type = melee_weapon;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:dialog_box,n:paperdoll_bg]
+	{
+	  f alpha = 1.000000;
+	  b common_control = true;
+		common_template = cpbox;
+	  x draw_order = 0x00000000;
+		rect = 88,227,253,449;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:itemslot,n:ranged_weapon]
+	{
+	  x activate_color = 0x666F6F6F;
+	  f alpha = 1.000000;
+	  x border_color = 0x66FFFFFF;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x0000004d;
+		group = equipment;
+	  b is_equip_slot = true;
+		rect = 90,232,135,323;
+		rollover_help = empty_ranged;
+		slot_type = ranged_weapon;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:itemslot,n:ring1]
+	{
+	  x activate_color = 0x666F6F6F;
+	  f alpha = 1.000000;
+	  x border_color = 0x66FFFFFF;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x000000a3;
+		group = equipment;
+	  b is_equip_slot = true;
+		rect = 90,327,112,349;
+		rollover_help = empty_ring;
+		slot_type = ring;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:itemslot,n:ring2]
+	{
+	  x activate_color = 0x666F6F6F;
+	  f alpha = 1.000000;
+	  x border_color = 0x66FFFFFF;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x000000a4;
+		group = equipment;
+	  b is_equip_slot = true;
+		rect = 113,327,135,349;
+		rollover_help = empty_ring;
+		slot_type = ring;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:itemslot,n:ring3]
+	{
+	  x activate_color = 0x666F6F6F;
+	  f alpha = 1.000000;
+	  x border_color = 0x66FFFFFF;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x000000a2;
+		group = equipment;
+	  b is_equip_slot = true;
+		rect = 205,327,227,349;
+		rollover_help = empty_ring;
+		slot_type = ring;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:itemslot,n:ring4]
+	{
+	  x activate_color = 0x666F6F6F;
+	  f alpha = 1.000000;
+	  x border_color = 0x66FFFFFF;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000050;
+		group = equipment;
+	  b is_equip_slot = true;
+		rect = 228,327,250,349;
+		rollover_help = empty_ring;
+		slot_type = ring;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:itemslot,n:shield]
+	{
+	  x activate_color = 0x666F6F6F;
+	  f alpha = 1.000000;
+	  x border_color = 0x66FFFFFF;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000058;
+		group = equipment;
+	  b is_equip_slot = true;
+		rect = 205,353,250,444;
+		rollover_help = empty_shield;
+		slot_type = shield;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:itemslot,n:spellbook]
+	{
+	  x activate_color = 0x666F6F6F;
+	  f alpha = 1.000000;
+	  x border_color = 0x66FFFFFF;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000127;
+		group = equipment;
+	  b is_equip_slot = true;
+		rect = 205,231,226,274;
+		rollover_help = empty_spellbook;
+		slot_type = spellbook;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:status_bar,n:status_bar_health]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x0000000c;
+		dynamic_edge = top;
+		rect = 88,44,101,114;
+		rollover_help = status_bar_health;
+		texture = b_gui_ig_mnu_cp_top_01;
+		uvcoords = 0.714844,0.460938,0.765625,1.007813;
+		wrap_mode = clamp;
+	}
+	[t:status_bar,n:status_bar_mana]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000011;
+		dynamic_edge = top;
+		rect = 238,44,251,114;
+		rollover_help = status_bar_mana;
+		texture = b_gui_ig_mnu_cp_top_01;
+		uvcoords = 0.765625,0.460938,0.816406,1.007813;
+		wrap_mode = clamp;
+	}
+	[t:text,n:text_armor]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000022;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = left;
+		rect = 90,214,199,227;
+		rollover_help = text_armor;
+		text = "Armor Rating";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:text,n:text_dexterity]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x0000001b;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = left;
+		rect = 104,87,211,100;
+		rollover_help = text_dex;
+		text = "Dexterity";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:text,n:text_health]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000007;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 102,45,168,58;
+		text = "Health";
+		uvcoords = 0.000000,0.235294,0.891892,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:text,n:text_intelligence]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x0000001c;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = left;
+		rect = 104,101,211,114;
+		rollover_help = text_int;
+		text = "Intelligence";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:text,n:text_level]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000018;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 201,117,250,130;
+		text = "Level";
+		uvcoords = 0.000000,0.000000,1.088889,0.736842;
+		wrap_mode = clamp;
+	}
+	[t:text,n:text_mana]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000008;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 171,44,237,58;
+		text = "Mana";
+		uvcoords = 0.000000,0.031250,0.876712,0.468750;
+		wrap_mode = clamp;
+	}
+	[t:text,n:text_melee_damage]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x0000008b;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = left;
+		rect = 90,186,199,199;
+		rollover_help = text_melee_damage;
+		text = "Melee Damage";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:text,n:text_melee_damage_value]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x0000009c;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 200,186,250,199;
+		rollover_help = melee_damage_value;
+		text = "999";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		truncate = true;
+	}
+	[t:text,n:text_ranged_damage]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x0000008f;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = left;
+		rect = 90,200,199,213;
+		rollover_help = text_ranged_damage;
+		text = "Ranged Damage";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:text,n:text_ranged_damage_value]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x000000a0;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 200,200,250,213;
+		rollover_help = ranged_damage_value;
+		text = "999";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+		truncate = true;
+	}
+	[t:text,n:text_skill_combat]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000087;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = left;
+		rect = 90,172,199,185;
+		rollover_help = text_skill_combat;
+		text = "Combat Magic";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:text,n:text_skill_melee]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x0000001d;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = left;
+		rect = 90,130,199,143;
+		rollover_help = text_skill_melee;
+		text = "Melee";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:text,n:text_skill_nature]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000083;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = left;
+		rect = 90,158,199,171;
+		rollover_help = text_skill_nature;
+		text = "Nature Magic";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:text,n:text_skill_ranged]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000020;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = left;
+		rect = 90,144,199,157;
+		rollover_help = text_skill_ranged;
+		text = "Ranged";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:text,n:text_skills]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000015;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = center;
+		rect = 90,117,198,130;
+		text = "Skills";
+		uvcoords = 0.000000,0.000000,1.714288,0.750000;
+		wrap_mode = clamp;
+		rollover_help = text_skills;
+	}
+	[t:text,n:text_strength]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000016;
+	  x font_color = 0xffffffff;
+	  x font_size = 0x00000000;
+		font_type = b_gui_fnt_12p_copperplate-light;
+		justify = left;
+		rect = 104,73,211,86;
+		rollover_help = text_str;
+		text = "Strength";
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = clamp;
+	}
+	[t:window,n:window_health_cover]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x0000000d;
+		rect = 89,44,101,114;
+		texture = b_gui_ig_mnu_cp_top_01;
+		uvcoords = 0.671875,0.460938,0.718750,1.007813;
+		wrap_mode = clamp;
+	}
+	[t:window,n:window_mana_cover]
+	{
+	  f alpha = 1.000000;
+	  b common_control = false;
+		common_template = ;
+	  x draw_order = 0x00000012;
+		rect = 239,44,251,114;
+		texture = b_gui_ig_mnu_cp_top_01;
+		uvcoords = 0.671875,0.460938,0.718750,1.007813;
+		wrap_mode = clamp;
+	}
+}

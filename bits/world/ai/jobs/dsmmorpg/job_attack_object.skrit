@@ -1,0 +1,71 @@
+/*
+ *  This file is part of dsmmorpg.
+ *  
+ *  dsmmorpg is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  dsmmorpg is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU General Public License
+ *  along with dsmmorpg.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include "k_inc_rs_packet"
+
+startup state startup$
+{
+}
+
+event OnJobInit$ (Job job$)
+{
+	Go hero$ = job$.GetGo;
+	Go target$ = job$.GoalObject.Go;
+	Go weapon$ = job$.GoalModifier.Go;
+	
+	if (target$ != NULL)
+	{
+		if (target$.HasComponent ("object"))
+		{
+			int id$ = target$.GetComponentInt ("object", "id");
+			if (id$ != 0)
+			{
+				report.screenf ("attacking %d", id$);
+				Go weapon$ = hero$.Inventory.SelectedItem;
+				
+				if (weapon$ == NULL)
+				{
+					RSAttackMelee$ (id$);
+				}
+				else if (weapon$.IsMeleeWeapon)
+				{
+					RSAttackMelee$ (id$);
+				}
+				else if (weapon$.IsRangedWeapon)
+				{
+					RSAttackRanged$ (id$);
+				}
+				else if (weapon$.IsSpell)
+				{
+					//RSCast$ (id$);
+				}
+				else
+				{
+					job$.MarkForDeletion (jr_failed);
+					return;
+				}
+				
+				job$.MarkForDeletion (jr_ok);
+				return;
+			}
+		}
+	}
+	
+	job$.MarkForDeletion (jr_ok);
+}
+
+

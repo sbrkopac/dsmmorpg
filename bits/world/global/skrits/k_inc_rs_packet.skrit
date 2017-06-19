@@ -1,0 +1,155 @@
+/*
+ *  This file is part of dsmmorpg.
+ *  
+ *  dsmmorpg is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  dsmmorpg is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU General Public License
+ *  along with dsmmorpg.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+void RSRequestAuthentication$ (string username$, string password$)
+{
+	Packet packet$ = NetworkManager.CreatePacket();
+	
+	packet$.WriteUInt8 (1);
+	packet$.WriteString (username$);
+	packet$.WriteString (password$);
+	
+	NetworkManager.Send (packet$);
+	NetworkManager.DiscardPacket (packet$);
+}
+
+void RSPlayerReady$()
+{
+	Packet packet$ = NetworkManager.CreatePacket();
+	
+	packet$.WriteUInt8 (2);
+	
+	NetworkManager.Send (packet$);
+	NetworkManager.DiscardPacket (packet$);
+}
+
+void RSChat$ (string message$)
+{
+	Packet packet$ = NetworkManager.CreatePacket();
+	
+	packet$.WriteUInt8 (11);
+	packet$.WriteString (message$);
+	
+	NetworkManager.Send (packet$);
+}
+
+void RSMove$ (SiegePos position$)
+{
+	Packet packet$ = NetworkManager.CreatePacket();
+	
+	packet$.WriteUInt8 (12);
+	packet$.WriteUInt32 (position$.Node.Value);
+	packet$.WriteFloat (position$.Pos.X);
+	packet$.WriteFloat (position$.Pos.Y);
+	packet$.WriteFloat (position$.Pos.Z);
+	
+	NetworkManager.Send (packet$);
+	NetworkManager.DiscardPacket (packet$);
+}
+
+void RSGet$ (int id$)
+{
+	Packet packet$ = NetworkManager.CreatePacket();
+	
+	packet$.WriteUInt8 (20);
+	report.screenf ("%i", id$);
+	packet$.WriteUInt32 (id$);
+	
+	NetworkManager.Send (packet$);
+	NetworkManager.DiscardPacket (packet$);
+}
+
+void RSDrop$ (int id$)
+{
+	Packet packet$ = NetworkManager.CreatePacket();
+	
+	packet$.WriteUInt8 (21);
+	packet$.WriteUInt32 (id$);
+	
+	NetworkManager.Send (packet$);
+	NetworkManager.DiscardPacket (packet$);
+}
+
+void RSEquip$ (int id$, int slot$)
+{
+	Packet packet$ = NetworkManager.CreatePacket();
+	
+	packet$.WriteUInt8 (22);
+	packet$.WriteUInt32 (id$);
+	packet$.WriteUInt8 (slot$);
+	
+	NetworkManager.Send (packet$);
+	NetworkManager.DiscardPacket (packet$);
+}
+
+void RSUnequip$ (int slot$)
+{
+	Packet packet$ = NetworkManager.CreatePacket();
+	
+	packet$.WriteUInt8 (23);
+	packet$.WriteUInt8 (slot$);
+	
+	NetworkManager.Send (packet$);
+	NetworkManager.DiscardPacket (packet$);
+}
+
+void RSAttackMelee$ (int id$)
+{
+	Packet packet$ = NetworkManager.CreatePacket();
+	
+	packet$.WriteUInt8 (24);
+	packet$.WriteUInt32 (id$);
+	
+	NetworkManager.Send (packet$);
+	NetworkManager.DiscardPacket (packet$);	
+}
+
+void RSAttackRanged$ (int id$)
+{
+	Packet packet$ = NetworkManager.CreatePacket();
+	
+	packet$.WriteUInt8 (25);
+	packet$.WriteUInt32 (id$);
+	
+	NetworkManager.Send (packet$);
+	NetworkManager.DiscardPacket (packet$);	
+}
+
+void RSCast$ (int id$)
+{
+	Packet packet$ = NetworkManager.CreatePacket();
+	
+	packet$.WriteUInt8 (26);
+	packet$.WriteUInt32 (id$);
+	
+	NetworkManager.Send (packet$);
+	NetworkManager.DiscardPacket (packet$);
+}
+
+void RSJobTravelDistanceReached$ (SiegePos position$)
+{
+	Packet packet$ = NetworkManager.CreatePacket();
+	
+	packet$.WriteUInt8 (40);
+	packet$.WriteUInt32 (position$.Node.Value);
+	packet$.WriteFloat (position$.Pos.X);
+	packet$.WriteFloat (position$.Pos.Y);
+	packet$.WriteFloat (position$.Pos.Z);
+	
+	NetworkManager.Send (packet$);
+	NetworkManager.DiscardPacket (packet$);
+}

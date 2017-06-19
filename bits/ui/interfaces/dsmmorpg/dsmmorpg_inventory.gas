@@ -1,0 +1,284 @@
+[dsmmorpg_inventory]
+{
+	interface = True;
+
+	skrit = [[
+
+		owner = UIWindow;
+		
+		#include "k_inc_debug_utils"
+		
+		rightclick$()
+		{
+			report.screen ("rightclick$");
+			
+			UIListBox list$ = QueryDerivedListBox (UIShell.FindUIWindow ("inventory_listbox", "dsmmorpg_inventory"));
+		}
+		
+		poll$()
+		{
+			if (AppModule.RButton == true)
+			{
+				report.screenf ("right button down");
+			}
+			//report.screen ("poll...");
+			UIWindow window$ = UIShell.FindUIWindow ("timer01", "dsmmorpg_inventory");
+			window$.ProcessAction (action_alphaanimation, "1,0,0");
+		}
+
+		created$()
+		{
+			UIListBox list$ = QueryDerivedListBox (UIShell.FindUIWindow ("inventory_listbox", "dsmmorpg_inventory"));
+			list$.AddElement ("sword of a thousand gpg pwnage", 0);
+			list$.AddElement ("quiver", 1);
+			list$.AddElement ("nightshade", 2);
+			list$.AddElement ("short bow", 3);
+			list$.AddElement ("scarrow root", 4);
+		}
+
+		init$()
+		{
+			UIWindow window$ = UIShell.FindUIWindow ("interface_background", "dsmmorpg_inventory");
+
+			GameAuditor.GetDb.SetInt ("ui:interfaces:dsmmorpg_inventory:x", window$.Rect.GetLeft());
+			GameAuditor.GetDb.SetInt ("ui:interfaces:dsmmorpg_inventory:y", window$.Rect.GetTop());
+		}
+
+		drag$()
+		{
+			UIWindow window$ = UIShell.FindUIWindow ("interface_background", "dsmmorpg_inventory");
+			
+			//window$.Children.Add (UIShell.FindUIWindow("button_equip", "dsmmorpg_inventory"));
+
+			int delta_x$ = window$.Rect.GetLeft() - GameAuditor.GetDb.GetInt ("ui:interfaces:dsmmorpg_inventory:x");
+			int delta_y$ = window$.Rect.GetTop() - GameAuditor.GetDb.GetInt ("ui:interfaces:dsmmorpg_inventory:y");
+
+			UIWindowVec children$ = window$.Children;
+
+			int i$ = 0;
+			while (i$ < children$.Size())
+			{
+				UIWindow child$ = children$.Get (i$);
+
+				child$.SetRect (child$.Rect.GetLeft() + delta_x$, child$.Rect.GetRight() + delta_x$, child$.Rect.GetTop() + delta_y$, child$.Rect.GetBottom() + delta_y$, false);
+
+				i$ += 1;
+			}
+
+			// update position
+			GameAuditor.GetDb.SetInt ("ui:interfaces:dsmmorpg_inventory:x", window$.Rect.GetLeft());
+			GameAuditor.GetDb.SetInt ("ui:interfaces:dsmmorpg_inventory:y", window$.Rect.GetTop());
+			
+			//window$.Children.Clear();
+		}
+		
+		equip$()
+		{
+			if (debug$)
+			{
+				Report.ScreenF ("[DSMMORPG INVENTORY] - Equip$ Call");
+			}
+		}
+		
+		unequip$()
+		{
+			if (debug$)
+			{
+				Report.ScreenF ("[DSMMORPG INVENTORY] - Unequip$ Call");
+			}
+		}
+		
+		drop$()
+		{
+			if (debug$)
+			{
+				Report.ScreenF ("[DSMMORPG INVENTORY] - Drop$ Call");
+			}
+		}
+
+	]];
+
+
+[t:window,n:timer01]
+{
+	[messages]
+	{
+		oncreated = call (init$) & call (created$);
+		onshow = alphaanimation(1.0,0.0,0.0);
+		onanimcomplete = call (poll$);
+	}
+}
+[t:dialog_box,n:interface_background]
+{
+	  f alpha = 0;
+	  b common_control = True;
+		common_template = cpbox;
+	  i draw_order = 0;
+		rect = 2,2,298,23;
+		uvcoords = 0.000000,0.000000,1.000000,1.000000;
+		wrap_mode = Clamp;
+		
+		draggable = true;
+		drag_x = 1;
+		drag_y = 1;
+		drag_delay = 0.025;
+		
+		[messages]
+		{
+			ondrag = call (drag$);
+			onrbuttondown = call(rightclick$);
+		}		
+		[t:dialog_box,n:blahblah]
+		{
+		  f alpha = 1;
+		  b common_control = True;
+			common_template = cpbox;
+		  i draw_order = 0;
+			rect = 0,24,300,250;
+			uvcoords = 0.000000,0.000000,1.000000,1.000000;
+			wrap_mode = Clamp;
+		}
+		
+		[t:dialog_box,n:tnhthnnt]
+		{
+		  f alpha = 1;
+		  b common_control = True;
+			common_template = cpbox;
+		  i draw_order = 0;
+			rect = 0,0,300,24;
+			uvcoords = 0.000000,0.000000,1.000000,1.000000;
+			wrap_mode = Clamp;
+		}
+		[t:button,n:button_drop]
+		{
+		  f alpha = 1;
+		  b common_control = True;
+			common_template = button_4;
+		  i draw_order = 1;
+			// rect = 100,224,200,240; +20 right
+			rect = 199,224,285,240;
+			uvcoords = 0.000000,0.000000,1.000000,1.000000;
+			wrap_mode = Clamp;		
+			[t:text,n:text_message_drop]
+			{
+			  f alpha = 1;
+			  b common_control = false;
+				common_template = ;
+			  i draw_order = 3;
+			  i font_color = -1;
+			  i font_size = 0;
+				font_type = b_gui_fnt_12p_copperplate-light;
+				justify = center;
+				text = "Drop";
+				uvcoords = 0.000000,0.000000,1.000000,1.000000;
+				wrap_mode = clamp;
+			}
+			[messages]
+			{
+				onbuttonpress = call (drop$);
+			}
+		}
+		[t:button,n:button_unequip]
+		{
+		  f alpha = 1;
+		  b common_control = True;
+			common_template = button_4;
+		  i draw_order = 1;
+			rect = 105,224,191,240;
+			uvcoords = 0.000000,0.000000,1.000000,1.000000;
+			wrap_mode = Clamp;		
+			[t:text,n:text_message_unequip]
+			{
+			  f alpha = 1;
+			  b common_control = false;
+				common_template = ;
+			  i draw_order = 3;
+			  i font_color = -1;
+			  i font_size = 0;
+				font_type = b_gui_fnt_12p_copperplate-light;
+				justify = center;
+				text = "Unequip";
+				uvcoords = 0.000000,0.000000,1.000000,1.000000;
+				wrap_mode = clamp;
+			}
+			[messages]
+			{
+				onbuttonpress = call (unequip$);
+			}
+		}		
+		
+		[t:listbox,n:inventory_listbox]
+		{
+			alpha = 1;
+			common_control = True;
+			common_template = ;
+			draw_order = 4;
+			font_type = b_gui_fnt_12p_copperplate-light;						
+			rect = 15,37,285,235;
+			text_color = 0xffffffff;
+			uvcoords = 0.000000,0.000000,1.000000,1.000000;
+			wrap_mode = Clamp;
+			consumable = true;
+			rollover_select = true;
+			[t:selection_box,n:selection_box]
+			{
+				alpha = 0.5;
+				texture = b_gui_cmn_selection;
+			}
+			[messages]
+			{
+				oncreated = setelementheight(14);
+				//onlbuttondown = call (rightclick$); BLOCKING CALL
+				//onrbuttondown = call(rightclick$); BLOCKING CALL
+				//onrbuttonpress = call (rightclick$); BLOCKING CALL
+				//onselect = call (rightclick$); BLOCKING CALL
+				//onlbuttonup = call (rightclick$());// BLOCKING CALL
+				// onselect = call (rightclick$());	
+			}
+		}
+		
+		[t:text,n:inventory_text]
+		{
+		  f alpha = 1;
+		  b common_control = False;
+			common_template = ;
+		  x draw_order = 152;
+		  x font_color = 0xffffffff;
+		  x font_size = 0;
+			font_type = b_gui_fnt_12p_copperplate-light;
+			justify = Center;
+			rect = 0,5,300,17;
+			text = "Inventory";
+			uvcoords = 0.000000,0.000000,1.000000,1.000000;
+			wrap_mode = Clamp;
+		}
+}
+		[t:button,n:button_equip]
+		{
+		  f alpha = 1;
+		  b common_control = True;
+			common_template = button_4;
+		  i draw_order = 1;
+			rect = 12,224,98,240;
+			uvcoords = 0.000000,0.000000,1.000000,1.000000;
+			wrap_mode = Clamp;		
+			[t:text,n:text_message_equip]
+			{
+			  f alpha = 1;
+			  b common_control = false;
+				common_template = ;
+			  i draw_order = 3;
+			  i font_color = -1;
+			  i font_size = 0;
+				font_type = b_gui_fnt_12p_copperplate-light;
+				justify = center;
+				text = "Equip";
+				uvcoords = 0.000000,0.000000,1.000000,1.000000;
+				wrap_mode = clamp;
+			}
+			[messages]
+			{
+				onbuttonpress = call (equip$);
+			}
+		}
+}
